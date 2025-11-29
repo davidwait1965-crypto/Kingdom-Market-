@@ -9,11 +9,38 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f6f6f6;
+            background: #000; /* fallback */
+            color: #000;
+        }
+
+        /* Fullscreen scripture background */
+        .scripture-background {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+        }
+
+        .scripture-text {
+            max-width: 80%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.18);
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Puts all site content above the background */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
         }
 
         header {
-            background: #222;
+            background: rgba(34, 34, 34, 0.9);
             color: white;
             padding: 20px;
             text-align: center;
@@ -121,64 +148,97 @@
 
 <body>
 
-    <!-- DROPDOWN MENU (TOP LEFT) -->
-    <div class="menu-container">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown-content">
-            <a href="#">About Us</a>
-            <a href="#">Accessories</a>
-            <a href="#">Gifts</a>
-            <a href="#">Featured Collection</a>
-            <a href="#">Shop All</a>
+    <!-- BACKGROUND SCRIPTURE LAYER -->
+    <div class="scripture-background">
+        <div class="scripture-text" id="scriptureText">
+            <!-- verse text will be inserted here by JavaScript -->
         </div>
     </div>
 
-    <header>Kingdom Market</header>
+    <!-- MAIN SITE CONTENT -->
+    <div class="content-wrapper">
 
-    <!-- LOGO SECTION -->
-    <div class="logo-container">
-        <img src="Storelogo.png" alt="Kingdom Market Logo">
-    </div>
-
-    <div class="container">
-        <h2>Featured Products</h2>
-
-        <div class="product-grid">
-
-            <!-- Product 1 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/220x200?text=Product+1" alt="Product 1" />
-                <h3>Product Name 1</h3>
-                <p>$19.99</p>
-                <button>Add to Cart</button>
+        <!-- DROPDOWN MENU (TOP LEFT) -->
+        <div class="menu-container">
+            <button class="menu-button">☰ Menu</button>
+            <div class="dropdown-content">
+                <a href="#">About Us</a>
+                <a href="#">Accessories</a>
+                <a href="#">Gifts</a>
+                <a href="#">Featured Collection</a>
+                <a href="#">Shop All</a>
             </div>
+        </div>
 
-            <!-- Product 2 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/220x200?text=Product+2" alt="Product 2" />
-                <h3>Product Name 2</h3>
-                <p>$24.99</p>
-                <button>Add to Cart</button>
+        <header>Kingdom Market</header>
+
+        <!-- LOGO SECTION -->
+        <div class="logo-container">
+            <img src="Storelogo.png" alt="Kingdom Market Logo">
+        </div>
+
+        <div class="container">
+            <h2>Featured Products</h2>
+
+            <div class="product-grid">
+
+                <!-- Product 1 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/220x200?text=Product+1" alt="Product 1" />
+                    <h3>Product Name 1</h3>
+                    <p>$19.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/220x200?text=Product+2" alt="Product 2" />
+                    <h3>Product Name 2</h3>
+                    <p>$24.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/220x200?text=Product+3" alt="Product 3" />
+                    <h3>Product Name 3</h3>
+                    <p>$14.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
             </div>
-
-            <!-- Product 3 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/220x200?text=Product+3" alt="Product 3" />
-                <h3>Product Name 3</h3>
-                <p>$14.99</p>
-                <button>Add to Cart</button>
-            </div>
-
         </div>
     </div>
 
     <script>
+        // Dropdown menu toggle
         const menuButton = document.querySelector('.menu-button');
         const menuContainer = document.querySelector('.menu-container');
 
         menuButton.addEventListener('click', () => {
             menuContainer.classList.toggle('show');
         });
+
+        // Rotating Bible scriptures
+        const verses = [
+            "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
+            "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
+            "“For with God nothing shall be impossible.” – Luke 1:37",
+            "“For we walk by faith, not by sight.” – 2 Corinthians 5:7",
+            "“The LORD is my shepherd; I shall not want.” – Psalm 23:1"
+        ];
+
+        const scriptureElement = document.getElementById('scriptureText');
+        let verseIndex = 0;
+
+        function showNextVerse() {
+            scriptureElement.textContent = verses[verseIndex];
+            verseIndex = (verseIndex + 1) % verses.length;
+        }
+
+        // Show first verse immediately, then rotate every 10 seconds
+        showNextVerse();
+        setInterval(showNextVerse, 10000);
     </script>
 
 </body>
