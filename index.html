@@ -24,17 +24,18 @@
             z-index: 0;
         }
 
+        /* IMPROVED CLARITY VERSE TEXT */
         .scripture-text {
-    max-width: 80%;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.33);  /* clearer, stronger */
-    font-size: 30px;                 /* slightly larger */
-    font-weight: 700;                /* bolder */
-    line-height: 1.4;
-    margin-top: 180px;
-    text-shadow: 0 0 12px rgba(0,0,0,0.55); /* glow/contrast */
-}
-
+            max-width: 80%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.33);   /* clearer */
+            font-size: 30px;                   /* slightly larger */
+            font-weight: 700;                  /* bold */
+            line-height: 1.4;
+            margin-top: 180px;
+            text-shadow: 
+                0 0 10px rgba(0, 0, 0, 0.55),
+                0 0 20px rgba(0, 0, 0, 0.35);  /* soft contrast glow */
         }
 
         /* GLOW OVERLAY */
@@ -196,65 +197,4 @@
         </div>
 
         <div class="container">
-            <h2 style="color:white; text-shadow:0 0 10px black;">Featured Products</h2>
-
-            <div class="product-grid">
-
-                <div class="product">
-                    <img src="https://via.placeholder.com/220x200?text=Product+1" alt="Product 1" />
-                    <h3>Product Name 1</h3>
-                    <p>$19.99</p>
-                    <button>Add to Cart</button>
-                </div>
-
-                <div class="product">
-                    <img src="https://via.placeholder.com/220x200?text=Product+2" alt="Product 2" />
-                    <h3>Product Name 2</h3>
-                    <p>$24.99</p>
-                    <button>Add to Cart</button>
-                </div>
-
-                <div class="product">
-                    <img src="https://via.placeholder.com/220x200?text=Product+3" alt="Product 3" />
-                    <h3>Product Name 3</h3>
-                    <p>$14.99</p>
-                    <button>Add to Cart</button>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        // MENU TOGGLE
-        const menuButton = document.querySelector('.menu-button');
-        const menuContainer = document.querySelector('.menu-container');
-
-        menuButton.addEventListener('click', () => {
-            menuContainer.classList.toggle('show');
-        });
-
-        // ROTATING BIBLE VERSES
-        const verses = [
-            "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
-            "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
-            "“For with God nothing shall be impossible.” – Luke 1:37",
-            "“For we walk by faith, not by sight.” – 2 Corinthians 5:7",
-            "“The LORD is my shepherd; I shall not want.” – Psalm 23:1"
-        ];
-
-        const scriptureElement = document.getElementById('scriptureText');
-        let verseIndex = 0;
-
-        function showNextVerse() {
-            scriptureElement.textContent = verses[verseIndex];
-            verseIndex = (verseIndex + 1) % verses.length;
-        }
-
-        showNextVerse();
-        setInterval(showNextVerse, 10000);
-    </script>
-
-</body>
-</html>
+            <h2 style="color:white; text-shadow:0 0 10px black
