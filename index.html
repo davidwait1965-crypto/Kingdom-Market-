@@ -6,73 +6,19 @@
     <title>Kingdom Market</title>
 
     <style>
-        /* Dropdown menu container */
-.menu-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f6f6f6;
+        }
 
-/* Menu button */
-.menu-button {
-    background: #222;
-    color: white;
-    padding: 10px 14px;
-    font-size: 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-/* Dropdown content */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: #fff;
-    min-width: 160px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    padding: 8px 0;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 10px 15px;
-    color: #222;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.dropdown-content a:hover {
-    background: #f0f0f0;
-}
-
-/* Show menu on button click */
-.menu-container.show .dropdown-content {
-    display: block;
-}
-
-        <body>
-
-    <!-- DROPDOWN MENU -->
-    <div class="menu-container">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown-content">
-            <a href="#">About Us</a>
-            <a href="#">Accessories</a>
-            <a href="#">Gifts</a>
-            <a href="#">Featured Collection</a>
-            <a href="#">Shop All</a>
-        
-    </div>
-
-    <header>Kingdom Market</header>
-
-    <div class="logo-container">
-        <img src="Storelogo.png" alt="Kingdom Market Logo">
-    </div>
-
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
         }
 
         .logo-container {
@@ -122,18 +68,70 @@
         .product button:hover {
             background: #444;
         }
+
+        /* Dropdown menu container */
+        .menu-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+
+        /* Menu button */
+        .menu-button {
+            background: #222;
+            color: white;
+            padding: 10px 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 180px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-top: 6px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #222;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .dropdown-content a:hover {
+            background: #f0f0f0;
+        }
+
+        /* Show menu when .show is added */
+        .menu-container.show .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
-<script>
-    const menuButton = document.querySelector('.menu-button');
-    const menuContainer = document.querySelector('.menu-container');
-
-    menuButton.addEventListener('click', () => {
-        menuContainer.classList.toggle('show');
-    });
-</script>
 
 <body>
+
+    <!-- DROPDOWN MENU (TOP LEFT) -->
+    <div class="menu-container">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown-content">
+            <a href="#">About Us</a>
+            <a href="#">Accessories</a>
+            <a href="#">Gifts</a>
+            <a href="#">Featured Collection</a>
+            <a href="#">Shop All</a>
+        </div>
+    </div>
 
     <header>Kingdom Market</header>
 
@@ -173,6 +171,15 @@
 
         </div>
     </div>
+
+    <script>
+        const menuButton = document.querySelector('.menu-button');
+        const menuContainer = document.querySelector('.menu-container');
+
+        menuButton.addEventListener('click', () => {
+            menuContainer.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
