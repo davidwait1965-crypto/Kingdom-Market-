@@ -9,11 +9,11 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #000; /* fallback */
+            background: #000;
             color: #000;
         }
 
-        /* Fullscreen scripture background */
+        /* FULLSCREEN SCRIPTURE BACKGROUND */
         .scripture-background {
             position: fixed;
             inset: 0;
@@ -25,21 +25,34 @@
         }
 
         .scripture-text {
-    max-width: 80%;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.18);
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 1.4;
-    margin-top: 180px; /* moves scripture lower */
-}
-
+            max-width: 80%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.18);
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-top: 180px; /* moves scripture lower so logo doesn’t block it */
         }
 
-        /* Puts all site content above the background */
+        /* GLOW OVERLAY */
+        .glow-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 215, 0, 0.20) 0%, 
+                rgba(0, 0, 0, 0.65) 70%,  
+                rgba(0, 0, 0, 0.90) 100%
+            );
+            backdrop-filter: blur(3px);
+            pointer-events: none;
+        }
+
+        /* ALL SITE CONTENT ABOVE BACKGROUNDS */
         .content-wrapper {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         header {
@@ -58,7 +71,7 @@
         }
 
         .logo-container img {
-            width: 280px; /* adjust the logo size here */
+            width: 280px;
         }
 
         .container {
@@ -99,15 +112,14 @@
             background: #444;
         }
 
-        /* Dropdown menu container */
+        /* MENU (TOP LEFT) */
         .menu-container {
             position: absolute;
             top: 10px;
             left: 10px;
-            z-index: 1000;
+            z-index: 9999;
         }
 
-        /* Menu button */
         .menu-button {
             background: #222;
             color: white;
@@ -118,7 +130,6 @@
             cursor: pointer;
         }
 
-        /* Dropdown content */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -142,26 +153,27 @@
             background: #f0f0f0;
         }
 
-        /* Show menu when .show is added */
         .menu-container.show .dropdown-content {
             display: block;
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- BACKGROUND SCRIPTURE LAYER -->
+    <!-- SCRIPTURE BACKGROUND -->
     <div class="scripture-background">
-        <div class="scripture-text" id="scriptureText">
-            <!-- verse text will be inserted here by JavaScript -->
-        </div>
+        <div class="scripture-text" id="scriptureText"></div>
     </div>
 
-    <!-- MAIN SITE CONTENT -->
+    <!-- GLOW OVERLAY -->
+    <div class="glow-overlay"></div>
+
+    <!-- ALL MAIN CONTENT -->
     <div class="content-wrapper">
 
-        <!-- DROPDOWN MENU (TOP LEFT) -->
+        <!-- DROPDOWN MENU -->
         <div class="menu-container">
             <button class="menu-button">☰ Menu</button>
             <div class="dropdown-content">
@@ -175,17 +187,16 @@
 
         <header>Kingdom Market</header>
 
-        <!-- LOGO SECTION -->
+        <!-- LOGO -->
         <div class="logo-container">
             <img src="Storelogo.png" alt="Kingdom Market Logo">
         </div>
 
         <div class="container">
-            <h2>Featured Products</h2>
+            <h2 style="color:white; text-shadow:0 0 10px black;">Featured Products</h2>
 
             <div class="product-grid">
 
-                <!-- Product 1 -->
                 <div class="product">
                     <img src="https://via.placeholder.com/220x200?text=Product+1" alt="Product 1" />
                     <h3>Product Name 1</h3>
@@ -193,7 +204,6 @@
                     <button>Add to Cart</button>
                 </div>
 
-                <!-- Product 2 -->
                 <div class="product">
                     <img src="https://via.placeholder.com/220x200?text=Product+2" alt="Product 2" />
                     <h3>Product Name 2</h3>
@@ -201,7 +211,6 @@
                     <button>Add to Cart</button>
                 </div>
 
-                <!-- Product 3 -->
                 <div class="product">
                     <img src="https://via.placeholder.com/220x200?text=Product+3" alt="Product 3" />
                     <h3>Product Name 3</h3>
@@ -211,10 +220,11 @@
 
             </div>
         </div>
+
     </div>
 
     <script>
-        // Dropdown menu toggle
+        // MENU TOGGLE
         const menuButton = document.querySelector('.menu-button');
         const menuContainer = document.querySelector('.menu-container');
 
@@ -222,7 +232,7 @@
             menuContainer.classList.toggle('show');
         });
 
-        // Rotating Bible scriptures
+        // ROTATING BIBLE VERSES
         const verses = [
             "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
             "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
@@ -239,7 +249,6 @@
             verseIndex = (verseIndex + 1) % verses.length;
         }
 
-        // Show first verse immediately, then rotate every 10 seconds
         showNextVerse();
         setInterval(showNextVerse, 10000);
     </script>
