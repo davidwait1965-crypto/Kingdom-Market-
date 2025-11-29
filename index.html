@@ -6,6 +6,53 @@
     <title>Kingdom Market</title>
 
     <style>
+        /* Dropdown menu container */
+.menu-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+/* Menu button */
+.menu-button {
+    background: #222;
+    color: white;
+    padding: 10px 14px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    min-width: 160px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 8px 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #222;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+/* Show menu on button click */
+.menu-container.show .dropdown-content {
+    display: block;
+}
+
         <body>
 
     <!-- DROPDOWN MENU -->
