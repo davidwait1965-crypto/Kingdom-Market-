@@ -33,7 +33,7 @@
             font-weight: 700;
             line-height: 1.4;
             margin-top: 180px;
-            text-shadow: 
+            text-shadow:
                 0 0 12px rgba(255, 215, 0, 0.45),
                 0 0 22px rgba(255, 215, 0, 0.35),
                 0 0 38px rgba(255, 215, 0, 0.20);
@@ -46,8 +46,8 @@
             z-index: 1;
             background: radial-gradient(
                 circle at center,
-                rgba(255, 215, 0, 0.20) 0%, 
-                rgba(0, 0, 0, 0.65) 70%,  
+                rgba(255, 215, 0, 0.20) 0%,
+                rgba(0, 0, 0, 0.65) 70%,
                 rgba(0, 0, 0, 0.90) 100%
             );
             backdrop-filter: blur(2px);
@@ -162,6 +162,64 @@
             display: block;
         }
 
+        /* CONNECT WITH OUR TEAM SECTION */
+        .connect-section {
+            margin-top: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+            backdrop-filter: blur(3px);
+        }
+
+        .connect-section h2 {
+            font-size: 26px;
+            color: #ffd700;
+            text-shadow: 0 0 12px black;
+            margin-bottom: 10px;
+        }
+
+        .connect-section p {
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+            color: #f2f2f2;
+            text-shadow: 0 0 8px black;
+        }
+
+        .connect-button {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #ffd700;
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+            transition: 0.3s ease;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        .connect-button:hover {
+            background: #fff0a8;
+            transform: scale(1.06);
+        }
+
+        @keyframes glowPulse {
+            from {
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            }
+            to {
+                box-shadow: 0 0 22px rgba(255, 215, 0, 1);
+            }
+        }
+
         /* FOOTER SECTION */
         .footer-section {
             background: rgba(0, 0, 0, 0.65);
@@ -224,7 +282,7 @@
 
         <!-- LOGO -->
         <div class="logo-container">
-            <img src="angel.png" alt="Kingdom Market Logo">
+            <img src="Storelogo.png" alt="Kingdom Market Logo">
         </div>
 
         <div class="container">
@@ -253,6 +311,19 @@
                     <button>Add to Cart</button>
                 </div>
 
+            </div>
+
+            <!-- CONNECT WITH OUR TEAM -->
+            <div class="connect-section">
+                <h2>Partner With Kingdom Market</h2>
+                <p>
+                    Are you a creator, artist, or business with faith-inspired products?  
+                    We’d love to collaborate and feature your items on Kingdom Market.
+                </p>
+
+                <a href="partner.html" class="connect-button">
+                    Apply to Sell With Us
+                </a>
             </div>
 
             <!-- AFFILIATE + MISSION STATEMENT SECTION -->
