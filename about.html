@@ -9,111 +9,6 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #000;
-            color: white;
-        }
-
-        /* PAGE BACKGROUND */
-        .background {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top, #333 0%, #000 70%);
-            z-index: 0;
-        }
-
-        /* OVERLAY GLOW */
-        .glow-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background: radial-gradient(
-                circle at center,
-                rgba(255, 215, 0, 0.15) 0%,
-                rgba(0, 0, 0, 0.65) 70%,
-                rgba(0, 0, 0, 0.95) 100%
-            );
-            backdrop-filter: blur(3px);
-        }
-
-        /* CONTENT */
-        .content {
-            position: relative;
-            z-index: 2;
-            padding: 40px;
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 40px;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px black, 0 0 20px #ffd700;
-        }
-
-        /* TEXT BOX */
-        .textbox {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
-            font-size: 18px;
-            line-height: 1.6;
-            backdrop-filter: blur(4px);
-        }
-
-        a {
-            color: #ffd700;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="background"></div>
-    <div class="glow-overlay"></div>
-
-    <div class="content">
-        <h1>About Kingdom Market</h1>
-
-        <div class="textbox">
-            <p>
-                Welcome to <strong>Kingdom Market</strong> — a faith-driven brand created to inspire, uplift, 
-                and equip believers with bold kingdom-centered apparel and accessories.  
-            </p>
-
-            <p>
-                Our mission is to merge modern street fashion with powerful biblical truth, 
-                reminding the world that faith is strength, purpose, and identity.
-            </p>
-
-            <p>
-                Everything we do is rooted in excellence, integrity, and creativity — all for the glory of God.
-            </p>
-
-            <p>
-                Thank you for supporting this movement.  
-                <br><br>
-                <strong>Stay blessed. Stay bold. Stay kingdom.</strong>
-            </p>
-
-            <p style="margin-top:20px;">
-                <a href="index.html">← Back to Home</a>
-            </p>
-        </div>
-    </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Kingdom Market</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
             color: white;
             height: 100vh;
             overflow-y: auto;
@@ -128,19 +23,68 @@
             z-index: 0;
         }
 
-        /* SOFT OVERLAY TO MAKE TEXT POP */
+        /* DARK OVERLAY TO MAKE TEXT POP */
         .overlay {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(2px);
             z-index: 1;
         }
 
-        /* MAIN CONTENT LAYER */
+        /* FLOATING PETALS LAYER (AROUND OUTSKIRTS) */
+        .petals {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            width: 18px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, #ffe6f2 0%, #ffb6d9 40%, #ff6fa8 100%);
+            border-radius: 60% 40% 60% 40%;
+            opacity: 0.8;
+            filter: blur(0.3px);
+            animation: floatPetal 16s linear infinite;
+        }
+
+        /* Different sizes / speeds / positions for variety */
+        .petal.p1 { top: -10%; left: 5%;  width: 20px; height: 32px; animation-duration: 18s; }
+        .petal.p2 { top: -15%; left: 90%; width: 16px; height: 26px; animation-duration: 19s; }
+        .petal.p3 { top: -20%; left: 15%; width: 14px; height: 24px; animation-duration: 17s; }
+        .petal.p4 { top: -18%; left: 75%; width: 22px; height: 34px; animation-duration: 21s; }
+        .petal.p5 { top: -12%; left: 40%; width: 18px; height: 28px; animation-duration: 20s; }
+        .petal.p6 { top: -25%; left: 0%;  width: 16px; height: 26px; animation-duration: 22s; }
+        .petal.p7 { top: -22%; left: 60%; width: 20px; height: 30px; animation-duration: 19s; }
+        .petal.p8 { top: -18%; left: 30%; width: 14px; height: 22px; animation-duration: 23s; }
+        .petal.p9 { top: -16%; left: 82%; width: 18px; height: 28px; animation-duration: 24s; }
+        .petal.p10{ top: -24%; left: 50%; width: 20px; height: 32px; animation-duration: 26s; }
+
+        @keyframes floatPetal {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            50% {
+                transform: translate3d(-20px, 55vh, 0) rotate(140deg);
+            }
+            100% {
+                transform: translate3d(20px, 110vh, 0) rotate(260deg);
+                opacity: 0;
+            }
+        }
+
+        /* MAIN CONTENT LAYER (ON TOP) */
         .content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             padding: 50px 20px;
             max-width: 900px;
             margin: auto;
@@ -157,11 +101,4 @@
         .textbox {
             background: rgba(0, 0, 0, 0.55);
             border: 1px solid rgba(255, 215, 0, 0.5);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
-            font-size: 20px;
-            line-heig
-
-</body>
-</html>
+            padding: 30p
