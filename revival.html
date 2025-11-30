@@ -60,7 +60,7 @@
             text-shadow: 0 0 6px black;
         }
 
-        /* VIDEO WRAPPER (RESPONSIVE, GOLD FRAME) */
+        /* VIDEO WRAPPER */
         .video-section {
             text-align: center;
             margin-top: 25px;
@@ -89,7 +89,7 @@
         .video-wrapper::before {
             content: "";
             display: block;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
         }
 
         .video-wrapper iframe {
@@ -102,19 +102,11 @@
         }
 
         @keyframes goldGlow {
-            from {
-                box-shadow:
-                    0 0 18px rgba(255, 215, 0, 0.35),
-                    0 0 30px rgba(255, 215, 0, 0.2);
-            }
-            to {
-                box-shadow:
-                    0 0 35px rgba(255, 215, 0, 0.7),
-                    0 0 60px rgba(255, 215, 0, 1);
-            }
+            from { box-shadow: 0 0 18px rgba(255, 215, 0, 0.35); }
+            to   { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
         }
 
-        /* STORY / CAPTION BLOCK */
+        /* STORY BLOCK */
         .story-box {
             margin-top: 25px;
             background: rgba(0, 0, 0, 0.65);
@@ -135,45 +127,30 @@
         .story-box p {
             font-size: 16px;
             line-height: 1.7;
-            margin: 0;
         }
 
-        /* CAROUSEL SECTION */
+        /* CAROUSEL */
         .carousel-section {
             margin-top: 30px;
         }
 
         .carousel-section h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
             text-align: center;
-            text-shadow: 0 0 10px black;
+            font-size: 22px;
         }
 
         .carousel-section p {
-            font-size: 15px;
             text-align: center;
+            color: #f0e6c8;
             max-width: 700px;
             margin: 0 auto 16px auto;
-            line-height: 1.6;
-            color: #f0e6c8;
         }
 
         .revival-carousel {
             display: flex;
             gap: 16px;
             overflow-x: auto;
-            padding: 10px 4px 4px;
             scroll-snap-type: x mandatory;
-        }
-
-        .revival-carousel::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .revival-carousel::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 0, 0.6);
-            border-radius: 4px;
         }
 
         .revival-card {
@@ -182,37 +159,23 @@
             background: radial-gradient(circle at top, #333 0%, #000 65%);
             border-radius: 14px;
             border: 1px solid rgba(255, 215, 0, 0.6);
-            padding: 14px 12px 16px;
-            box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+            padding: 14px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.9);
             scroll-snap-align: start;
-            flex-shrink: 0;
         }
 
         .revival-card h4 {
-            margin: 0 0 8px 0;
             font-size: 16px;
             color: #ffd700;
-        }
-
-        .revival-card p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0 0 10px 0;
-            color: #f5f5f5;
+            margin: 0 0 8px 0;
         }
 
         .revival-card a {
-            font-size: 14px;
             color: #ffe27a;
             text-decoration: none;
             font-weight: bold;
         }
 
-        .revival-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* CALL TO ACTION */
         .cta-section {
             margin-top: 30px;
             text-align: center;
@@ -220,46 +183,73 @@
 
         .cta-section h3 {
             font-size: 22px;
-            margin-bottom: 12px;
-            text-shadow: 0 0 10px black;
-        }
-
-        .cta-section p {
-            font-size: 16px;
-            max-width: 650px;
-            margin: 0 auto 18px auto;
-            line-height: 1.6;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 11px 22px;
+            padding: 12px 20px;
             background: #ffd700;
             color: #000;
-            font-weight: bold;
-            font-size: 17px;
             border-radius: 8px;
+            font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 0 14px rgba(255, 215, 0, 0.9);
-            transition: 0.25s ease;
+            box-shadow: 0 0 16px rgba(255,215,0,0.9);
         }
 
-        .cta-button:hover {
-            background: #fff0a8;
-            transform: scale(1.05);
+        /* DROP DOWN MENU */
+        .menu-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+        }
+
+        .menu-button {
+            background: #222;
+            color: white;
+            padding: 10px 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            background: white;
+            position: absolute;
+            min-width: 180px;
+            margin-top: 6px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px black;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #222;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background: #eee;
+        }
+
+        .menu-container.show .dropdown-content {
+            display: block;
         }
 
         /* BACK LINKS */
         .back-links {
-            margin-top: 35px;
             text-align: center;
-            font-size: 15px;
+            margin-top: 35px;
         }
 
         .back-links a {
             color: #ffd700;
             text-decoration: none;
-            margin: 0 10px;
         }
 
         .back-links a:hover {
@@ -269,15 +259,31 @@
 </head>
 
 <body>
+    <!-- BACKGROUND -->
     <div class="background"></div>
     <div class="overlay"></div>
 
+    <!-- DROP DOWN MENU -->
+    <div class="menu-container">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="revival.html">Revival</a>
+            <a href="prophetic.html">Prophetic Words & Teachings</a>
+            <a href="podcast.html">Podcast</a>
+            <a href="#">Accessories</a>
+            <a href="#">Gifts</a>
+            <a href="#">Featured Collection</a>
+            <a href="#">Shop All</a>
+        </div>
+    </div>
+
     <div class="content">
+
         <header>
             <h1>Revival & Awakening</h1>
-            <p>
-                Stories of God moving powerfully in this generation.
-            </p>
+            <p>Stories of God moving powerfully in this generation.</p>
         </header>
 
         <!-- MAIN FEATURED VIDEO -->
@@ -286,108 +292,68 @@
             <div class="video-wrapper">
                 <iframe
                     src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
-                    title="YouTube video player"
                     allow="autoplay; encrypted-media; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             </div>
         </section>
 
-        <!-- STORY / CAPTION -->
+        <!-- STORY -->
         <section class="story-box">
             <h3>Hearts Turning Back to the Father</h3>
             <p>
-                The University of Tennessee recently witnessed a remarkable spiritual breakthrough, resulting in the
-                baptism of more than 300 young people. In a world increasingly consumed by constant clicking and
-                scrolling, this moment stands as a powerful reminder that the love and grace of the Father still break
-                through and transform lives.
+                The University of Tennessee witnessed a remarkable spiritual breakthrough...
             </p>
             <p style="margin-top:12px;">
-                Our mission at Kingdom Market is to continue sharing God’s message, spreading the gospel, and creating
-                opportunities for His truth to reach hearts everywhere — through story, testimony, and faith-inspired
-                creativity.
+                Our mission at Kingdom Market is to continue sharing God’s message...
             </p>
         </section>
 
-        <!-- MORE REVIVAL MOMENTS CAROUSEL -->
+        <!-- MORE REVIVAL CAROUSEL -->
         <section class="carousel-section">
             <h3>More Revival Moments</h3>
-            <p>Explore more powerful moves of God happening across campuses and communities.</p>
+            <p>Explore powerful moves of God.</p>
 
             <div class="revival-carousel">
-                <!-- Card 1 -->
+
                 <div class="revival-card">
-                    <h4>8000 Students Unite – University of Tennessee</h4>
-                    <p>
-                        A huge UniteUS gathering where thousands of students came together
-                        in worship, repentance, and bold faith in Jesus.
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=DpWrYu34WeA" target="_blank" rel="noopener noreferrer">
-                        Watch Full Video ↗
-                    </a>
+                    <h4>8000 Students Unite – Tennessee</h4>
+                    <p>Thousands gathered in worship, repentance...</p>
+                    <a href="https://www.youtube.com/watch?v=DpWrYu34WeA" target="_blank">Watch ↗</a>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="revival-card">
-                    <h4>Gen Z Revival at Auburn University</h4>
-                    <p>
-                        A night where thousands gathered and hundreds were baptized as students
-                        publicly declared their faith in Christ.
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=7guhCbmC_LM" target="_blank" rel="noopener noreferrer">
-                        Watch Full Video ↗
-                    </a>
+                    <h4>Auburn University Revival</h4>
+                    <p>Hundreds baptized publicly...</p>
+                    <a href="https://www.youtube.com/watch?v=7guhCbmC_LM" target="_blank">Watch ↗</a>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="revival-card">
-                    <h4>Asbury University Revival 2023</h4>
-                    <p>
-                        Days of non-stop worship, repentance, and encounter with God's presence
-                        that drew people from around the world.
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=24Y6SUftwRo" target="_blank" rel="noopener noreferrer">
-                        Watch Full Video ↗
-                    </a>
+                    <h4>Asbury University Revival</h4>
+                    <p>Days of non-stop worship...</p>
+                    <a href="https://www.youtube.com/watch?v=24Y6SUftwRo" target="_blank">Watch ↗</a>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="revival-card">
-                    <h4>Texas A&amp;M – Night of Worship &amp; Awakening</h4>
-                    <p>
-                        Thousands of Aggies gathering to lift up the name of Jesus, with many
-                        surrendering their lives to Him.
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=M8MjCNBflGQ" target="_blank" rel="noopener noreferrer">
-                        Watch Full Video ↗
-                    </a>
+                    <h4>Texas A&M Awakening</h4>
+                    <p>Thousands gathered to lift Jesus...</p>
+                    <a href="https://www.youtube.com/watch?v=M8MjCNBflGQ" target="_blank">Watch ↗</a>
                 </div>
 
-                <!-- Card 5 -->
                 <div class="revival-card">
-                    <h4>Pirate’s Cove Mass Baptism</h4>
-                    <p>
-                        Over 4,000 people baptized in a single day at the historic waters of
-                        Pirate’s Cove in California.
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=GkPJpFTMt08" target="_blank" rel="noopener noreferrer">
-                        Watch Full Video ↗
-                    </a>
+                    <h4>Pirate’s Cove Baptisms</h4>
+                    <p>Over 4,000 people baptized...</p>
+                    <a href="https://www.youtube.com/watch?v=GkPJpFTMt08" target="_blank">Watch ↗</a>
                 </div>
+
             </div>
         </section>
 
         <!-- CALL TO ACTION -->
         <section class="cta-section">
             <h3>Share Your Revival Story</h3>
-            <p>
-                Have you seen God move in your city, campus, church, or community? We’d love to hear what He’s doing
-                and explore how we can highlight your story or partner with your ministry.
-            </p>
-            <a
-                href="mailto:kingdommarket@gmail.com?subject=Revival%20Story%20-%20Kingdom%20Market"
-                class="cta-button"
-            >
+            <p>Have you witnessed a move of God? We'd love to hear it.</p>
+            <a href="mailto:kingdommarket@gmail.com?subject=Revival%20Story" class="cta-button">
                 Tell Us Your Story
             </a>
         </section>
@@ -398,7 +364,18 @@
             <span>|</span>
             <a href="about.html">About Kingdom Market</a>
         </div>
+
     </div>
+
+    <script>
+        // MENU TOGGLE
+        const menuButton = document.querySelector('.menu-button');
+        const menuContainer = document.querySelector('.menu-container');
+
+        menuButton.addEventListener('click', () => {
+            menuContainer.classList.toggle('show');
+        });
+    </script>
+
 </body>
 </html>
-
