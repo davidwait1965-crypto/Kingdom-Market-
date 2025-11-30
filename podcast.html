@@ -1,69 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-/* PODCAST PAGE HEAVENLY BACKGROUND */
-.podcast-background {
-    position: fixed;
-    inset: 0;
-    background: url("podback.png") 
-                no-repeat center center/cover;
-    z-index: -1;
-    filter: brightness(0.88);
-}
-
-/* Optional heavenly glow overlay */
-.podcast-glow {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background: radial-gradient(
-        circle at top,
-        rgba(255, 215, 0, 0.25) 0%,
-        rgba(0, 0, 0, 0.75) 70%
-    );
-    pointer-events: none;
-}
-</style>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Podcast - Kingdom Market</title>
 
     <style>
         body {
-            <div class="podcast-background"></div>
-<div class="podcast-glow"></div>
-
             margin: 0;
             font-family: Arial, sans-serif;
             background: #000;
             color: #fff;
         }
 
-        /* BACKGROUND + GLOW */
-        .scripture-background {
+        /* PODCAST PAGE HEAVENLY BACKGROUND */
+        .podcast-background {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
-            z-index: 0;
+            background: url("podback.png")
+                        no-repeat center center/cover;
+            z-index: -2;
+            filter: brightness(0.88);
         }
 
-        .glow-overlay {
+        /* Optional heavenly glow overlay */
+        .podcast-glow {
             position: fixed;
             inset: 0;
+            z-index: -1;
             background: radial-gradient(
-                circle at center,
-                rgba(255, 215, 0, 0.20) 0%,
-                rgba(0, 0, 0, 0.85) 70%
+                circle at top,
+                rgba(255, 215, 0, 0.25) 0%,
+                rgba(0, 0, 0, 0.75) 70%
             );
-            z-index: 1;
             pointer-events: none;
         }
 
         .content-wrapper {
             position: relative;
-            z-index: 2;
+            z-index: 1; /* sits above background + glow */
             max-width: 1100px;
             margin: 40px auto 60px auto;
             padding: 0 20px;
@@ -136,10 +111,10 @@
             max-width: 700px;
             margin: 30px auto;
             padding: 18px;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.65);
             border-radius: 14px;
             border: 1px solid rgba(255, 215, 0, 0.4);
-            box-shadow: 0 0 28px rgba(255,215,0,0.25);
+            box-shadow: 0 0 28px rgba(255,215,0,0.35);
         }
 
         /* BACK LINKS */
@@ -162,9 +137,9 @@
 
 <body>
 
-    <!-- BACKGROUND -->
-    <div class="scripture-background"></div>
-    <div class="glow-overlay"></div>
+    <!-- BACKGROUND IMAGE + GLOW -->
+    <div class="podcast-background"></div>
+    <div class="podcast-glow"></div>
 
     <!-- MENU -->
     <div class="menu-container">
