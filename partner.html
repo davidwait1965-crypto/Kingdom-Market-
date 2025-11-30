@@ -31,68 +31,49 @@
             max-width: 900px;
             margin: 40px auto 60px auto;
             padding: 20px;
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             font-size: 38px;
             margin-bottom: 10px;
             text-shadow: 0 0 12px black, 0 0 20px rgba(255,215,0,0.4);
         }
 
         p.lead {
-            text-align: center;
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
         }
 
-        .form-card {
+        .info-box {
             background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             border: 1px solid rgba(255, 215, 0, 0.5);
             box-shadow: 0 0 28px rgba(255, 215, 0, 0.25);
             padding: 25px 20px 30px;
             backdrop-filter: blur(4px);
-        }
-
-        .form-row {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
+            margin-bottom: 25px;
             text-align: left;
-            font-size: 15px;
-            margin-bottom: 6px;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 215, 0, 0.45);
-            font-size: 15px;
-            box-sizing: border-box;
-            background: rgba(0,0,0,0.8);
-            color: white;
+        .info-box h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px black;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: rgba(255, 215, 0, 0.9);
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
+        .info-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 10px;
         }
 
         .submit-btn {
+            display: inline-block;
             margin-top: 10px;
             padding: 12px 22px;
             background: #ffd700;
@@ -102,6 +83,7 @@
             border-radius: 8px;
             border: none;
             cursor: pointer;
+            text-decoration: none;
             box-shadow: 0 0 14px rgba(255, 215, 0, 0.8);
             transition: 0.3s ease;
             animation: glowPulse 2s infinite alternate;
@@ -122,8 +104,7 @@
         }
 
         .back-link {
-            margin-top: 20px;
-            text-align: center;
+            margin-top: 25px;
         }
 
         .back-link a {
@@ -144,48 +125,32 @@
     <div class="content">
         <h1>Partner With Kingdom Market</h1>
         <p class="lead">
-            We’re always looking to partner with creators, brands, and businesses who produce
-            <strong>faith-inspired, high-quality products</strong>. Fill out the form below and our team will
-            review your submission and reach out with next steps.
+            Have a faith-inspired brand, product line, or creative idea? We’d love to hear from you
+            and explore how we can feature your products on <strong>Kingdom Market</strong>.
         </p>
 
-        <div class="form-card">
-            <!-- This uses a simple mailto form. You can change the email address below. -->
-            <form action="mailto:kingdommarketaffiliation@gmail.com" method="post" enctype="text/plain">
-                <div class="form-row">
-                    <label for="name">Your Name *</label>
-                    <input type="text" id="name" name="Name" required>
-                </div>
+        <div class="info-box">
+            <h2>How to Connect</h2>
+            <p>
+                Click the button below to email our team directly. In your message, please include:
+            </p>
+            <ul style="text-align:left; margin-left:20px; line-height:1.7;">
+                <li>Your name and brand / company (if you have one)</li>
+                <li>What type of products you offer (ex: apparel, jewelry, artwork, accessories)</li>
+                <li>Links to your website or social media</li>
+                <li>How your products are faith-inspired or Kingdom-focused</li>
+            </ul>
+            <p>
+                Our team will review your message and get back to you with the next steps if it’s a good fit.
+            </p>
 
-                <div class="form-row">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="Email" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="brand">Brand / Company Name</label>
-                    <input type="text" id="brand" name="Brand">
-                </div>
-
-                <div class="form-row">
-                    <label for="products">What type of products do you offer? *</label>
-                    <input type="text" id="products" name="Products" placeholder="e.g., hoodies, jewelry, art prints" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="links">Website / Social Media Links</label>
-                    <input type="text" id="links" name="Links" placeholder="Website, Instagram, Etsy, etc.">
-                </div>
-
-                <div class="form-row">
-                    <label for="message">Tell us about your vision and how it aligns with Kingdom Market *</label>
-                    <textarea id="message" name="Message" required></textarea>
-                </div>
-
-                <div style="text-align:center;">
-                    <button type="submit" class="submit-btn">Submit Application</button>
-                </div>
-            </form>
+            <!-- CONTACT US NOW BUTTON -->
+            <a
+                href="mailto:kingdommarket@gmail.com?subject=Kingdom%20Market%20Partnership%20Inquiry"
+                class="submit-btn"
+            >
+                Contact Our Team Now
+            </a>
         </div>
 
         <div class="back-link">
