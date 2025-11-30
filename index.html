@@ -28,7 +28,7 @@
         .scripture-text {
             max-width: 80%;
             text-align: center;
-            color: rgba(255, 215, 0, 0.35);  /* soft gold */
+            color: rgba(255, 215, 0, 0.35);
             font-size: 30px;
             font-weight: 700;
             line-height: 1.4;
@@ -54,7 +54,6 @@
             pointer-events: none;
         }
 
-        /* ALL SITE CONTENT ABOVE BACKGROUNDS */
         .content-wrapper {
             position: relative;
             z-index: 2;
@@ -83,41 +82,7 @@
             padding: 20px;
         }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .product {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .product button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            font-size: 16px;
-            background: #222;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .product button:hover {
-            background: #444;
-        }
-
-        /* MENU (TOP LEFT) */
+        /* MENU */
         .menu-container {
             position: absolute;
             top: 10px;
@@ -162,7 +127,49 @@
             display: block;
         }
 
-        /* CONNECT WITH OUR TEAM SECTION */
+        /* VIDEO SECTION STYLING */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 16px;
+            animation: goldGlow 3s infinite alternate;
+            box-shadow:
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.25);
+        }
+
+        .video-wrapper::before {
+            content: "";
+            display: block;
+            padding-top: 56.25%; /* 16:9 ratio */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+        }
+
+        @keyframes goldGlow {
+            from {
+                box-shadow:
+                    0 0 18px rgba(255, 215, 0, 0.35),
+                    0 0 30px rgba(255, 215, 0, 0.2);
+            }
+            to {
+                box-shadow:
+                    0 0 35px rgba(255, 215, 0, 0.7),
+                    0 0 60px rgba(255, 215, 0, 1);
+            }
+        }
+
+        /* CONNECT SECTION */
         .connect-section {
             margin-top: 40px;
             margin-bottom: 60px;
@@ -212,15 +219,11 @@
         }
 
         @keyframes glowPulse {
-            from {
-                box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-            }
-            to {
-                box-shadow: 0 0 22px rgba(255, 215, 0, 1);
-            }
+            from { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            to   { box-shadow: 0 0 22px rgba(255, 215, 0, 1); }
         }
 
-        /* FOOTER SECTION */
+        /* FOOTER */
         .footer-section {
             background: rgba(0, 0, 0, 0.65);
             border-top: 1px solid rgba(255, 215, 0, 0.35);
@@ -260,13 +263,11 @@
         <div class="scripture-text" id="scriptureText"></div>
     </div>
 
-    <!-- GLOW OVERLAY -->
     <div class="glow-overlay"></div>
 
-    <!-- ALL MAIN CONTENT -->
     <div class="content-wrapper">
 
-        <!-- DROPDOWN MENU -->
+        <!-- MENU -->
         <div class="menu-container">
             <button class="menu-button">☰ Menu</button>
             <div class="dropdown-content">
@@ -286,38 +287,28 @@
         </div>
 
         <div class="container">
-            <h2 style="color:white; text-shadow:0 0 10px black;">Featured Products</h2>
 
-            <div class="product-grid">
+            <!-- FEATURED VIDEO SECTION -->
+            <div style="text-align:center; margin-bottom:40px;">
+                <h2 style="color:white; text-shadow:0 0 12px black; margin-bottom:15px;">
+                    Featured Kingdom Message
+                </h2>
 
-                <div class="product">
-                    <img src="https://via.placeholder.com/220x200?text=Product+1" alt="Product 1" />
-                    <h3>Product Name 1</h3>
-                    <p>$19.99</p>
-                    <button>Add to Cart</button>
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
+                        title="YouTube video player"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
                 </div>
-
-                <div class="product">
-                    <img src="https://via.placeholder.com/220x200?text=Product+2" alt="Product 2" />
-                    <h3>Product Name 2</h3>
-                    <p>$24.99</p>
-                    <button>Add to Cart</button>
-                </div>
-
-                <div class="product">
-                    <img src="https://via.placeholder.com/220x200?text=Product+3" alt="Product 3" />
-                    <h3>Product Name 3</h3>
-                    <p>$14.99</p>
-                    <button>Add to Cart</button>
-                </div>
-
             </div>
 
             <!-- CONNECT WITH OUR TEAM -->
             <div class="connect-section">
                 <h2>Partner With Kingdom Market</h2>
                 <p>
-                    Are you a creator, artist, or business with faith-inspired products?  
+                    Are you a creator, artist, or business with faith-inspired products?
                     We’d love to collaborate and feature your items on Kingdom Market.
                 </p>
 
@@ -326,23 +317,22 @@
                 </a>
             </div>
 
-            <!-- AFFILIATE + MISSION STATEMENT SECTION -->
+            <!-- FOOTER -->
             <div class="footer-section">
                 <h2>Our Mission</h2>
                 <p>
-                    Kingdom Market is a faith-inspired platform created to uplift and empower believers 
+                    Kingdom Market is a faith-inspired platform created to uplift and empower believers
                     through apparel, accessories, and meaningful products that reflect God's Word.
                 </p>
 
                 <h3>Affiliate Partnership Disclosure</h3>
                 <p>
-                    Some products featured on this website are offered through trusted affiliate partners. 
-                    This means Kingdom Market may earn a commission when purchases are made through our links — 
+                    Some products featured on this website are offered through trusted affiliate partners.
+                    This means Kingdom Market may earn a commission when purchases are made through our links —
                     at no additional cost to you.
                 </p>
                 <p>
-                    We are committed to featuring only faith-based, uplifting, and authentic items from 
-                    original, reputable sources. Every product recommended aligns with our values and mission: 
+                    Every product recommended aligns with our mission:
                     <strong>to bring light, inspiration, and Kingdom purpose into everyday life.</strong>
                 </p>
 
@@ -351,9 +341,9 @@
                 </p>
             </div>
 
-        </div> <!-- end .container -->
+        </div>
 
-    </div> <!-- end .content-wrapper -->
+    </div>
 
     <script>
         // MENU TOGGLE
