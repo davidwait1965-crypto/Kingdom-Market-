@@ -1,1 +1,463 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prophetic Words & Teachings - Kingdom Market</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+
+        /* BACKGROUND + GLOW */
+        .scripture-background {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+        }
+
+        .glow-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 215, 0, 0.22) 0%,
+                rgba(0, 0, 0, 0.85) 70%
+            );
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 30px auto 60px auto;
+            padding: 0 20px 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 34px;
+            margin: 0;
+            text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #f7f0cc;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 6px black;
+        }
+
+        /* TOP SCRIPTURE / PROPHETIC BANNER */
+        .top-word-banner {
+            max-width: 900px;
+            margin: 20px auto 30px auto;
+            padding: 18px 18px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 24px rgba(0,0,0,0.8);
+        }
+
+        .top-word-banner h2 {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+            color: #ffd700;
+            text-shadow: 0 0 10px black;
+        }
+
+        .top-word-banner p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* MENU (same style as index) */
+        .menu-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+        }
+
+        .menu-button {
+            background: #222;
+            color: white;
+            padding: 10px 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 190px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-top: 6px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #222;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .dropdown-content a:hover {
+            background: #f0f0f0;
+        }
+
+        .menu-container.show .dropdown-content {
+            display: block;
+        }
+
+        /* FEATURED TEACHING VIDEO */
+        .video-section {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px black;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            animation: goldGlow 3s infinite alternate;
+            box-shadow:
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.25);
+        }
+
+        .video-wrapper::before {
+            content: "";
+            display: block;
+            padding-top: 56.25%;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+        }
+
+        @keyframes goldGlow {
+            from {
+                box-shadow:
+                    0 0 18px rgba(255, 215, 0, 0.35),
+                    0 0 30px rgba(255, 215, 0, 0.2);
+            }
+            to {
+                box-shadow:
+                    0 0 35px rgba(255, 215, 0, 0.7),
+                    0 0 60px rgba(255, 215, 0, 1);
+            }
+        }
+
+        /* PROPHETIC CARD GRID */
+        .words-section {
+            margin-top: 10px;
+        }
+
+        .words-section h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 0 0 10px black;
+        }
+
+        .words-section p.section-intro {
+            font-size: 15px;
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 18px auto;
+            line-height: 1.6;
+            color: #f7f0cc;
+        }
+
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .word-card {
+            background: radial-gradient(circle at top, #222 0%, #000 70%);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 0, 0.6);
+            padding: 14px 14px 16px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.85);
+            text-shadow: 0 0 8px rgba(0,0,0,0.9);
+        }
+
+        .word-card h4 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: #ffd700;
+        }
+
+        .word-card span.date-tag {
+            display: inline-block;
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 6px;
+        }
+
+        .word-card p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* PRAYER / CONTACT SECTION */
+        .prayer-section {
+            margin-top: 35px;
+            padding: 20px 18px;
+            background: rgba(0, 0, 0, 0.65);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 22px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+
+        .prayer-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+            color: #ffd700;
+        }
+
+        .prayer-section p {
+            margin: 0 0 14px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .prayer-section a.prayer-button {
+            display: inline-block;
+            padding: 11px 22px;
+            background: #ffd700;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 0 14px rgba(255, 215, 0, 0.9);
+            transition: 0.25s ease;
+        }
+
+        .prayer-section a.prayer-button:hover {
+            background: #fff0a8;
+            transform: scale(1.05);
+        }
+
+        /* BACK LINKS */
+        .back-links {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .back-links a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .back-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND LAYERS -->
+    <div class="scripture-background"></div>
+    <div class="glow-overlay"></div>
+
+    <!-- MENU (same as other pages) -->
+    <div class="menu-container">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="revival.html">Revival</a>
+            <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+            <a href="#">Accessories</a>
+            <a href="#">Gifts</a>
+            <a href="#">Featured Collection</a>
+            <a href="#">Shop All</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+
+        <header>
+            <h1>Prophetic Words &amp; Teachings</h1>
+            <p>
+                A space dedicated to encouragement, correction, and alignment with the heart of God —
+                pointing everything back to Jesus and His Word.
+            </p>
+        </header>
+
+        <!-- TOP FOCUS WORD / SCRIPTURE -->
+        <section class="top-word-banner">
+            <h2>Focus for This Season</h2>
+            <p id="focusWord">
+                “Behold, I am doing a new thing; now it springs forth, do you not perceive it?
+                I will make a way in the wilderness and rivers in the desert.” – Isaiah 43:19
+            </p>
+        </section>
+
+        <!-- FEATURED TEACHING VIDEO -->
+        <section class="video-section">
+            <h2>Featured Teaching</h2>
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=0&mute=0"
+                    title="Prophetic Teaching"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- PROPHETIC WORDS GRID -->
+        <section class="words-section">
+            <h3>Recent Prophetic Impressions</h3>
+            <p class="section-intro">
+                These short written words are meant to encourage, edify, and point people back to Scripture.
+                Always weigh every word with the Bible and the leading of the Holy Spirit.
+            </p>
+
+            <div class="words-grid">
+                <div class="word-card">
+                    <h4>Fresh Fire on the Youth</h4>
+                    <span class="date-tag">April 2025</span>
+                    <p>
+                        The Lord is igniting hunger in a generation that has been written off as distracted and
+                        unreachable. Watch for unexpected boldness on campuses, in online spaces, and even in
+                        secular environments as young people begin to lift up the Name of Jesus without shame.
+                    </p>
+                </div>
+
+                <div class="word-card">
+                    <h4>Homes as Altars</h4>
+                    <span class="date-tag">April 2025</span>
+                    <p>
+                        God is calling families to turn their living rooms into places of encounter again.
+                        Worship, prayer, and reading the Word together will break cycles of anxiety and
+                        confusion, and restore clarity and peace in the home.
+                    </p>
+                </div>
+
+                <div class="word-card">
+                    <h4>Business with Kingdom Integrity</h4>
+                    <span class="date-tag">April 2025</span>
+                    <p>
+                        The Lord is raising up business owners who refuse compromise and choose righteousness
+                        over quick gain. Expect favor, strategy, and unusual open doors for those who steward
+                        their work as worship.
+                    </p>
+                </div>
+
+                <div class="word-card">
+                    <h4>Hidden Ones Being Revealed</h4>
+                    <span class="date-tag">April 2025</span>
+                    <p>
+                        Many who have been faithfully serving in unseen places are being positioned into view —
+                        not for their glory, but to carry the fragrance of Christ into places that have grown
+                        cold and performance-driven.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRAYER / CONTACT SECTION -->
+        <section class="prayer-section">
+            <h3>Need Prayer or Discernment?</h3>
+            <p>
+                If a word here speaks to your heart, or you’d like prayer for clarity and confirmation,
+                we’d be honored to stand with you.
+            </p>
+            <a
+                href="mailto:kingdommarket@gmail.com?subject=Prophetic%20Prayer%20Request"
+                class="prayer-button"
+            >
+                Email Our Team
+            </a>
+        </section>
+
+        <!-- BACK LINKS -->
+        <div class="back-links">
+            <a href="index.html">← Back to Home</a>
+            <span>|</span>
+            <a href="revival.html">Revival Stories</a>
+        </div>
+    </div>
+
+    <script>
+        // MENU TOGGLE
+        const menuButton = document.querySelector('.menu-button');
+        const menuContainer = document.querySelector('.menu-container');
+        menuButton.addEventListener('click', () => {
+            menuContainer.classList.toggle('show');
+        });
+
+        // OPTIONAL: small rotation of focus words
+        const focusWords = [
+            "“Behold, I am doing a new thing; now it springs forth, do you not perceive it? I will make a way in the wilderness and rivers in the desert.” – Isaiah 43:19",
+            "“My sheep hear my voice, and I know them, and they follow me.” – John 10:27",
+            "“In the last days, God says, I will pour out my Spirit upon all flesh.” – Acts 2:17",
+            "Stay close to My heart in the quiet place, and I will give you wisdom for noisy spaces."
+        ];
+
+        const focusElement = document.getElementById('focusWord');
+        let focusIndex = 0;
+
+        function rotateFocusWord() {
+            focusIndex = (focusIndex + 1) % focusWords.length;
+            focusElement.textContent = focusWords[focusIndex];
+        }
+
+        // Change focus word every 15 seconds
+        setInterval(rotateFocusWord, 15000);
+    </script>
+
+</body>
+</html>
