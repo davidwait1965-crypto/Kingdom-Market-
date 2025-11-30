@@ -1,357 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revival - Kingdom Market</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revival - Kingdom Market</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
 
-        /* BACKGROUND + GLOW */
-        .background {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top, #444 0%, #000 70%);
-            z-index: 0;
-        }
+    /* BACKGROUND + GLOW */
+    .background {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #444 0%, #000 70%);
+      z-index: 0;
+    }
 
-        .overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background: radial-gradient(
-                circle at center,
-                rgba(255, 215, 0, 0.18) 0%,
-                rgba(0, 0, 0, 0.9) 70%
-            );
-            pointer-events: none;
-        }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 215, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.9) 70%
+      );
+      pointer-events: none;
+    }
 
-        /* CONTENT */
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 30px auto 60px auto;
-            padding: 20px;
-        }
+    /* CONTENT */
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      margin: 30px auto 60px auto;
+      padding: 20px;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-        header h1 {
-            font-size: 38px;
-            margin: 0;
-            text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.6);
-        }
+    header h1 {
+      font-size: 38px;
+      margin: 0;
+      text-shadow: 0 0 12px black, 0 0 24px rgba(255, 215, 0, 0.6);
+    }
 
-        header p {
-            margin-top: 10px;
-            font-size: 17px;
-            color: #f0e6c8;
-            text-shadow: 0 0 6px black;
-        }
+    header p {
+      margin-top: 10px;
+      font-size: 17px;
+      color: #f0e6c8;
+      text-shadow: 0 0 6px black;
+    }
 
-        /* VIDEO SECTION */
-        .video-section {
-            text-align: center;
-            margin-top: 25px;
-            margin-bottom: 20px;
-        }
+    /* VIDEO SECTION */
+    .video-section {
+      text-align: center;
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
 
-        .video-section h2 {
-            font-size: 24px;
-            margin-bottom: 12px;
-            text-shadow: 0 0 10px black;
-        }
+    .video-section h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px black;
+    }
 
-        /* GOLD-FRAMED WRAPPER + ROTATION */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 720px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 18px;
-            animation: goldGlow 3s infinite alternate;
-            box-shadow:
-                0 0 20px rgba(255, 215, 0, 0.4),
-                0 0 40px rgba(255, 215, 0, 0.25);
-        }
+    /* GOLD-FRAMED WRAPPER + ROTATION */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 18px;
+      animation: goldGlow 3s infinite alternate;
+      box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.25);
+    }
 
-        .video-wrapper::before {
-            content: "";
-            display: block;
-            padding-top: 56.25%; /* 16:9 ratio */
-        }
+    .video-wrapper::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; /* 16:9 ratio */
+    }
 
-        .video-wrapper > .rotating-item {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
+    .video-wrapper > .rotating-item {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-        .rotating-item {
-            display: none;
-        }
+    .rotating-item {
+      display: none;
+    }
 
-        .rotating-item.active {
-            display: block;
-        }
+    .rotating-item.active {
+      display: block;
+    }
 
-        .rotating-item iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 18px;
-        }
+    .rotating-item iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 18px;
+    }
 
-        @keyframes goldGlow {
-            from { box-shadow: 0 0 18px rgba(255, 215, 0, 0.35); }
-            to   { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
-        }
+    @keyframes goldGlow {
+      from { box-shadow: 0 0 18px rgba(255, 215, 0, 0.35); }
+      to   { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
+    }
 
-        /* STORY BLOCK */
-        .story-box {
-            margin-top: 25px;
-            background: rgba(0, 0, 0, 0.65);
-            border-radius: 14px;
-            border: 1px solid rgba(255, 215, 0, 0.5);
-            padding: 20px 18px;
-            box-shadow: 0 0 22px rgba(0, 0, 0, 0.75);
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
-        }
+    /* STORY BLOCK */
+    .story-box {
+      margin-top: 25px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      padding: 20px 18px;
+      box-shadow: 0 0 22px rgba(0, 0, 0, 0.75);
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+    }
 
-        .story-box h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 22px;
-            color: #ffd700;
-        }
+    .story-box h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #ffd700;
+    }
 
-        .story-box p {
-            font-size: 16px;
-            line-height: 1.7;
-        }
+    .story-box p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-        /* CAROUSEL */
-        .carousel-section {
-            margin-top: 30px;
-        }
+    /* CAROUSEL */
+    .carousel-section {
+      margin-top: 30px;
+    }
 
-        .carousel-section h3 {
-            text-align: center;
-            font-size: 22px;
-        }
+    .carousel-section h3 {
+      text-align: center;
+      font-size: 22px;
+    }
 
-        .carousel-section p {
-            text-align: center;
-            color: #f0e6c8;
-            max-width: 700px;
-            margin: 0 auto 16px auto;
-        }
+    .carousel-section p {
+      text-align: center;
+      color: #f0e6c8;
+      max-width: 700px;
+      margin: 0 auto 16px auto;
+    }
 
-        .revival-carousel {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-        }
+    .revival-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
 
-        .revival-card {
-            min-width: 240px;
-            max-width: 260px;
-            background: radial-gradient(circle at top, #333 0%, #000 65%);
-            border-radius: 14px;
-            border: 1px solid rgba(255, 215, 0, 0.6);
-            padding: 14px;
-            box-shadow: 0 0 18px rgba(0,0,0,0.9);
-            scroll-snap-align: start;
-        }
+    .revival-card {
+      min-width: 240px;
+      max-width: 260px;
+      background: radial-gradient(circle at top, #333 0%, #000 65%);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      padding: 14px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.9);
+      scroll-snap-align: start;
+    }
 
-        .revival-card h4 {
-            font-size: 16px;
-            color: #ffd700;
-            margin: 0 0 8px 0;
-        }
+    .revival-card h4 {
+      font-size: 16px;
+      color: #ffd700;
+      margin: 0 0 8px 0;
+    }
 
-        .revival-card p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0 0 8px 0;
-        }
+    .revival-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 8px 0;
+    }
 
-        .revival-card a {
-            color: #ffe27a;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .revival-card a {
+      color: #ffe27a;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .revival-card a:hover {
-            text-decoration: underline;
-        }
+    .revival-card a:hover {
+      text-decoration: underline;
+    }
 
-        .cta-section {
-            margin-top: 30px;
-            text-align: center;
-        }
+    .cta-section {
+      margin-top: 30px;
+      text-align: center;
+    }
 
-        .cta-section h3 {
-            font-size: 22px;
-        }
+    .cta-section h3 {
+      font-size: 22px;
+    }
 
-        .cta-button {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #ffd700;
-            color: #000;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 0 16px rgba(255,215,0,0.9);
-        }
+    .cta-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #ffd700;
+      color: #000;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 16px rgba(255,215,0,0.9);
+    }
 
-        .cta-button:hover {
-            background: #fff0a8;
-            transform: scale(1.05);
-        }
+    .cta-button:hover {
+      background: #fff0a8;
+      transform: scale(1.05);
+    }
 
-        /* DROP DOWN MENU */
-        .menu-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 9999;
-        }
+    /* DROP DOWN MENU (fixed + above overlays) */
+    .menu-container {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 99999;
+    }
 
-        .menu-button {
-            background: #222;
-            color: white;
-            padding: 10px 14px;
-            font-size: 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+    .menu-button {
+      background: #222;
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
 
-        .dropdown-content {
-            display: none;
-            background: white;
-            position: absolute;
-            min-width: 180px;
-            margin-top: 6px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px black;
-        }
+    .dropdown-content {
+      position: absolute;
+      top: 48px;
+      left: 0;
+      background: #fff;
+      min-width: 180px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.6);
+      overflow: hidden;
+      display: none;
+    }
 
-        .dropdown-content a {
-            display: block;
-            padding: 10px 15px;
-            font-size: 16px;
-            color: #222;
-            text-decoration: none;
-        }
+    .dropdown-content a {
+      display: block;
+      padding: 12px 15px;
+      color: #222;
+      font-size: 16px;
+      text-decoration: none;
+    }
 
-        .dropdown-content a:hover {
-            background: #eee;
-        }
+    .dropdown-content a:hover {
+      background: #eee;
+    }
 
-        .menu-container.show .dropdown-content {
-            display: block;
-        }
+    .menu-container.show .dropdown-content {
+      display: block;
+    }
 
-        /* BACK LINKS */
-        .back-links {
-            text-align: center;
-            margin-top: 35px;
-        }
+    /* BACK LINKS */
+    .back-links {
+      text-align: center;
+      margin-top: 35px;
+    }
 
-        .back-links a {
-            color: #ffd700;
-            text-decoration: none;
-        }
+    .back-links a {
+      color: #ffd700;
+      text-decoration: none;
+    }
 
-        .back-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .back-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- BACKGROUND -->
-    <div class="background"></div>
-    <div class="overlay"></div>
+  <!-- BACKGROUND -->
+  <div class="background"></div>
+  <div class="overlay"></div>
 
-    <!-- DROP DOWN MENU -->
-    <div class="menu-container">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="revival.html">Revival</a>
-            <a href="prophetic.html">Prophetic Words & Teachings</a>
-            <a href="podcast.html">Podcast</a>
-            <a href="#">Accessories</a>
-            <a href="#">Gifts</a>
-            <a href="#">Featured Collection</a>
-            <a href="#">Shop All</a>
-        </div>
+  <!-- DROP DOWN MENU -->
+  <div class="menu-container" id="menuBox">
+    <button class="menu-button" id="menuBtn">☰ Menu</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="revival.html">Revival</a>
+      <a href="prophetic.html">Prophetic Words & Teachings</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="#">Accessories</a>
+      <a href="#">Gifts</a>
+      <a href="#">Featured Collection</a>
+      <a href="#">Shop All</a>
     </div>
+  </div>
 
-    <div class="content">
+  <div class="content">
+    <header>
+      <h1>Revival & Awakening</h1>
+      <p>Stories of God moving powerfully in this generation.</p>
+    </header>
 
-        <header>
-            <h1>Revival & Awakening</h1>
-            <p>Stories of God moving powerfully in this generation.</p>
-        </header>
+    <!-- MAIN FEATURED ROTATING MEDIA -->
+    <section class="video-section">
+      <h2>Featured Revival Moment</h2>
 
-       <!-- MAIN FEATURED ROTATING MEDIA -->
-<section class="video-section">
-    <h2>Featured Revival Moment</h2>
-
-    <div class="video-wrapper">
-
+      <div class="video-wrapper">
         <!-- Slide 1 — YouTube -->
         <div class="rotating-item active">
-            <iframe
-                src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
 
         <!-- Slide 2 — Instagram Reel -->
         <div class="rotating-item">
-            <iframe
-                src="https://www.instagram.com/reel/DPP9gAcgP_9/embed"
-                allowtransparency="true"
-                allowfullscreen>
-            </iframe>
+          <iframe
+            src="https://www.instagram.com/reel/DPP9gAcgP_9/embed"
+            allowtransparency="true"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story-box">
+      <h3>Hearts Turning Back to the Father</h3>
+      <p>
+        The University of Tennessee witnessed a remarkable spiritual breakthrough...
+      </p>
+      <p style="margin-top:12px;">
+        Our mission at Kingdom Market is to continue sharing God’s message...
+      </p>
+    </section>
+
+    <!-- MORE REVIVAL CAROUSEL -->
+    <section class="carousel-section">
+      <h3>More Revival Moments</h3>
+      <p>Explore powerful moves of God.</p>
+
+      <div class="revival-carousel">
+        <div class="revival-card">
+          <h4>8000 Students Unite – Tennessee</h4>
+          <p>Thousands gathered in worship, repentance...</p>
+          <a href="https://www.youtube.com/watch?v=DpWrYu34WeA" target="_blank">Watch ↗</a>
         </div>
 
-    </div>
-</section>
+        <div class="revival-card">
+          <h4>Auburn University Revival</h4>
+          <p>Hundreds baptized publicly...</p>
+          <a href="https://www.youtube.com/watch?v=7guhCbmC_LM" target="_blank">Watch ↗</a>
+        </div>
 
-<!-- ROTATION SCRIPT -->
-<script>
+        <div class="revival-card">
+          <h4>Asbury University Revival</h4>
+          <p>Days of non-stop worship...</p>
+          <a href="https://www.youtube.com/watch?v=24Y6SUftwRo" target="_blank">Watch ↗</a>
+        </div>
+
+        <div class="revival-card">
+          <h4>Texas A&M Awakening</h4>
+          <p>Thousands gathered to lift Jesus...</p>
+          <a href="https://www.youtube.com/watch?v=M8MjCNBflGQ" target="_blank">Watch ↗</a>
+        </div>
+
+        <div class="revival-card">
+          <h4>Pirate’s Cove Baptisms</h4>
+          <p>Over 4,000 people baptized...</p>
+          <a href="https://www.youtube.com/watch?v=GkPJpFTMt08" target="_blank">Watch ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section">
+      <h3>Share Your Revival Story</h3>
+      <p>Have you witnessed a move of God? We'd love to hear it.</p>
+      <a href="mailto:kingdommarket@gmail.com?subject=Revival%20Story" class="cta-button">
+        Tell Us Your Story
+      </a>
+    </section>
+
+    <!-- BACK LINKS -->
+    <div class="back-links">
+      <a href="index.html">← Back to Home</a>
+      <span>|</span>
+      <a href="about.html">About Kingdom Market</a>
+    </div>
+  </div>
+
+  <script>
+    // ROTATION SCRIPT
     const slides = document.querySelectorAll('.rotating-item');
     let currentSlide = 0;
 
     function showNextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
     }
 
     setInterval(showNextSlide, 30000); // 30s rotation
-</script>
+
+    // MENU SCRIPT
+    const menuBtn = document.getElementById("menuBtn");
+    const menuBox = document.getElementById("menuBox");
+
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menuBox.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menuBox.contains(e.target)) {
+        menuBox.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>
