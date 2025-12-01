@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YWAM Salem – Kingdom Market Blog</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+        /* BACKGROUND + GLOW */
+        .scripture-background {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
+            z-index: 0;
+        }
+        .glow-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 215, 0, 0.22) 0%,
+                rgba(0, 0, 0, 0.9) 70%
+            );
+            pointer-events: none;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+            margin: 40px auto 70px auto;
+            padding: 0 18px 40px;
+        }
+        /* MENU (same as other pages) */
+        .menu-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+        }
+        .menu-button {
+            background: #222;
+            color: white;
+            padding: 10px 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 190px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-top: 6px;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #222;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-content a:hover {
+            background: #f0f0f0;
+        }
+        .menu-container.show .dropdown-content {
+            display: block;
+        }
+        /* BLOG LAYOUT */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        header h1 {
+            font-size: 34px;
+            margin: 0;
+            text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #f7f0cc;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 6px black;
+        }
+        .blog-hero {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            margin-bottom: 22px;
+        }
+        .blog-hero img {
+            width: 100%;
+            display: block;
+            max-height: 420px;
+            object-fit: cover;
+        }
+        .blog-hero-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.7);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #ffd700;
+        }
+        .meta {
+            font-size: 12px;
+            color: #c7c7c7;
+            margin-bottom: 18px;
+        }
+        h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 6px;
+            color: #ffeeb2;
+        }
+        p {
+            margin: 0 0 12px 0;
+            line-height: 1.7;
+        }
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        .inline-image {
+            margin: 22px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 24px rgba(0,0,0,0.7);
+        }
+        .inline-image img {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+        .inline-image figcaption {
+            font-size: 12px;
+            color: #c7c7c7;
+            padding: 8px 10px 10px;
+            background: rgba(0,0,0,0.6);
+        }
+        ul {
+            margin: 0 0 14px 1.1rem;
+            padding: 0;
+        }
+        li { margin-bottom: 6px; }
+        .highlight-box {
+            margin: 22px 0;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,215,0,0.45);
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 18px rgba(0,0,0,0.8);
+            font-size: 14px;
+        }
+        .cta {
+            margin-top: 26px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            font-size: 13px;
+            color: #c7c7c7;
+        }
+        .cta a.button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #ffd700;
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 18px rgba(255,215,0,0.8);
+        }
+        .cta a.button:hover {
+            filter: brightness(1.05);
+        }
+        .back-links {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .back-links a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .back-links a:hover { text-decoration: underline; }
+        @media (max-width:600px){
+            header h1{font-size:26px;}
+            h2{font-size:20px;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="scripture-background"></div>
+    <div class="glow-overlay"></div>
+
+    <!-- MENU -->
+    <div class="menu-container">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="revival.html">Revival</a>
+            <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+            <a href="podcast.html">Podcast</a>
+            <a href="#">Accessories</a>
+            <a href="#">Gifts</a>
+            <a href="#">Featured Collection</a>
+            <a href="#">Shop All</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <header>
+            <h1>Discovering YWAM Salem — Where Adventure Meets Faith</h1>
+            <p>
+                A fun, down-to-earth look at life, calling, and missions at YWAM Salem in Oregon.
+            </p>
+        </header>
+
+        <div class="blog-hero">
+            <!-- swap this image path for your own -->
+            <img src="ywam-salem-hero.jpg" alt="Forest campus and community vibe at YWAM Salem" />
+            <div class="blog-hero-tag">Faith · Missions · Community</div>
+        </div>
+
+        <div class="meta">
+            By Kingdom Market · Sharing stories of what God is doing around the world.
+        </div>
+
+        <p>
+            If you’ve ever wondered what it looks like when faith, fun, and purpose collide,
+            let me introduce you to <strong>YWAM Salem</strong>. Picture forest trails,
+            worship echoing through the trees, a cozy campus café, and a community of people
+            who genuinely love Jesus <em>and</em> love people.
+        </p>
+        <p>
+            YWAM Salem is more than a ministry base. It feels like a mix of summer camp,
+            Bible school, and adventure with God — all rolled into one.
+        </p>
+
+        <figure class="inline-image">
+            <img src="ywam-salem-campus.jpg" alt="Students and staff gathered on the YWAM Salem campus" />
+            <figcaption>Community life at the YWAM Salem campus.</figcaption>
+        </figure>
+
+        <h2>So… What Is YWAM?</h2>
+        <p>
+            YWAM stands for <strong>Youth With A Mission</strong> — a global Christian movement
+            with one simple heartbeat: <strong>to know God and make Him known</strong>.
+        </p>
+        <p>
+            It’s <strong>interdenominational</strong>, meaning believers from many church
+            backgrounds come together around Jesus. YWAM Salem is one of the many campuses
+            where people gather to grow, be equipped, and then go out to serve.
+        </p>
+
+        <h2>What Happens at YWAM Salem?</h2>
+
+        <h3>1. Training That Changes You</h3>
+        <p>
+            Students step into a focused season of learning about God, the Bible, missions,
+            and hearing His voice. It’s not just information — it’s formation:
+            worship, teachings, small groups, and real heart work.
+        </p>
+
+        <h3>2. Outreach That Impacts Others</h3>
+        <p>
+            After the classroom phase comes outreach: travelling to other cities or nations
+            to serve, share the gospel, and love people in practical ways. It’s where all
+            the learning gets lived out.
+        </p>
+
+        <h3>3. Everyday Community Life</h3>
+        <p>
+            Life at YWAM Salem is full of simple, beautiful moments: morning prayer,
+            late-night talks, serving side by side, and learning to love people who are
+            different from you. It’s challenging, stretching, and really good.
+        </p>
+
+        <div class="highlight-box">
+            <strong>What people love most about YWAM Salem:</strong>
+            <ul>
+                <li>Real, authentic community (not fake or performance-based).</li>
+                <li>Growing closer to God in a focused season.</li>
+                <li>Discovering gifts and callings they didn’t know they had.</li>
+                <li>Seeing God move in other nations and in their own hearts.</li>
+            </ul>
+        </div>
+
+        <h2>Common Questions (Answered Simply)</h2>
+
+        <h3>Is YWAM part of one denomination?</h3>
+        <p>
+            Nope. YWAM is interdenominational. People involved are from all kinds of church
+            backgrounds, but the focus is Jesus and His mission.
+        </p>
+
+        <h3>Is it only for “young” people?</h3>
+        <p>
+            Despite the name, you’ll find people of many ages. Passion and willingness matter
+            more than your birth year. If you’re hungry for God and willing to grow,
+            you’ll fit right in.
+        </p>
+
+        <h3>What does the schedule look like?</h3>
+        <p>
+            Most schools at YWAM Salem include:
+        </p>
+        <ul>
+            <li><strong>Lecture Phase:</strong> a few months on campus with teaching, worship, and discipleship.</li>
+            <li><strong>Outreach Phase:</strong> a trip to serve in another region or nation, living out what you’ve learned.</li>
+        </ul>
+
+        <figure class="inline-image">
+            <img src="ywam-salem-outreach.jpg" alt="YWAM Salem outreach team serving in a community" />
+            <figcaption>When training becomes action: outreach with YWAM Salem.</figcaption>
+        </figure>
+
+        <h2>Could This Be Your Next Step?</h2>
+        <p>
+            Maybe you feel stuck in routine, or you’re hungry for something deeper with God.
+            YWAM Salem won’t magically fix everything, but it <em>is</em> a place where
+            people regularly encounter God, find clarity, and gain courage to say “yes” to Him.
+        </p>
+        <p>
+            It’s not just a program or a trip — it’s a journey with God, surrounded by
+            people who are chasing the same thing: His heart and His purposes.
+        </p>
+
+        <div class="cta">
+            Curious and want to explore more?
+            <br />
+            <a class="button" href="https://www.ywamsalem.org" target="_blank" rel="noopener noreferrer">
+                Visit YWAM Salem’s Website
+            </a>
+        </div>
+
+        <div class="back-links">
+            <a href="index.html">← Back to Home</a>
+            <span>|</span>
+            <a href="revival.html">Revival Stories</a>
+        </div>
+    </div>
+
+    <script>
+        // MENU TOGGLE
+        const menuButton = document.querySelector('.menu-button');
+        const menuContainer = document.querySelector('.menu-container');
+        menuButton.addEventListener('click', () => {
+            menuContainer.classList.toggle('show');
+        });
+    </script>
+
+</body>
+</html>
