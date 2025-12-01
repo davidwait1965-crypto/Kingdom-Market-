@@ -13,32 +13,27 @@
             color: #fff;
         }
 
-        /* PODCAST PAGE HEAVENLY BACKGROUND */
         .podcast-background {
             position: fixed;
             inset: 0;
-            background: url("podback.png")
-                        no-repeat center center/cover;
+            background: url("podback.png") no-repeat center center/cover;
             z-index: -2;
             filter: brightness(0.88);
         }
 
-        /* Optional heavenly glow overlay */
         .podcast-glow {
             position: fixed;
             inset: 0;
             z-index: -1;
-            background: radial-gradient(
-                circle at top,
+            background: radial-gradient(circle at top,
                 rgba(255, 215, 0, 0.25) 0%,
-                rgba(0, 0, 0, 0.75) 70%
-            );
+                rgba(0, 0, 0, 0.75) 70%);
             pointer-events: none;
         }
 
         .content-wrapper {
             position: relative;
-            z-index: 1; /* sits above background + glow */
+            z-index: 1;
             max-width: 1100px;
             margin: 40px auto 60px auto;
             padding: 0 20px;
@@ -56,13 +51,12 @@
         }
 
         header p {
+            color: #f7f0cc;
             margin-top: 10px;
             font-size: 16px;
-            color: #f7f0cc;
             text-shadow: 0 0 6px black;
         }
 
-        /* MENU */
         .menu-container {
             position: absolute;
             top: 10px;
@@ -75,26 +69,26 @@
             color: white;
             padding: 10px 14px;
             font-size: 18px;
-            border: none;
             border-radius: 6px;
+            border: none;
             cursor: pointer;
         }
 
         .dropdown-content {
             display: none;
-            position: absolute;
             background: #fff;
             min-width: 190px;
+            position: absolute;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
             padding: 8px 0;
             margin-top: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
         }
 
         .dropdown-content a {
+            color: #222;
             display: block;
             padding: 10px 15px;
-            color: #222;
             text-decoration: none;
         }
 
@@ -106,18 +100,16 @@
             display: block;
         }
 
-        /* PODCAST FRAME */
         .podcast-wrapper {
             max-width: 700px;
             margin: 30px auto;
             padding: 18px;
             background: rgba(0,0,0,0.65);
+            border: 1px solid rgba(255,215,0,0.4);
             border-radius: 14px;
-            border: 1px solid rgba(255, 215, 0, 0.4);
             box-shadow: 0 0 28px rgba(255,215,0,0.35);
         }
 
-        /* BACK LINKS */
         .back-links {
             text-align: center;
             margin-top: 35px;
@@ -137,7 +129,6 @@
 
 <body>
 
-    <!-- BACKGROUND IMAGE + GLOW -->
     <div class="podcast-background"></div>
     <div class="podcast-glow"></div>
 
@@ -148,7 +139,7 @@
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="revival.html">Revival</a>
-            <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+            <a href="prophetic.html">Prophetic Words & Teachings</a>
             <a href="podcast.html">Podcast</a>
             <a href="#">Accessories</a>
             <a href="#">Gifts</a>
@@ -164,21 +155,42 @@
             <p>Teachings, encouragement, conversations, and Kingdom revelation — now in audio form.</p>
         </header>
 
-        <!-- PODCAST EMBED -->
+        <!-- SPOTIFY PODCAST -->
         <div class="podcast-wrapper">
-            <iframe 
+            <iframe
                 style="border-radius:12px"
                 src="https://open.spotify.com/embed/show/4ImFdiuFOYnto9zRPXu6T4?utm_source=generator"
                 width="100%"
                 height="352"
-                frameBorder="0"
-                allowfullscreen=""
+                frameborder="0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy">
+                loading="lazy"></iframe>
+        </div>
+
+        <!-- JOHN BEVERE PODCAST -->
+        <div class="podcast-wrapper">
+            <iframe
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                frameborder="0"
+                height="450"
+                style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                src="https://embed.podcasts.apple.com/us/podcast/the-john-bevere-podcast/id1744019971">
             </iframe>
         </div>
 
-        <!-- BACK LINKS -->
+        <!-- BETHEL SERMON OF THE WEEK -->
+        <div class="podcast-wrapper">
+            <iframe
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                frameborder="0"
+                height="450"
+                style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                src="https://embed.podcasts.apple.com/us/podcast/bethel-redding-sermon-of-the-week/id1607778827">
+            </iframe>
+        </div>
+
         <div class="back-links">
             <a href="index.html">← Back to Home</a>
             <span>|</span>
@@ -188,7 +200,6 @@
     </div>
 
     <script>
-        // MENU TOGGLE
         const menuButton = document.querySelector('.menu-button');
         const menuContainer = document.querySelector('.menu-container');
 
