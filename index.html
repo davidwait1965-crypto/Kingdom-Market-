@@ -4,163 +4,378 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kingdom Market</title>
+<meta name="theme-color" content="#000000" />
 
 <style>
-body { margin:0; font-family:Arial, sans-serif; background:#000; color:#000; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #000;
+}
 
-/* BACKGROUND */
+/* FULLSCREEN SCRIPTURE BACKGROUND */
 .scripture-background {
-  position:fixed; inset:0;
-  background:radial-gradient(circle at top,#333 0%,#000 60%,#000 100%);
-  display:flex; align-items:center; justify-content:center; z-index:0;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
 }
+
 .scripture-text {
-  max-width:80%; text-align:center;
-  color:rgba(255,215,0,0.35); font-size:30px; font-weight:700;
-  line-height:1.4; margin-top:180px;
-  text-shadow:0 0 12px rgba(255,215,0,0.45);
+  max-width: 80%;
+  text-align: center;
+  color: rgba(255, 215, 0, 0.35);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 180px;
+  text-shadow:
+    0 0 12px rgba(255, 215, 0, 0.45),
+    0 0 22px rgba(255, 215, 0, 0.35),
+    0 0 38px rgba(255, 215, 0, 0.2);
 }
+
+/* GLOW OVERLAY */
 .glow-overlay {
-  position:fixed; inset:0; z-index:1;
-  background:radial-gradient(circle at center,
-  rgba(255,215,0,0.2) 0%,rgba(0,0,0,0.65) 70%,rgba(0,0,0,0.9) 100%);
-  pointer-events:none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.65) 70%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 
-.content-wrapper { position:relative; z-index:2; }
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+}
 
-/* HEADER */
+/* HEADER + LOGO */
 header {
-  background:rgba(34,34,34,0.9); color:#fff; padding:20px;
-  text-align:center; font-size:26px; font-weight:bold;
+  background: rgba(34, 34, 34, 0.9);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
 }
-.logo-container { text-align:center; margin:25px 0 35px; }
-.logo-container img { width:280px; }
+
+.logo-container {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+
+.logo-container img {
+  width: 280px;
+  height: auto;
+}
+
+/* MAIN CONTENT WRAPPER */
+.container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto 40px auto;
+}
 
 /* MENU */
-.menu-container { position:fixed; top:10px; left:10px; z-index:9999; }
-.menu-button {
-  background:#222; color:white; padding:10px 14px;
-  font-size:18px; border:none; border-radius:6px; cursor:pointer;
+.menu-container {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
 }
-.dropdown-content {
-  display:none; position:absolute; background:#fff;
-  min-width:180px; padding:8px 0; margin-top:6px;
-  border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.25);
-}
-.dropdown-content a {
-  display:block; padding:10px 15px; font-size:16px;
-  color:#222; text-decoration:none;
-}
-.dropdown-content a:hover { background:#f0f0f0; }
-.menu-container.show .dropdown-content { display:block; }
 
-/* CAPTION */
+.menu-button {
+  background: #222;
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 180px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 8px 0;
+  margin-top: 6px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #222;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.dropdown-content a:hover {
+  background: #f0f0f0;
+}
+
+.menu-container.show .dropdown-content {
+  display: block;
+}
+
+/* CAPTION SECTION */
 .caption-section {
-  max-width:900px; margin:25px auto; padding:18px; text-align:center;
-  color:#f5f5f5; line-height:1.7; background:rgba(0,0,0,0.55);
-  border-radius:12px; border:1px solid rgba(255,215,0,0.4);
-  box-shadow:0 0 22px rgba(0,0,0,0.7);
+  max-width: 900px;
+  margin: 25px auto 30px auto;
+  padding: 18px;
+  text-align: center;
+  color: #f5f5f5;
+  font-size: 16px;
+  line-height: 1.7;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
 }
 
 /* VIDEO */
 .video-wrapper {
-  position:relative; max-width:720px; margin:0 auto; overflow:hidden;
-  border-radius:16px; box-shadow:0 0 40px rgba(255,215,0,0.4);
-}
-.video-wrapper::before { content:""; display:block; padding-top:56.25%; }
-.video-wrapper iframe {
-  position:absolute; inset:0; width:100%; height:100%; border:none;
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  animation: goldGlow 3s infinite alternate;
+  box-shadow:
+    0 0 20px rgba(255, 215, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.25);
 }
 
-/* CONNECT */
-.connect-section {
-  margin:40px auto; padding:20px; text-align:center; max-width:800px;
-  background:rgba(0,0,0,0.45); border-radius:12px;
-  border:1px solid rgba(255,215,0,0.35); color:#fff;
+.video-wrapper::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
 }
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+
+@keyframes goldGlow {
+  from {
+    box-shadow:
+      0 0 18px rgba(255, 215, 0, 0.35),
+      0 0 30px rgba(255, 215, 0, 0.2);
+  }
+  to {
+    box-shadow:
+      0 0 35px rgba(255, 215, 0, 0.7),
+      0 0 60px rgba(255, 215, 0, 1);
+  }
+}
+
+/* CONNECT SECTION */
+.connect-section {
+  margin-top: 35px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+  backdrop-filter: blur(3px);
+}
+
+.connect-section h2 {
+  font-size: 26px;
+  color: #ffd700;
+  text-shadow: 0 0 12px #000;
+}
+
+.connect-section p {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  color: #f2f2f2;
+}
+
 .connect-button {
-  padding:12px 22px; background:#ffd700; color:#000;
-  border-radius:8px; font-weight:bold; text-decoration:none;
+  display: inline-block;
+  padding: 12px 22px;
+  background: #ffd700;
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+  transition: 0.3s ease;
+}
+
+.connect-button:hover {
+  background: #fff0a8;
+  transform: scale(1.06);
 }
 
 /* FOOTER */
 .footer-section {
-  background:rgba(0,0,0,0.65); border-top:1px solid rgba(255,215,0,0.35);
-  margin-top:40px; padding:30px 20px; text-align:center; color:white;
+  background: rgba(0, 0, 0, 0.65);
+  border-top: 1px solid rgba(255, 215, 0, 0.35);
+  margin-top: 40px;
+  padding: 30px 20px 35px;
+  text-align: center;
+  color: #fff;
+}
+
+.footer-section h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.footer-section h3 {
+  margin-top: 22px;
+  font-size: 22px;
+}
+
+.footer-section p {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 12px auto;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  header { font-size: 22px; padding: 14px; }
+  .logo-container img { width: 200px; }
+  .scripture-text { font-size: 22px; margin-top: 120px; }
 }
 </style>
 </head>
 
 <body>
-
-<div class="scripture-background"><div id="scriptureText" class="scripture-text"></div></div>
+<div class="scripture-background">
+  <div class="scripture-text" id="scriptureText"></div>
+</div>
 <div class="glow-overlay"></div>
 
 <div class="content-wrapper">
 
-<!-- MENU -->
-<div class="menu-container">
-  <button class="menu-button">☰ Menu</button>
-  <div class="dropdown-content">
-    <a href="about.html">About Us</a>
-    <a href="revival.html">Revival</a>
-    <a href="prophetic.html">Prophetic Words & Teachings</a>
-    <a href="podcast.html">Podcasts</a>
-    <a href="#get-connected">Get Connected</a>
-    <a href="ywam-salem-blog.html">Get Connected Globally</a>
-    <a href="#">Accessories</a>
-    <a href="#">Gifts</a>
-    <a href="#">Featured Collection</a>
-    <a href="#">Shop All</a>
+  <!-- MENU -->
+  <div class="menu-container">
+    <button class="menu-button">☰ Menu</button>
+
+    <div class="dropdown-content">
+      <a href="about.html">About Us</a>
+      <a href="revival.html">Revival</a>
+      <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+      <a href="podcast.html">Podcasts</a>
+
+      <!-- NEW BUTTONS -->
+      <a href="partner.html">Get Connected</a>
+      <a href="ywam-salem-blog.html">Get Connected Globally</a>
+
+      <a href="#">Accessories</a>
+      <a href="#">Gifts</a>
+      <a href="#">Featured Collection</a>
+      <a href="#">Shop All</a>
+    </div>
+  </div>
+
+  <header>Kingdom Market</header>
+
+  <!-- LOGO -->
+  <div class="logo-container">
+    <img src="angel.png" alt="Kingdom Market Logo" />
+  </div>
+
+  <div class="container">
+
+    <!-- CAPTION -->
+    <div class="caption-section">
+      <p>In a world shaped by endless scrolling ... Welcome to Kingdom Market.</p>
+    </div>
+
+    <!-- FEATURED VIDEO -->
+    <div style="text-align:center; margin-bottom:25px;">
+      <h2 style="color:white;">Featured Kingdom Message</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="connect-section">
+      <h2>Partner With Kingdom Market</h2>
+      <p>Are you a creator, artist, or business ...</p>
+      <a href="partner.html" class="connect-button">Apply to Sell With Us</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-section">
+      <h2>Our Mission</h2>
+      <p>Kingdom Market is a faith-inspired platform...</p>
+
+      <h3>Affiliate Partnership Disclosure</h3>
+      <p>Some products featured on this website...</p>
+    </div>
+
   </div>
 </div>
 
-<header>Kingdom Market</header>
-
-<div class="logo-container">
-  <img src="angel.png" alt="Kingdom Market Logo" />
-</div>
-
-<div class="caption-section">
-  In a world shaped by endless scrolling... Welcome to Kingdom Market.
-</div>
-
-<h2 style="color:white;text-align:center;">Featured Kingdom Message</h2>
-<div class="video-wrapper">
-  <iframe src="https://www.youtube.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
-          allow="autoplay; encrypted-media"></iframe>
-</div>
-
-<div class="connect-section" id="get-connected">
-  <h2>Partner With Kingdom Market</h2>
-  <p>Creators, artists, ministries — we’d love to partner with you.</p>
-  <a href="partner.html" class="connect-button">Apply to Join Us</a>
-</div>
-
-<div class="footer-section">
-  <h2>Our Mission</h2>
-  <p>Kingdom Market exists to uplift believers through products and community.</p>
-</div>
-
-</div>
-
 <script>
-// MENU
-const menuButton=document.querySelector('.menu-button');
-const menuContainer=document.querySelector('.menu-container');
-menuButton.addEventListener('click',()=>menuContainer.classList.toggle('show'));
-document.addEventListener('click',e=>!menuContainer.contains(e.target)&&menuContainer.classList.remove('show'));
+// MENU TOGGLE
+const menuButton = document.querySelector('.menu-button');
+const menuContainer = document.querySelector('.menu-container');
+menuButton.addEventListener('click', (e) => {
+  e.stopPropagation();
+  menuContainer.classList.toggle('show');
+});
+document.addEventListener('click', (e) => {
+  if (!menuContainer.contains(e.target)) {
+    menuContainer.classList.remove('show');
+  }
+});
 
-// SCRIPTURE ROTATION
-const verses=[
-"“Seek first the Kingdom of God...” – Matthew 6:33",
-"“I can do all things through Christ...” – Philippians 4:13",
-"“For with God nothing shall be impossible.” – Luke 1:37"
+// ROTATING SCRIPTURES
+const verses = [
+  "“But seek ye first the kingdom of God...” – Matthew 6:33",
+  "“I can do all things through Christ...” – Phil 4:13",
+  "“For with God nothing shall be impossible.” – Luke 1:37"
 ];
-let i=0; const box=document.getElementById("scriptureText");
-function rotate(){ box.textContent=verses[i]; i=(i+1)%verses.length; }
-rotate(); setInterval(rotate,9000);
+
+const scriptureElement = document.getElementById('scriptureText');
+let verseIndex = 0;
+
+function nextVerse() {
+  scriptureElement.textContent = verses[verseIndex];
+  verseIndex = (verseIndex + 1) % verses.length;
+}
+
+nextVerse();
+setInterval(nextVerse, 10000);
 </script>
 
 </body>
