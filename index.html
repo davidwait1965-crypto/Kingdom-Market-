@@ -14,7 +14,7 @@ body {
   color: #000;
 }
 
-/* HIDDEN MENU LINKS */
+/* HIDE CERTAIN MENU LINKS */
 .hidden-link {
   display: none !important;
 }
@@ -170,7 +170,7 @@ header {
 .video-wrapper::before {
   content: "";
   display: block;
-  padding-top: 56.25%;
+  padding-top: 56.25%; /* 16:9 ratio */
 }
 
 .video-wrapper iframe {
@@ -213,6 +213,16 @@ header {
   font-size: 26px;
   color: #ffd700;
   text-shadow: 0 0 12px #000;
+  margin-bottom: 10px;
+}
+
+.connect-section p {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  color: #f2f2f2;
+  text-shadow: 0 0 8px #000;
 }
 
 .connect-button {
@@ -225,7 +235,22 @@ header {
   font-weight: bold;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
-  transition: 0.3s;
+  transition: 0.3s ease;
+  animation: glowPulse 2s infinite alternate;
+}
+
+.connect-button:hover {
+  background: #fff0a8;
+  transform: scale(1.06);
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  }
+  to {
+    box-shadow: 0 0 22px rgba(255, 215, 0, 1);
+  }
 }
 
 /* FOOTER */
@@ -237,6 +262,84 @@ header {
   text-align: center;
   color: #fff;
   backdrop-filter: blur(3px);
+}
+
+.footer-section h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px #000, 0 0 22px rgba(255, 215, 0, 0.3);
+}
+
+.footer-section h3 {
+  margin-top: 22px;
+  font-size: 22px;
+  text-shadow: 0 0 10px #000;
+}
+
+.footer-section p {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 12px auto;
+  text-shadow: 0 0 6px #000;
+}
+
+/* MOBILE REFINEMENTS */
+@media (max-width: 600px) {
+  header {
+    font-size: 22px;
+    padding: 14px;
+  }
+  .logo-container {
+    margin-top: 18px;
+    margin-bottom: 24px;
+  }
+  .logo-container img {
+    width: 200px;
+  }
+  .container {
+    padding: 16px;
+    margin-bottom: 30px;
+  }
+  .scripture-text {
+    font-size: 22px;
+    margin-top: 120px;
+  }
+  .caption-section {
+    margin: 18px 12px 24px;
+    padding: 14px;
+    font-size: 15px;
+  }
+  .connect-section {
+    margin: 28px 12px 40px;
+    padding: 16px;
+  }
+  .connect-section h2 {
+    font-size: 22px;
+  }
+  .connect-section p {
+    font-size: 15px;
+  }
+  .footer-section {
+    padding: 24px 16px 28px;
+  }
+  .menu-button {
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+  .glow-overlay {
+    backdrop-filter: none;
+  }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .video-wrapper {
+    animation: none;
+  }
+  .connect-button {
+    animation: none;
+  }
 }
 </style>
 </head>
@@ -260,10 +363,10 @@ header {
       <a href="partner.html">Get Connected</a>
       <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
       <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
-      <a class="hidden-link" href="#">Accessories</a>
-      <a class="hidden-link" href="#">Gifts</a>
-      <a class="hidden-link" href="#">Featured Collection</a>
-      <a class="hidden-link" href="#">Shop All</a>
+      <a href="#" class="hidden-link">Accessories</a>
+      <a href="#" class="hidden-link">Gifts</a>
+      <a href="#" class="hidden-link">Featured Collection</a>
+      <a href="#" class="hidden-link">Shop All</a>
     </div>
   </div>
 
@@ -273,3 +376,105 @@ header {
   <div class="logo-container">
     <img src="angel.png" alt="Kingdom Market Logo" />
   </div>
+
+  <div class="container">
+
+    <!-- CAPTION ABOVE VIDEO -->
+    <div class="caption-section">
+      <p>
+        In a world shaped by endless scrolling and constant instant gratification, I found myself overwhelmed by the noise of social media. But as I became more intentional about what I allowed into my feeds, I began to witness something extraordinary—revivals rising across the nation, young adults pursuing the heart of God, and a renewed hunger for truth. That movement sparked a passion within me to build a space where believers can gather, grow, and stay connected. Kingdom Market was created to be that community—offering uplifting news, upcoming events, faith-centered stores, and a place for powerful prayer. Here, God remains the focus in everything we do.
+        Welcome to Kingdom Market.
+      </p>
+    </div>
+
+    <!-- FEATURED VIDEO -->
+    <div style="text-align:center; margin-bottom:25px;">
+      <h2 style="color:white; text-shadow:0 0 12px black; margin-bottom:15px;">
+        Featured Kingdom Message
+      </h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/dt0lcGF3rmk?autoplay=1&mute=1&loop=1&playlist=dt0lcGF3rmk"
+          title="Featured Kingdom Message"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- CONNECT WITH OUR TEAM -->
+    <div class="connect-section">
+      <h2>Partner With Kingdom Market</h2>
+      <p>
+        Are you a creator, artist, or business with faith-inspired products?
+        We’d love to collaborate and feature your items on Kingdom Market.
+      </p>
+      <a href="partner.html" class="connect-button">
+        Apply to Sell With Us
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-section">
+      <h2>Our Mission</h2>
+      <p>
+        Kingdom Market is a faith-inspired platform created to uplift and empower believers
+        through apparel, accessories, and meaningful products that reflect God's Word.
+      </p>
+
+      <h3>Affiliate Partnership Disclosure</h3>
+      <p>
+        Some products featured on this website are offered through trusted affiliate partners.
+        This means Kingdom Market may earn a commission when purchases are made through our links —
+        at no additional cost to you.
+      </p>
+      <p>
+        Every product recommended aligns with our mission:
+        <strong>to bring light, inspiration, and Kingdom purpose into everyday life.</strong>
+      </p>
+      <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;">
+        Thank you for supporting this Kingdom-driven movement.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// MENU TOGGLE (with outside click close)
+const menuButton = document.querySelector('.menu-button');
+const menuContainer = document.querySelector('.menu-container');
+menuButton.addEventListener('click', (e) => {
+  e.stopPropagation();
+  menuContainer.classList.toggle('show');
+});
+document.addEventListener('click', (e) => {
+  if (!menuContainer.contains(e.target)) {
+    menuContainer.classList.remove('show');
+  }
+});
+
+// ROTATING BIBLE VERSES
+const verses = [
+  "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
+  "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
+  "“For with God nothing shall be impossible.” – Luke 1:37",
+  "“For we walk by faith, not by sight.” – 2 Corinthians 5:7",
+  "“The LORD is my shepherd; I shall not want.” – Psalm 23:1"
+];
+
+const scriptureElement = document.getElementById('scriptureText');
+let verseIndex = 0;
+
+function showNextVerse() {
+  scriptureElement.textContent = verses[verseIndex];
+  verseIndex = (verseIndex + 1) % verses.length;
+}
+
+showNextVerse();
+setInterval(showNextVerse, 10000);
+</script>
+
+</body>
+</html>
