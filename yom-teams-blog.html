@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YOM Teams – Kingdom Market Blog</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+
+        /* BACKGROUND + GLOW */
+        .scripture-background {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
+            z-index: 0;
+        }
+        .glow-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 215, 0, 0.22) 0%,
+                rgba(0, 0, 0, 0.9) 70%
+            );
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+            margin: 40px auto 70px auto;
+            padding: 0 18px 40px;
+        }
+
+        /* MENU */
+        .menu-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+        }
+        .menu-button {
+            background: #222;
+            color: white;
+            padding: 10px 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 190px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-top: 6px;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #222;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .dropdown-content a:hover {
+            background: #f0f0f0;
+        }
+        .menu-container.show .dropdown-content {
+            display: block;
+        }
+
+        /* BLOG LAYOUT */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        header h1 {
+            font-size: 34px;
+            margin: 0;
+            text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #f7f0cc;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 6px black;
+        }
+
+        .blog-hero {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            margin-bottom: 22px;
+        }
+        .blog-hero img {
+            width: 100%;
+            display: block;
+            max-height: 420px;
+            object-fit: cover;
+        }
+        .blog-hero-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.7);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #ffd700;
+        }
+
+        .meta {
+            font-size: 12px;
+            color: #c7c7c7;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 6px;
+            color: #ffeeb2;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+
+        .inline-image {
+            margin: 22px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 24px rgba(0,0,0,0.7);
+        }
+        .inline-image img {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+        .inline-image figcaption {
+            font-size: 12px;
+            color: #c7c7c7;
+            padding: 8px 10px 10px;
+            background: rgba(0,0,0,0.6);
+        }
+
+        ul {
+            margin: 0 0 14px 1.1rem;
+            padding: 0;
+        }
+        li { margin-bottom: 6px; }
+
+        .highlight-box {
+            margin: 22px 0;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,215,0,0.45);
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 18px rgba(0,0,0,0.8);
+            font-size: 14px;
+        }
+
+        .cta {
+            margin-top: 26px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            font-size: 13px;
+            color: #c7c7c7;
+        }
+        .cta a.button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #ffd700;
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 18px rgba(255,215,0,0.8);
+        }
+        .cta a.button:hover {
+            filter: brightness(1.05);
+        }
+
+        .back-links {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .back-links a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .back-links a:hover { text-decoration: underline; }
+
+        @media (max-width:600px){
+            header h1{font-size:26px;}
+            h2{font-size:20px;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="scripture-background"></div>
+    <div class="glow-overlay"></div>
+
+    <!-- MENU -->
+    <div class="menu-container">
+        <button class="menu-button">☰ Menu</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="revival.html">Revival</a>
+            <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+            <a href="podcast.html">Podcast</a>
+            <a href="ywam-global-blog.html">Get Connected Globally</a>
+            <a href="#">Accessories</a>
+            <a href="#">Gifts</a>
+            <a href="#">Featured Collection</a>
+            <a href="#">Shop All</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <header>
+            <h1>YOM Teams – Short-Term Trips With Eternal Impact</h1>
+            <p>
+                A relaxed, honest look at YOM Teams and how they help youth, churches, and families
+                step into real-life mission together.
+            </p>
+        </header>
+
+        <div class="blog-hero">
+            <!-- Replace src with a real YOM / missions photo you’ve saved, e.g. yom-hero.jpg -->
+            <img src="yom-hero.jpg" alt="YOM Teams worship and mission gathering" />
+            <div class="blog-hero-tag">Missions · Youth · Teams</div>
+        </div>
+
+        <div class="meta">
+            By Kingdom Market · Highlighting ministries that help believers live on mission.
+        </div>
+
+        <p>
+            If your heart beats a little faster when someone mentions “mission trip,”
+            <strong>YOM Teams</strong> might be exactly the kind of partner you’ve been praying for.
+            They help youth groups, churches, and families step out of the usual routine and into
+            intentional, Christ-centered outreach around the world.
+        </p>
+        <p>
+            Think worship nights, team training, cross-cultural ministry, and a whole lot of moments
+            where God surprises you with His faithfulness and creativity.
+        </p>
+
+        <figure class="inline-image">
+            <img src="yom-team-worship.jpg" alt="Young people worshiping together on a YOM trip" />
+            <figcaption>Worship and prayer are at the heart of every YOM trip.</figcaption>
+        </figure>
+
+        <h2>Who Is YOM Teams?</h2>
+        <p>
+            YOM Teams (Youth On Mission Teams) focuses on <strong>short-term missions</strong> that are
+            long-term in impact. Their heart is to serve the local church by providing safe, well-led,
+            Christ-centered trips that help people discover God’s heart for the nations.
+        </p>
+        <p>
+            They come alongside pastors, youth leaders, and group coordinators to handle the details
+            of travel, logistics, and outreach, so leaders can focus on discipling their people.
+        </p>
+
+        <h2>What Makes a YOM Trip Different?</h2>
+
+        <h3>1. Team-Based, Not Solo</h3>
+        <p>
+            YOM is all about teams. You go together, serve together, and process what God is doing
+            together. That shared experience creates friendships and memories that last far beyond
+            the flight home.
+        </p>
+
+        <h3>2. Partnering With Local Ministries</h3>
+        <p>
+            Trips are built around existing local ministries rather than “parachuting in” for a week.
+            The goal is to strengthen what God is already doing through local believers.
+        </p>
+
+        <figure class="inline-image">
+            <img src="yom-campfire-team.jpg" alt="YOM team sharing stories and songs around a campfire" />
+            <figcaption>Story-sharing and prayer as teams debrief what God is doing.</figcaption>
+        </figure>
+
+        <h3>3. Growth for Every Age</h3>
+        <p>
+            While many teams are youth-focused, YOM also creates opportunities for families,
+            college students, and adults to serve. The common thread is hunger for Jesus and a
+            willingness to say “yes.”
+        </p>
+
+        <div class="highlight-box">
+            <strong>On a typical YOM Teams trip, you might:</strong>
+            <ul>
+                <li>Help with kids’ programs, youth nights, or community outreach events.</li>
+                <li>Share testimonies, dramas, or simple gospel messages.</li>
+                <li>Pray for people, encourage local believers, and learn from their faith.</li>
+                <li>Spend daily time in worship, Bible reflection, and team debriefs.</li>
+            </ul>
+        </div>
+
+        <h2>Is a YOM Trip Right for You or Your Group?</h2>
+        <p>
+            Maybe you’re a youth pastor dreaming about taking your students on their first mission
+            trip. Maybe you’re a young adult who wants to spend part of your summer serving God in
+            a different culture. Or maybe your whole family is ready to do something wild and
+            meaningful together.
+        </p>
+        <p>
+            YOM Teams is built for people just like that: those who feel the tug of the Great
+            Commission and want a trusted, experienced partner to help make it real.
+        </p>
+
+        <figure class="inline-image">
+            <img src="yom-global-teams.jpg" alt="YOM Teams group smiling on a hillside with crosses" />
+            <figcaption>Ordinary people, extraordinary God. Teams sent to serve in many nations.</figcaption>
+        </figure>
+
+        <h2>Taking Your Next Step</h2>
+        <p>
+            If something in your heart lights up when you think about going, that might be the Holy
+            Spirit nudging you to explore more. Pray, talk with your pastor or leader, and start
+            asking what it could look like to step out in faith.
+        </p>
+        <p>
+            Whether you end up across an ocean or across your own city, God loves to meet us when
+            we say, “Here I am, send me.”
+        </p>
+
+        <div class="cta">
+            Want to learn more about upcoming trips, locations, and how to bring a team?
+            <br />
+            <a class="button" href="https://yomteams.com" target="_blank" rel="noopener noreferrer">
+                Visit YOM Teams Website
+            </a>
+        </div>
+
+        <div class="back-links">
+            <a href="index.html">← Back to Home</a>
+            <span>|</span>
+            <a href="ywam-global-blog.html">Read: YWAM – Global Heartbeat</a>
+        </div>
+    </div>
+
+    <script>
+        // MENU TOGGLE
+        const menuButton = document.querySelector('.menu-button');
+        const menuContainer = document.querySelector('.menu-container');
+        menuButton.addEventListener('click', () => {
+            menuContainer.classList.toggle('show');
+        });
+    </script>
+
+</body>
+</html>
