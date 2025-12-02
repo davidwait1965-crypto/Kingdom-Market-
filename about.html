@@ -32,7 +32,7 @@
             z-index: 1;
         }
 
-        /* FLOATING PETALS LAYER (AROUND OUTSKIRTS) */
+        /* FLOATING PETALS LAYER */
         .petals {
             position: fixed;
             inset: 0;
@@ -52,36 +52,26 @@
             animation: floatPetal 16s linear infinite;
         }
 
-        /* Different sizes / speeds / positions for variety */
-        .petal.p1 { top: -10%; left: 5%;  width: 20px; height: 32px; animation-duration: 18s; }
-        .petal.p2 { top: -15%; left: 90%; width: 16px; height: 26px; animation-duration: 19s; }
-        .petal.p3 { top: -20%; left: 15%; width: 14px; height: 24px; animation-duration: 17s; }
-        .petal.p4 { top: -18%; left: 75%; width: 22px; height: 34px; animation-duration: 21s; }
-        .petal.p5 { top: -12%; left: 40%; width: 18px; height: 28px; animation-duration: 20s; }
-        .petal.p6 { top: -25%; left: 0%;  width: 16px; height: 26px; animation-duration: 22s; }
-        .petal.p7 { top: -22%; left: 60%; width: 20px; height: 30px; animation-duration: 19s; }
-        .petal.p8 { top: -18%; left: 30%; width: 14px; height: 22px; animation-duration: 23s; }
-        .petal.p9 { top: -16%; left: 82%; width: 18px; height: 28px; animation-duration: 24s; }
-        .petal.p10{ top: -24%; left: 50%; width: 20px; height: 32px; animation-duration: 26s; }
+        /* Different sizes / speeds */
+        .petal.p1 { top: -10%; left: 5%; animation-duration: 18s; }
+        .petal.p2 { top: -15%; left: 90%; animation-duration: 19s; }
+        .petal.p3 { top: -20%; left: 15%; animation-duration: 17s; }
+        .petal.p4 { top: -18%; left: 75%; animation-duration: 21s; }
+        .petal.p5 { top: -12%; left: 40%; animation-duration: 20s; }
+        .petal.p6 { top: -25%; left: 0%;  animation-duration: 22s; }
+        .petal.p7 { top: -22%; left: 60%; animation-duration: 19s; }
+        .petal.p8 { top: -18%; left: 30%; animation-duration: 23s; }
+        .petal.p9 { top: -16%; left: 82%; animation-duration: 24s; }
+        .petal.p10{ top: -24%; left: 50%; animation-duration: 26s; }
 
         @keyframes floatPetal {
-            0% {
-                transform: translate3d(0, 0, 0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.9;
-            }
-            50% {
-                transform: translate3d(-20px, 55vh, 0) rotate(140deg);
-            }
-            100% {
-                transform: translate3d(20px, 110vh, 0) rotate(260deg);
-                opacity: 0;
-            }
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; }
+            50% { transform: translate3d(-20px, 55vh, 0) rotate(140deg); }
+            100% { transform: translate3d(20px, 110vh, 0) rotate(260deg); opacity: 0; }
         }
 
-        /* MAIN CONTENT LAYER (ON TOP) */
+        /* MAIN CONTENT */
         .content {
             position: relative;
             z-index: 3;
@@ -97,7 +87,7 @@
             text-shadow: 0 0 12px rgba(0,0,0,0.7);
         }
 
-        /* TEXT BOX WITH GLOW */
+        /* TEXT BOX */
         .textbox {
             background: rgba(0, 0, 0, 0.55);
             border: 1px solid rgba(255, 215, 0, 0.5);
@@ -124,46 +114,44 @@
 
 <body>
 
-    <!-- LAYERS -->
     <div class="background"></div>
     <div class="overlay"></div>
 
-    <!-- FLOATING PETALS AROUND OUTSKIRTS -->
+    <!-- FLOATING PETALS -->
     <div class="petals">
-        <div class="petal p1"></div>
-        <div class="petal p2"></div>
-        <div class="petal p3"></div>
-        <div class="petal p4"></div>
-        <div class="petal p5"></div>
-        <div class="petal p6"></div>
-        <div class="petal p7"></div>
-        <div class="petal p8"></div>
-        <div class="petal p9"></div>
+        <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+        <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
         <div class="petal p10"></div>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="content">
         <h1>About Kingdom Market</h1>
 
         <div class="textbox">
             <p>
                 Welcome to <strong>Kingdom Market</strong> — a faith-driven brand born from vision, purpose, 
-                and a desire to bring God's light into modern culture.
-            </p>
-                Bringing together brands from all around to create a shared community of faith and creativity
-            <p>
-                Our mission is to merge contemporary street fashion with biblical truth, creating apparel 
-                and products that inspire, empower, and remind you of who you are in Christ.
-            </p>
-                
-            <p>
-                Every item designed carries meaning and intention — crafted with excellence, integrity, 
-                and the belief that faith should be boldly represented in today's world.
+                and a desire to bring God’s light into modern culture.
             </p>
 
             <p>
-                Thank you for supporting this kingdom movement.  
+                We bring together brands, creators, and believers from all around the world to form a shared
+                community of faith and creativity. Beyond apparel, we aim to provide uplifting information,
+                good news, and meaningful community connections that strengthen and encourage believers.
+            </p>
+
+            <p>
+                Our mission is to merge contemporary street fashion with biblical truth — creating apparel 
+                and products that inspire, empower, and remind you of who you are in Christ.
+            </p>
+
+            <p>
+                Every piece we design carries meaning and intention — crafted with excellence, integrity, 
+                and the belief that faith should be boldly represented in today’s world.
+            </p>
+
+            <p>
+                Thank you for supporting this Kingdom movement.
                 <br><br>
                 <strong>Stay blessed. Stay bold. Stay Kingdom.</strong>
             </p>
