@@ -64,6 +64,43 @@ body {
   z-index: 2;
 }
 
+/* RIGHT-SIDE STOREFRONT PROMPT */
+.storefront-prompt {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 215, 0, 0.8);
+  border-radius: 14px;
+  padding: 12px 18px;
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  animation: floatPrompt 3.5s ease-in-out infinite alternate;
+}
+
+.storefront-prompt span {
+  display: block;
+  font-size: 13px;
+  color: #ffeeb2;
+  margin-top: 4px;
+}
+
+@keyframes floatPrompt {
+  from {
+    transform: translateY(-50%) translateX(0);
+    opacity: 0.85;
+  }
+  to {
+    transform: translateY(-52%) translateX(-4px);
+    opacity: 1;
+  }
+}
+
 /* HEADER + LOGO */
 header {
   background: rgba(34, 34, 34, 0.9);
@@ -330,6 +367,10 @@ header {
   .glow-overlay {
     backdrop-filter: none;
   }
+  /* Hide side prompt on small screens */
+  .storefront-prompt {
+    display: none;
+  }
 }
 
 /* REDUCED MOTION */
@@ -338,6 +379,9 @@ header {
     animation: none;
   }
   .connect-button {
+    animation: none;
+  }
+  .storefront-prompt {
     animation: none;
   }
 }
@@ -368,6 +412,12 @@ header {
       <a href="#" class="hidden-link">Featured Collection</a>
       <a href="#" class="hidden-link">Shop All</a>
     </div>
+  </div>
+
+  <!-- RIGHT-SIDE STOREFRONT PROMPT -->
+  <div class="storefront-prompt">
+    Storefront coming soon!
+    <span>Faith-filled products are on the way.</span>
   </div>
 
   <header>Kingdom Market</header>
