@@ -1,300 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YOM Teams – Global Missions Blog</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YOM Teams – Kingdom Market Blog</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+}
 
-        /* BACKGROUND + GLOW */
-        .scripture-background {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
-            z-index: 0;
-        }
-        .glow-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background: radial-gradient(
-                circle at center,
-                rgba(255, 215, 0, 0.22) 0%,
-                rgba(0, 0, 0, 0.9) 70%
-            );
-            pointer-events: none;
-        }
+/* BACKGROUND */
+.scripture-background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
+    z-index: 0;
+}
+.glow-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(
+        circle at center,
+        rgba(255,215,0,0.22) 0%,
+        rgba(0,0,0,0.9) 70%
+    );
+    pointer-events: none;
+}
 
-        /* MAIN WRAPPER */
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
-            max-width: 950px;
-            margin: 40px auto 70px auto;
-            padding: 0 18px 40px;
-        }
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    margin: 40px auto 70px auto;
+    padding: 0 18px 40px;
+}
 
-        /* MENU */
-        .menu-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 9999;
-        }
-        .menu-button {
-            background: #222;
-            color: white;
-            padding: 10px 14px;
-            font-size: 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #fff;
-            min-width: 190px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            border-radius: 8px;
-            padding: 8px 0;
-            margin-top: 6px;
-        }
-        .dropdown-content a {
-            display: block;
-            padding: 10px 15px;
-            color: #222;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .dropdown-content a:hover {
-            background: #f0f0f0;
-        }
-        .menu-container.show .dropdown-content {
-            display: block;
-        }
+/* MENU */
+.menu-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+}
+.menu-button {
+    background: #222;
+    color: white;
+    padding: 10px 14px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    min-width: 190px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 8px 0;
+    margin-top: 6px;
+}
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #222;
+    text-decoration: none;
+}
+.dropdown-content a:hover {
+    background: #eee;
+}
+.menu-container.show .dropdown-content {
+    display: block;
+}
 
-        /* HEADER */
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        header h1 {
-            font-size: 34px;
-            margin: 0;
-            text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
-        }
-        header p {
-            margin-top: 10px;
-            font-size: 15px;
-            color: #f7f0cc;
-            text-shadow: 0 0 6px black;
-        }
+/* BLOG STYLING */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+header h1 {
+    font-size: 34px;
+    margin: 0;
+    text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
+}
+header p {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #f7f0cc;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        /* HERO IMAGE */
-        .blog-hero {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-bottom: 22px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.7);
-        }
-        .blog-hero img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-        }
-        .blog-hero-tag {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            background: rgba(0,0,0,0.7);
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            color: #ffd700;
-        }
+.blog-hero {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    margin-bottom: 22px;
+}
+.blog-hero img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+}
+.blog-hero-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(0,0,0,0.7);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: #ffd700;
+}
 
-        /* BODY */
-        p {
-            margin: 0 0 12px 0;
-            line-height: 1.7;
-        }
-        h2 {
-            font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 8px;
-            color: #ffd700;
-        }
-        h3 {
-            font-size: 18px;
-            margin-top: 20px;
-            margin-bottom: 6px;
-            color: #ffeeb2;
-        }
+.inline-image {
+    margin: 22px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 24px rgba(0,0,0,0.7);
+}
+.inline-image img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+}
+.inline-image figcaption {
+    background: rgba(0,0,0,0.6);
+    padding: 8px;
+    font-size: 12px;
+    color: #ccc;
+}
 
-        /* INLINE IMAGE */
-        .inline-image {
-            margin: 22px 0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 0 24px rgba(0,0,0,0.7);
-        }
-        .inline-image img {
-            width: 100%;
-            max-height: 340px;
-            object-fit: cover;
-        }
-        .inline-image figcaption {
-            font-size: 12px;
-            color: #c7c7c7;
-            padding: 8px 10px;
-            background: rgba(0,0,0,0.6);
-        }
-
-        /* LIST */
-        ul { margin-left: 1.1rem; }
-        li { margin-bottom: 6px; }
-
-        /* CTA */
-        .cta {
-            margin-top: 26px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.12);
-            font-size: 13px;
-            color: #c7c7c7;
-            text-align: center;
-        }
-        .cta a.button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 9px 18px;
-            border-radius: 999px;
-            background: #ffd700;
-            color: #000;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 0 18px rgba(255,215,0,0.8);
-        }
-
-        .back-links {
-            margin-top: 24px;
-            text-align: center;
-            font-size: 13px;
-        }
-        .back-links a {
-            color: #ffd700;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-    </style>
+.highlight-box {
+    margin: 22px 0;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,215,0,0.45);
+    background: rgba(0,0,0,0.6);
+    box-shadow: 0 0 18px rgba(0,0,0,0.8);
+}
+</style>
 </head>
 
 <body>
 
-    <div class="scripture-background"></div>
-    <div class="glow-overlay"></div>
+<!-- BACKGROUND -->
+<div class="scripture-background"></div>
+<div class="glow-overlay"></div>
 
-    <!-- MENU -->
-    <div class="menu-container">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="revival.html">Revival</a>
-            <a href="prophetic.html">Prophetic Words</a>
-            <a href="podcast.html">Podcast</a>
-            <a href="partner.html">Get Connected</a>
-            <a href="ywam-global-blog.html">YWAM Global</a>
-            <a href="yom-teams-blog.html">YOM Teams</a>
-        </div>
+<!-- MENU -->
+<div class="menu-container">
+    <button class="menu-button">☰ Menu</button>
+    <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="revival.html">Revival</a>
+        <a href="prophetic.html">Prophetic Words</a>
+        <a href="podcast.html">Podcasts</a>
+        <a href="partner.html">Get Connected</a>
+        <a href="ywam-global-blog.html">YWAM Global</a>
+        <a href="yom-teams-blog.html">YOM Teams</a>
+        <a href="#">Accessories</a>
+        <a href="#">Gifts</a>
+        <a href="#">Featured Collection</a>
+        <a href="#">Shop All</a>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <header>
+        <h1>YOM Teams — Youth on Mission</h1>
+        <p>Exploring how YOM teams empower young people to take the gospel to the nations.</p>
+    </header>
+
+    <!-- HERO -->
+    <div class="blog-hero">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80" 
+             alt="Youth on Mission team praying">
+        <div class="blog-hero-tag">Missions · Youth · Global Movement</div>
     </div>
 
-    <div class="content-wrapper">
+    <p>
+        YOM (Youth on Mission) is a growing movement centered around Jesus, discipleship,
+        and hands-on mission work. Their heartbeat is simple: equip young people to know God deeply
+        and share His love boldly—locally and around the world.
+    </p>
 
-        <header>
-            <h1>YOM Teams — Youth On Mission Around the World</h1>
-            <p>A fresh look at the ministry, movement, and momentum of YOM Teams.</p>
-        </header>
+    <!-- IMAGE 1 -->
+    <figure class="inline-image">
+        <img src="https://images.unsplash.com/photo-1504252060324-1c76e2e09947?auto=format&fit=crop&w=1200&q=80"
+             alt="Youth worship and prayer gathering">
+        <figcaption>Worship fueling global mission.</figcaption>
+    </figure>
 
-        <!-- HERO -->
-        <div class="blog-hero">
-            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=80" alt="YOM global missions team">
-            <div class="blog-hero-tag">Global Missions · Youth · Evangelism</div>
-        </div>
+    <h2>What Makes YOM Unique?</h2>
+    <p>
+        YOM teams don’t just talk about missions—they live it. Whether through evangelism,
+        mercy ministries, discipleship, or community outreach, young people step into real situations
+        where God moves powerfully.
+    </p>
 
-        <p>
-            Youth On Mission (YOM) is a movement empowering the next generation to carry the love of Jesus
-            into cities, nations, and unreached places. Through discipleship, worship, outreach, and creative evangelism,
-            YOM Teams are making the gospel visible—one heart, one family, one community at a time.
-        </p>
+    <!-- IMAGE 2 -->
+    <figure class="inline-image">
+        <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80"
+             alt="Mission team serving children internationally">
+        <figcaption>Spreading the love of Jesus to the nations.</figcaption>
+    </figure>
 
-        <figure class="inline-image">
-            <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1200&q=80" alt="Youth worship and prayer gathering">
-            <figcaption>Worship fueling global mission.</figcaption>
-        </figure>
+    <h2>Training for Real-World Impact</h2>
+    <p>
+        Before going out, YOM members receive intentional training focused on prayer,
+        evangelism, leadership, and the Word of God. The aim isn't just skill-building—it's
+        transformation from the inside out.
+    </p>
 
-        <h2>What Makes YOM Teams Unique?</h2>
-        <p>
-            YOM isn’t just an organization; it’s a heartbeat. A family of young believers stepping boldly
-            into mission, discipleship, and community transformation.
-        </p>
+    <!-- IMAGE 3 -->
+    <figure class="inline-image">
+        <img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?auto=format&fit=crop&w=1200&q=80"
+             alt="Young missionaries praying together outdoors">
+        <figcaption>Teams strengthened through prayer and unity.</figcaption>
+    </figure>
 
-        <h3>1. Youth-led, Jesus-centered</h3>
-        <p>Young people lead the charge with passion, creativity, and courage.</p>
+    <h2>Serving in Communities Worldwide</h2>
+    <p>
+        From urban outreaches to remote villages, YOM teams serve wherever God opens a door.
+        Their approach is simple: listen to God, love people, and share the gospel with boldness.
+    </p>
 
-        <h3>2. Mission-focused</h3>
-        <p>Teams travel locally and globally to share the gospel, serve practically, and reveal the love of God.</p>
+    <!-- IMAGE 4 -->
+    <figure class="inline-image">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+             alt="Youth mission team traveling together">
+        <figcaption>Young missionaries stepping into God’s call.</figcaption>
+    </figure>
 
-        <figure class="inline-image">
-            <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2?auto=format&fit=crop&w=1200&q=80" alt="Youth missions outreach in city streets">
-            <figcaption>Taking the gospel to the streets.</figcaption>
-        </figure>
-
-        <h3>3. Community-driven</h3>
-        <p>YOM teams build relationships and partner with local ministries, churches, and leaders.</p>
-
-        <h3>4. Globally connected</h3>
-        <p>
-            No matter where a YOM team goes—cities, villages, or nations—they are part of a 
-            worldwide family reaching the world together.
-        </p>
-
-        <figure class="inline-image">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Serving international communities">
-            <figcaption>Serving with compassion across cultures.</figcaption>
-        </figure>
-
-        <h2>Ready to Join the Movement?</h2>
-        <p>
-            If God is pulling on your heart to go, serve, or step out in faith—YOM Teams are
-            a powerful place to begin your journey.
-        </p>
-
-        <div class="cta">
-            Want to learn more?
-            <br />
-            <a class="button" href="https://yomteams.com" target="_blank">Visit the Official YOM Site</a>
-        </div>
-
-        <div class="back-links">
-            <a href="index.html">← Back to Home</a> |
-            <a href="ywam-global-blog.html">YWAM Global Blog</a>
-        </div>
+    <div class="highlight-box">
+        <strong>What YOM Teams Are Known For:</strong>
+        <ul>
+            <li>Bold evangelism and outreach</li>
+            <li>Genuine discipleship and mentorship</li>
+            <li>Cross-cultural ministry experience</li>
+            <li>Raising up young leaders for Kingdom impact</li>
+        </ul>
     </div>
 
-    <script>
-        document.querySelector('.menu-button').addEventListener('click', () => {
-            document.querySelector('.menu-container').classList.toggle('show');
-        });
-    </script>
+    <h2>Ready to Join a YOM Team?</h2>
+    <p>
+        If you're hungry for adventure with God and ready to step out in faith,
+        YOM Teams may be your next step. God is raising up a generation that
+        isn’t afraid to go wherever He leads—and you might be part of it.
+    </p>
+
+    <div class="highlight-box">
+        <strong>Learn more:</strong><br />
+        Visit the official site:<br />
+        <a href="https://yomteams.com" target="_blank">https://yomteams.com</a>
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a href="index.html" style="color:#ffd700;">← Back to Home</a>
+    </div>
+</div>
+
+<script>
+const menuButton = document.querySelector('.menu-button');
+const menuContainer = document.querySelector('.menu-container');
+menuButton.addEventListener('click', () => {
+    menuContainer.classList.toggle('show');
+});
+</script>
 
 </body>
 </html>
