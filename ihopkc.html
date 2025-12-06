@@ -1,173 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About IHOPKC – Kingdom Market</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-    }
-    .background {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top, #222 0%, #000 80%);
-      z-index: 0;
-    }
-    .glow-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 1;
-      pointer-events: none;
-    }
-    .content-wrapper {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 40px auto 60px auto;
-      padding: 0 20px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    header h1 {
-      font-size: 36px;
-      margin: 0;
-      text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #f7f0cc;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      text-shadow: 0 0 6px black;
-    }
-    .section {
-      margin-bottom: 28px;
-    }
-    h2 {
-      font-size: 24px;
-      color: #ffd700;
-      margin-bottom: 12px;
-      text-shadow: 0 0 10px black;
-    }
-    p {
-      font-size: 16px;
-      line-height: 1.7;
-      margin: 0 0 14px 0;
-    }
-    .inline-image {
-      margin: 22px 0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 24px rgba(0,0,0,0.7);
-    }
-    .inline-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
-    .inline-image figcaption {
-      background: rgba(0,0,0,0.6);
-      padding: 8px;
-      font-size: 13px;
-      color: #ccc;
-    }
-    .back-links {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 14px;
-    }
-    .back-links a {
-      color: #ffd700;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    .back-links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IHOPKC – Night and Day Prayer</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background:#000;
+  color:#fff;
+}
+.bg {
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at top,#333 0%,#000 60%,#000 100%);
+  z-index:0;
+}
+.glow {
+  position:fixed;
+  inset:0;
+  z-index:1;
+  background:radial-gradient(circle at center,rgba(255,215,0,0.18) 0%,rgba(0,0,0,0.9) 70%);
+}
+.wrap {
+  position:relative;
+  z-index:2;
+  max-width:950px;
+  margin:40px auto 70px auto;
+  padding:0 18px 40px;
+}
+header{text-align:center;margin-bottom:24px;}
+header h1{
+  font-size:34px;
+  margin:0;
+  text-shadow:0 0 12px #000,0 0 24px rgba(255,215,0,0.8);
+}
+header p{
+  margin-top:10px;
+  font-size:15px;
+  color:#f7f0cc;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 0 30px rgba(0,0,0,0.7);
+  margin-bottom:20px;
+}
+.hero img{
+  width:100%;
+  max-height:420px;
+  object-fit:cover;
+}
+.hero-tag{
+  position:absolute;
+  bottom:12px;
+  left:12px;
+  background:rgba(0,0,0,0.7);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  color:#ffd700;
+}
+h2{font-size:22px;margin-top:26px;margin-bottom:8px;color:#ffd700;}
+p{line-height:1.7;margin:0 0 12px 0;}
+ul{margin:0 0 14px 1.1rem;padding:0;}
+li{margin-bottom:6px;}
+.box{
+  margin:22px 0;
+  padding:14px 16px;
+  border-radius:14px;
+  border:1px solid rgba(255,215,0,0.45);
+  background:rgba(0,0,0,0.6);
+  box-shadow:0 0 18px rgba(0,0,0,0.8);
+  font-size:14px;
+}
+.back{text-align:center;margin-top:22px;font-size:13px;}
+.back a{color:#ffd700;text-decoration:none;margin:0 8px;}
+.back a:hover{text-decoration:underline;}
+</style>
+<link rel="stylesheet" href="menu.css">
+
 </head>
 <body>
-
-  <div class="background"></div>
-  <div class="glow-overlay"></div>
-
-  <div class="content-wrapper">
-
-    <header>
-      <h1>What is IHOPKC?</h1>
-      <p>A look at the ministry, mission, and heart behind the International House of Prayer of Kansas City.</p>
-    </header>
-
-    <div class="section">
-      <h2>Origins & Mission</h2>
-      <p>
-        <strong>IHOPKC</strong> (International House of Prayer of Kansas City) began on May 7, 1999, when a small group of full-time intercessors committed to worship and prayer for 13 hours a day. :contentReference[oaicite:1]{index=1}  
-      </p>
-      <p>
-        Just a few months later, on September 19, 1999, the ministry expanded to a full 24/7 schedule — a continuous prayer and worship movement that has remained active through live worship teams ever since. :contentReference[oaicite:2]{index=2}
-      </p>
-      <p>
-        IHOPKC’s mission involves much more than prayer: intercession, evangelism, discipleship, healing the sick, feeding the poor, and impacting all spheres of society — from family and education to arts, media, government, and more. :contentReference[oaicite:3]{index=3}
-      </p>
+  <div class="menu-container">
+    <button class="menu-button">☰ Menu</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="revival.html">Revival</a>
+      <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+      <a href="podcast.html">Podcasts</a>
+      <a href="partner.html">Get Connected</a>
+      <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
+      <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
     </div>
-
-    <div class="section">
-      <h2>24/7 Prayer & Worship</h2>
-      <p>
-        The core of IHOPKC is the <em>Global Prayer Room</em> — a sanctuary of continuous worship and intercession staffed by prayer leaders, musicians, and worship teams. :contentReference[oaicite:4]{index=4}
-      </p>
-      <p>
-        Their prayer rhythm flows in two-hour worship and intercession sets, rotating round the clock, day and night. This “harp & bowl” model is inspired by the vision in Revelation of unceasing worship before God’s throne. :contentReference[oaicite:5]{index=5}
-      </p>
-      <p>
-        Through their livestream, people worldwide can join in — allowing the prayer room’s influence to stretch far beyond Kansas City. :contentReference[oaicite:6]{index=6}
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Community, Outreach & Impact</h2>
-
-      <div class="inline-image">
-        <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80"
-             alt="Youth mission team serving children internationally">
-        <figcaption>Serving others as an expression of love and faith.</figcaption>
-      </div>
-
-      <p>
-        IHOPKC doesn't limit itself to prayer — it has historically equipped and sent out “intercessory missionaries” who engage in evangelism, mercy ministries, outreach to the poor, and social justice efforts around the globe. :contentReference[oaicite:7]{index=7}
-      </p>
-      <p>
-        Their vision is to rejoice before God in worship, intercede for the nations, and practically demonstrate the gospel through love, service, and compassion — reflecting God’s heart for the world. :contentReference[oaicite:8]{index=8}
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>How You Can Connect or Participate</h2>
-      <p>
-        You can join the Global Prayer Room online — through live streams available 24/7 for worship, prayer, and spiritual encouragement. :contentReference[oaicite:9]{index=9}
-      </p>
-      <p>
-        Many individuals are drawn to IHOPKC seeking deeper intimacy with God, community, missions training, and opportunities to serve. Their community emphasizes close fellowship, devotion, and shared vision. :contentReference[oaicite:10]{index=10}
-      </p>
-      <p>
-        If you feel called to intercessory prayer, worship, or missions — this ministry offers a place to grow, connect, and take part in what God is doing around the world.
-      </p>
-    </div>
-
-    <div class="back-links">
-      <a href="index.html">← Back to Home</a>
-    </div>
-
   </div>
+
+
+<div class="bg"></div>
+<div class="glow"></div>
+<div class="wrap">
+  <header>
+    <h1>IHOPKC – A Culture of Night and Day Prayer</h1>
+    <p>
+      A simple look at the heart behind the International House of Prayer in Kansas City
+      and why 24/7 worship still matters today.
+    </p>
+  </header>
+
+  <div class="hero">
+    <img src="https://images.unsplash.com/photo-1518131678677-bc1a4dca4ccb?auto=format&fit=crop&w=1400&q=80"
+         alt="People worshipping together in a prayer room" />
+    <div class="hero-tag">Prayer · Worship · Presence of God</div>
+  </div>
+
+  <p>
+    IHOPKC (International House of Prayer Kansas City) is known around the world as a
+    community built around one main thing: <strong>continual worship and prayer</strong>.
+    Since 1999, teams of worshippers and intercessors have been lifting up the name of Jesus
+    in prayer rooms filled with music, Scripture, and simple hunger for God.
+  </p>
+
+  <h2>What Is IHOPKC All About?</h2>
+  <p>
+    At its core, IHOPKC is a missions base centered on night-and-day prayer. Worship teams and
+    prayer leaders rotate through the prayer room in live two‑hour sets, creating a rhythm of
+    songs, Scripture, and intercession that continues around the clock.
+  </p>
+
+  <div class="box">
+    <strong>The heartbeat of IHOPKC:</strong>
+    <ul>
+      <li>Hosting God's presence through worship and prayer</li>
+      <li>Standing in the gap for cities, nations, and the Church</li>
+      <li>Equipping believers to love Jesus with their whole lives</li>
+      <li>Sending missionaries and prayer carriers into the world</li>
+    </ul>
+  </div>
+
+  <h2>More Than a Worship Set</h2>
+  <p>
+    While the live worship sets are what many people first see, life at IHOPKC includes
+    teaching, discipleship programs, internships, Bible courses, and community life.
+    Young and old gather to grow in the Word, hear God's heart, and live lifestyles
+    of prayer and mission.
+  </p>
+
+  <h2>Why 24/7 Prayer?</h2>
+  <p>
+    IHOPKC takes its model from biblical pictures of continual worship—
+    from King David's tabernacle to the heavenly worship scenes in Revelation.
+    The belief is simple: Jesus is worthy of <em>unceasing</em> adoration, and
+    continual prayer softens hearts and shifts atmospheres in ways we may never fully see.
+  </p>
+
+  <h2>How It Connects with Kingdom Market</h2>
+  <p>
+    Kingdom Market loves highlighting ministries like IHOPKC because they remind us of what
+    truly matters: God's presence, His Word, and a lifestyle of worship. As we champion
+    faith-filled creativity, resources, and community, places of prayer like IHOPKC
+    serve as spiritual “wells” that refresh and fuel the wider body of Christ.
+  </p>
+
+  <div class="box">
+    <strong>Want to explore more?</strong><br />
+    You can watch the live prayer room, learn about their internships, or dive into teaching resources at:<br />
+    <a href="https://ihopkc.org" target="_blank" style="color:#ffd700;">https://ihopkc.org</a>
+  </div>
+
+  <div class="back">
+    <a href="index.html">← Back to Home</a>
+  </div>
+</div>
+
+<script src="menu.js"></script>
 </body>
 </html>
