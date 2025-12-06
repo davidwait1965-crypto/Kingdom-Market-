@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #000;
-  color: #000;
+  color: #fff;  /* ✅ was #000 */
 }
 
 /* HIDE CERTAIN MENU LINKS */
@@ -376,12 +375,8 @@ header {
 
 /* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
-  .video-wrapper {
-    animation: none;
-  }
-  .connect-button {
-    animation: none;
-  }
+  .video-wrapper,
+  .connect-button,
   .storefront-prompt {
     animation: none;
   }
@@ -438,38 +433,37 @@ header {
       </p>
     </div>
 
-   <!-- FEATURED VIDEO -->
-<div style="text-align:center; margin-bottom:25px;">
-  <h2 style="color:white; text-shadow:0 0 12px black; margin-bottom:15px;">
-    Featured Kingdom Message
-  </h2>
+    <!-- FEATURED VIDEO -->
+    <div style="text-align:center; margin-bottom:25px;">
+      <h2 style="color:white; text-shadow:0 0 12px black; margin-bottom:15px;">
+        Featured Kingdom Message
+      </h2>
 
-  <div class="video-wrapper">
-    <iframe
-      src="https://www.youtube.com/embed/G870nirtS-I?autoplay=1&mute=1&loop=1&playlist=G870nirtS-I"
-      title="Teen Dead for 1 Hour, but Mom's Prayer Brings Him Back to Life"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-  </div>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/G870nirtS-I?autoplay=1&mute=1&loop=1&playlist=G870nirtS-I"
+          title="Teen Dead for 1 Hour, but Mom's Prayer Brings Him Back to Life"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
 
-  <!-- CAPTION UNDER VIDEO -->
-  <p style="
-      max-width: 850px;
-      margin: 14px auto 0;
-      color: #f7f7f7;
-      font-size: 15px;
-      line-height: 1.6;
-      text-shadow: 0 0 8px rgba(0,0,0,0.9);
-    ">
-    A powerful testimony of God’s miracle-working power — a young teen declared dead for an hour,
-    brought back to life through the unwavering prayer of his mother. A reminder that with God,
-    nothing is impossible and hope is never lost.
-  </p>
-</div>
-
+      <!-- CAPTION UNDER VIDEO -->
+      <p style="
+          max-width: 850px;
+          margin: 14px auto 0;
+          color: #f7f7f7;
+          font-size: 15px;
+          line-height: 1.6;
+          text-shadow: 0 0 8px rgba(0,0,0,0.9);
+        ">
+        A powerful testimony of God’s miracle-working power — a young teen declared dead for an hour,
+        brought back to life through the unwavering prayer of his mother. A reminder that with God,
+        nothing is impossible and hope is never lost.
+      </p>
+    </div>
 
     <!-- CONNECT WITH OUR TEAM -->
     <div class="connect-section">
@@ -510,38 +504,43 @@ header {
 </div>
 
 <script>
-// MENU TOGGLE (with outside click close)
-const menuButton = document.querySelector('.menu-button');
-const menuContainer = document.querySelector('.menu-container');
-menuButton.addEventListener('click', (e) => {
-  e.stopPropagation();
-  menuContainer.classList.toggle('show');
-});
-document.addEventListener('click', (e) => {
-  if (!menuContainer.contains(e.target)) {
-    menuContainer.classList.remove('show');
+document.addEventListener('DOMContentLoaded', () => {
+  // MENU TOGGLE (with outside click close)
+  const menuButton = document.querySelector('.menu-button');
+  const menuContainer = document.querySelector('.menu-container');
+
+  if (menuButton && menuContainer) {
+    menuButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuContainer.classList.toggle('show');
+    });
+    document.addEventListener('click', (e) => {
+      if (!menuContainer.contains(e.target)) {
+        menuContainer.classList.remove('show');
+      }
+    });
+  }
+
+  // ROTATING BIBLE VERSES
+  const verses = [
+    "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
+    "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
+    "“For with God nothing shall be impossible.” – Luke 1:37",
+    "“For we walk by faith, not by sight.” – 2 Corinthians 5:7",
+    "“The LORD is my shepherd; I shall not want.” – Psalm 23:1"
+  ];
+
+  const scriptureElement = document.getElementById('scriptureText');
+  if (scriptureElement) {
+    let verseIndex = 0;
+    function showNextVerse() {
+      scriptureElement.textContent = verses[verseIndex];
+      verseIndex = (verseIndex + 1) % verses.length;
+    }
+    showNextVerse();
+    setInterval(showNextVerse, 10000);
   }
 });
-
-// ROTATING BIBLE VERSES
-const verses = [
-  "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
-  "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
-  "“For with God nothing shall be impossible.” – Luke 1:37",
-  "“For we walk by faith, not by sight.” – 2 Corinthians 5:7",
-  "“The LORD is my shepherd; I shall not want.” – Psalm 23:1"
-];
-
-const scriptureElement = document.getElementById('scriptureText');
-let verseIndex = 0;
-
-function showNextVerse() {
-  scriptureElement.textContent = verses[verseIndex];
-  verseIndex = (verseIndex + 1) % verses.length;
-}
-
-showNextVerse();
-setInterval(showNextVerse, 10000);
 </script>
 
 </body>
