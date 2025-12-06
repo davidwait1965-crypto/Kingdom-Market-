@@ -1,212 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>YOM Teams – Kingdom Market Blog</title>
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #000;
-    color: #fff;
-}
-.scripture-background {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
-    z-index: 0;
-}
-.glow-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    background: radial-gradient(
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOM Teams – Youth on Mission</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    .scripture-background {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #222 0%, #000 60%, #000 100%);
+      z-index: 0;
+    }
+
+    .glow-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(
         circle at center,
-        rgba(255,215,0,0.22) 0%,
-        rgba(0,0,0,0.9) 70%
-    );
-    pointer-events: none;
-}
-.content-wrapper {
-    position: relative;
-    z-index: 2;
-    max-width: 950px;
-    margin: 40px auto 70px auto;
-    padding: 0 18px 40px;
-}
+        rgba(255, 80, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.95) 70%
+      );
+      pointer-events: none;
+    }
 
-/* (menu styles come from menu.css now) */
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 40px auto 80px auto;
+      padding: 0 18px 40px;
+    }
 
-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-header h1 {
-    font-size: 34px;
-    margin: 0;
-    text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
-}
-header p {
-    margin-top: 10px;
-    font-size: 15px;
-    color: #f7f0cc;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.blog-hero {
-    position: relative;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(0,0,0,0.7);
-    margin-bottom: 22px;
-}
-.blog-hero img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-}
-.blog-hero-tag {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    background: rgba(0,0,0,0.7);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    color: #ffd700;
-}
-.inline-image {
-    margin: 22px 0;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 0 24px rgba(0,0,0,0.7);
-}
-.inline-image img {
-    width: 100%;
-    max-height: 340px;
-    object-fit: cover;
-}
-.inline-image figcaption {
-    background: rgba(0,0,0,0.6);
-    padding: 8px;
-    font-size: 12px;
-    color: #ccc;
-}
-.highlight-box {
-    margin: 22px 0;
-    padding: 14px 16px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,215,0,0.45);
-    background: rgba(0,0,0,0.6);
-    box-shadow: 0 0 18px rgba(0,0,0,0.8);
-}
-</style>
-<link rel="stylesheet" href="menu.css">
+    header.yom-hero-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    header.yom-hero-header h1 {
+      font-size: 36px;
+      margin: 0 0 10px 0;
+      text-shadow: 0 0 18px black, 0 0 30px rgba(255, 120, 40, 0.9);
+    }
+
+    header.yom-hero-header p {
+      margin: 0;
+      font-size: 16px;
+      color: #ffe8c7;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-card {
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 0 36px rgba(0, 0, 0, 0.95);
+      margin-bottom: 26px;
+      background: #050608;
+    }
+
+    .hero-card img {
+      width: 100%;
+      max-height: 430px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-card-body {
+      padding: 18px 20px 20px;
+      background: radial-gradient(circle at top, #1a0f0b 0%, #050608 60%);
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      color: #ffd7a6;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-main-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #fdf5ee;
+    }
+
+    .cta-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #ff6633, #ffb347);
+      color: #111;
+      box-shadow: 0 0 22px rgba(255, 120, 40, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(255, 140, 60, 0.8);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffe8c7;
+      border: 1px solid rgba(255, 200, 140, 0.8);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 200, 140, 0.1);
+      transform: translateY(-1px);
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
+    }
+
+    section {
+      margin-top: 32px;
+      padding: 20px 18px 24px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 120, 40, 0.35);
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 14px black, 0 0 24px rgba(255, 140, 60, 0.8);
+    }
+
+    section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #f8f8f8;
+    }
+
+    section ul {
+      margin-top: 6px;
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #f2f2f2;
+    }
+
+    .inline-image {
+      margin: 20px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 26px rgba(0, 0, 0, 0.9);
+    }
+
+    .inline-image img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .inline-image figcaption {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #ddd;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .pillar-card {
+      background: radial-gradient(circle at top, #1b1320 0%, #06070a 60%);
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(255, 140, 60, 0.35);
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.9);
+    }
+
+    .pillar-card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 17px;
+      color: #ffb347;
+    }
+
+    .pillar-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #f1f1f1;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: #ffcf9b;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .experience-card {
+      background: #07070c;
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(255, 140, 60, 0.3);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.85);
+    }
+
+    .experience-card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 17px;
+      color: #ffb347;
+    }
+
+    .experience-card p {
+      font-size: 14px;
+      margin: 0 0 6px 0;
+      color: #f4f4f4;
+    }
+
+    .experience-card ul {
+      padding-left: 18px;
+      margin: 4px 0 0 0;
+      font-size: 14px;
+    }
+
+    .step-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .step-list li {
+      margin-bottom: 10px;
+    }
+
+    .step-label {
+      font-weight: bold;
+      color: #ffb347;
+    }
+
+    .highlight-box {
+      margin-top: 18px;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 120, 40, 0.6);
+      background: rgba(0, 0, 0, 0.75);
+      box-shadow: 0 0 22px rgba(0, 0, 0, 0.9);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .testimonial-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 6px 0;
+      font-size: 14px;
+    }
+
+    .testimonial-list li {
+      margin-bottom: 14px;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: #f4f4f4;
+    }
+
+    .testimonial-name {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #ffcf9b;
+    }
+
+    .faq-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .faq-item {
+      margin-bottom: 12px;
+    }
+
+    .faq-q {
+      font-weight: bold;
+      color: #ffb347;
+    }
+
+    .footer-links {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #eee;
+    }
+
+    .footer-links a {
+      color: #ffb347;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .back-home a {
+      color: #ffb347;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-home a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .pillars-grid,
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header.yom-hero-header h1 {
+        font-size: 30px;
+      }
+
+      .hero-card-body {
+        padding: 14px 14px 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-wrapper {
+        margin-top: 70px;
+        padding-bottom: 60px;
+      }
+
+      section {
+        padding: 16px 14px 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-<div class="scripture-background"></div>
-<div class="glow-overlay"></div>
+  <div class="scripture-background"></div>
+  <div class="glow-overlay"></div>
 
-<div class="menu-container">
+  <!-- Shared dropdown menu -->
+  <div class="menu-container">
     <button class="menu-button">☰ Menu</button>
     <div class="dropdown-content">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="revival.html">Revival</a>
-        <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
-        <a href="podcast.html">Podcasts</a>
-        <a href="partner.html">Get Connected</a>
-        <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
-        <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="revival.html">Revival</a>
+      <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+      <a href="podcast.html">Podcasts</a>
+      <a href="partner.html">Get Connected</a>
+      <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
+      <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
     </div>
-</div>
+  </div>
 
-<div class="content-wrapper">
-    <header>
-        <h1>YOM Teams — Youth on Mission</h1>
-        <p>Exploring how YOM teams empower young people to take the gospel to the nations.</p>
+  <div class="page-wrapper">
+    <header class="yom-hero-header">
+      <h1>Your Generation. Your Mission. Your Time is NOW.</h1>
+      <p>
+        YOM Teams is mobilizing young believers to take the Gospel to the nations—
+        through bold evangelism, radical discipleship, and hands-on mission work that changes lives.
+      </p>
     </header>
 
-    <div class="blog-hero">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80" 
-             alt="Youth on Mission team praying">
-        <div class="blog-hero-tag">Missions · Youth · Global Movement</div>
+    <!-- Hero -->
+    <div class="hero-card">
+      <img
+        src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/56252cbd-9b09-43ad-8668-f8163138b6b0/image.png?w=1184&h=864"
+        alt="Energetic young missionaries celebrating together on a dusty path at sunset"
+      />
+      <div class="hero-card-body">
+        <div class="hero-tagline">Youth on Mission · YOM Teams</div>
+        <div class="hero-main-text">
+          This is more than a trip. It’s a moment in history where your generation is rising up
+          to say “yes” to Jesus and “yes” to the nations. YOM Teams exists to help you step into
+          that calling with courage, community, and Kingdom purpose.
+        </div>
+        <div class="cta-row">
+          <a href="https://yomteams.com" target="_blank" class="btn-primary">Join a YOM Team Today →</a>
+          <a href="https://yomteams.com/trips" target="_blank" class="btn-secondary">Explore Upcoming Trips →</a>
+        </div>
+      </div>
     </div>
 
-    <p>
-        YOM (Youth on Mission) is a growing movement centered around Jesus, discipleship,
-        and hands-on mission work. Their heartbeat is simple: equip young people to know God deeply
-        and share His love boldly—locally and around the world.
-    </p>
+    <!-- Section 1: What is YOM Teams? -->
+    <section>
+      <h2>Youth on Mission: Where Faith Meets Action</h2>
+      <p>
+        YOM (Youth on Mission) isn’t just another youth group—it’s a movement of young believers
+        who are done sitting on the sidelines. This is for the generation that wants to know God
+        deeply and share His love boldly.
+      </p>
+      <p>YOM Teams are young people who:</p>
+      <ul>
+        <li>Live out their faith through real-world mission experiences</li>
+        <li>Share the Gospel with courage and conviction</li>
+        <li>Serve communities locally and globally</li>
+        <li>Grow as disciples through intentional training and mentorship</li>
+        <li>Step into their calling now instead of waiting for “someday”</li>
+      </ul>
+      <p>
+        Whether you’re 16 or 26, whether you have 2 weeks or 2 years—YOM has a place for you.
+        This isn’t missions as usual. This is your generation rising up to advance God’s Kingdom on earth.
+      </p>
 
-    <h2>What Makes YOM Unique?</h2>
-    <p>
-        YOM teams don’t just talk about missions—they live it. Whether through evangelism,
-        mercy ministries, discipleship, or community outreach, young people step into real situations
-        where God moves powerfully.
-    </p>
+      <figure class="inline-image">
+        <img
+          src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/a9b926cb-b006-444d-8bd6-487972b295be/image.png?w=1184&h=864"
+          alt="Youth doing street evangelism in a busy city"
+        />
+        <figcaption>YOM Teams take faith off the sidelines and into real-life mission.</figcaption>
+      </figure>
+    </section>
 
-    <figure class="inline-image">
-        <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80"
-             alt="Mission team serving children internationally">
-        <figcaption>Spreading the love of Jesus to the nations.</figcaption>
-    </figure>
+    <!-- Section 2: What Makes YOM Different? -->
+    <section>
+      <h2>Not Just Talk. Real Mission. Real Impact.</h2>
+      <p>
+        YOM Teams are built on three core pillars that turn belief into bold, world-changing action.
+      </p>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3>Authentic Discipleship</h3>
+          <p>
+            YOM doesn’t just send you out—they equip you first. Through intensive training in prayer,
+            the Word, and hearing God’s voice, you’ll be transformed from the inside out before you
+            ever step foot on the mission field.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>Bold Evangelism</h3>
+          <p>
+            No watered-down Gospel here. YOM Teams share Jesus unapologetically—on the streets,
+            in villages, in schools, wherever God opens doors. You’ll learn to share your faith with
+            confidence and watch God move powerfully.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>Hands-On Service</h3>
+          <p>
+            Mission isn’t just preaching—it’s demonstrating God’s love through action. YOM Teams
+            serve through mercy ministries, community projects, and meeting practical needs while
+            sharing the hope of Jesus.
+          </p>
+        </div>
+      </div>
 
-    <h2>Training for Real-World Impact</h2>
-    <p>
-        Before going out, YOM members receive intentional training focused on prayer,
-        evangelism, leadership, and the Word of God. The aim isn't just skill-building—it's
-        transformation from the inside out.
-    </p>
+      <figure class="inline-image" style="margin-top:20px;">
+        <img
+          src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/ba9b1e70-6275-405d-93cf-0699afcfc77e/image.png?w=1184&h=864"
+          alt="Young believers praying together with Bibles open"
+        />
+        <figcaption>Training, prayer, and discipleship fuel every YOM Team.</figcaption>
+      </figure>
+    </section>
 
-    <figure class="inline-image">
-        <img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?auto=format&fit=crop&w=1200&q=80"
-             alt="Young missionaries praying together outdoors">
-        <figcaption>Teams strengthened through prayer and unity.</figcaption>
-    </figure>
+    <!-- Section 3: The YOM Experience -->
+    <section>
+      <h2>What Happens on a YOM Team?</h2>
+      <div class="experience-grid">
+        <div class="experience-card">
+          <h3>Training Phase: Equipped to Go</h3>
+          <p>Before you’re sent, you’re prepared.</p>
+          <p>YOM’s training isn’t just about learning facts—it’s about transformation. You’ll dive deep into:</p>
+          <ul>
+            <li>Prayer &amp; Intercession – partnering with God in prayer</li>
+            <li>Evangelism Training – sharing the Gospel with boldness</li>
+            <li>Discipleship – growing in your identity as a son or daughter of God</li>
+            <li>Leadership Development – stepping into the calling God has on your life</li>
+            <li>Spiritual Warfare – walking in the authority of Christ</li>
+          </ul>
+          <p style="margin-top:6px;">
+            <strong>Duration:</strong> Varies by program (typically 1–6 months of training and outreach combined)
+          </p>
+        </div>
 
-    <h2>Serving in Communities Worldwide</h2>
-    <p>
-        From urban outreaches to remote villages, YOM teams serve wherever God opens a door.
-        Their approach is simple: listen to God, love people, and share the gospel with boldness.
-    </p>
+        <div class="experience-card">
+          <h3>Outreach Phase: Sent to Serve</h3>
+          <p>This is where faith becomes action.</p>
+          <p>YOM Teams deploy to:</p>
+          <ul>
+            <li>Urban centers – street evangelism, homeless ministry, campus outreach</li>
+            <li>Remote villages – church planting, community development, medical missions</li>
+            <li>International locations – cross-cultural ministry in nations hungry for the Gospel</li>
+            <li>Local communities – serving your own city with fresh eyes and bold faith</li>
+          </ul>
+          <p style="margin-top:6px;">
+            You’ll experience daily evangelism, see people encounter Jesus, and collect stories
+            you’ll tell for the rest of your life.
+          </p>
+        </div>
 
-    <figure class="inline-image">
-        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
-             alt="Youth mission team traveling together">
-        <figcaption>Young missionaries stepping into God’s call.</figcaption>
-    </figure>
+        <div class="experience-card">
+          <h3>Impact Phase: Forever Changed</h3>
+          <p>
+            You don’t just go on a mission trip—you become a missionary. YOM alumni describe
+            their experience as life-altering.
+          </p>
+          <p>
+            Some continue into full-time ministry. Others return home as marketplace missionaries,
+            bringing Kingdom impact to every sphere of society.
+          </p>
+          <p style="margin-top:6px;">
+            The question isn’t whether missions will change you. It’s whether you’re ready to be changed.
+          </p>
+        </div>
+      </div>
 
-    <div class="highlight-box">
-        <strong>What YOM Teams Are Known For:</strong>
-        <ul>
-            <li>Bold evangelism and outreach</li>
-            <li>Genuine discipleship and mentorship</li>
-            <li>Cross-cultural ministry experience</li>
-            <li>Raising up young leaders for Kingdom impact</li>
-        </ul>
-    </div>
+      <figure class="inline-image">
+        <img
+          src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/d8571406-fb53-4c6c-a58b-1d9e165afb9e/image.png?w=1184&h=864"
+          alt="Youth serving and building in a rural community"
+        />
+        <figcaption>YOM Teams serve through practical projects and compassionate ministry.</figcaption>
+      </figure>
+    </section>
 
-    <h2>Ready to Join a YOM Team?</h2>
-    <p>
-        If you're hungry for adventure with God and ready to step out in faith,
-        YOM Teams may be your next step. God is raising up a generation that
-        isn’t afraid to go wherever He leads—and you might be part of it.
-    </p>
+    <!-- Section 4: Where YOM Teams Serve -->
+    <section>
+      <h2>From Your Neighborhood to the Nations</h2>
+      <p>
+        YOM Teams go wherever God opens doors—and He’s opening them everywhere.
+      </p>
+      <p>Recent YOM outreaches have included:</p>
+      <ul>
+        <li><strong>United States</strong> – inner-city evangelism, homeless outreach, campus ministry</li>
+        <li><strong>Latin America</strong> – church planting, village ministry, youth camps</li>
+        <li><strong>Africa</strong> – medical missions, orphan care, evangelism crusades</li>
+        <li><strong>Asia</strong> – underground church support, creative access ministry</li>
+        <li><strong>Europe</strong> – refugee ministry, street evangelism, revival gatherings</li>
+      </ul>
+      <p>
+        The mission field isn’t just “over there”—it’s everywhere. YOM Teams serve both locally
+        and globally, because the Great Commission doesn’t have borders.
+      </p>
+      <p><strong>Where is God calling YOU to go?</strong></p>
+    </section>
 
-    <div class="highlight-box">
-        <strong>Learn more:</strong><br />
-        Visit the official site:<br />
-        <a href="https://yomteams.com" target="_blank">https://yomteams.com</a>
-    </div>
+    <!-- Section 5: Who Should Join YOM? -->
+    <section>
+      <h2>Is YOM Right for You?</h2>
+      <p>YOM Teams are for young believers who are:</p>
+      <ul>
+        <li><strong>Hungry for more</strong> – tired of lukewarm Christianity and ready for radical faith</li>
+        <li><strong>Willing to be stretched</strong> – you know growth happens outside your comfort zone</li>
+        <li><strong>Passionate about Jesus</strong> – you want to know Him more and make Him known</li>
+        <li><strong>Ready to serve</strong> – willing to put others first and serve sacrificially</li>
+        <li><strong>Open to adventure</strong> – excited (and maybe a little nervous) about what God has for you</li>
+        <li><strong>Committed to growth</strong> – ready to be discipled and become a disciple-maker</li>
+      </ul>
+      <p>
+        You don’t need to be “super spiritual” or have it all figured out. You just need to be
+        willing to say YES to God.
+      </p>
+      <p>
+        <strong>Age Range:</strong> Typically 16–30 (varies by program)<br />
+        <strong>Experience Required:</strong> None—just a heart for God and willingness to learn<br />
+        <strong>Cost:</strong> Varies by trip (fundraising support and coaching available)
+      </p>
+    </section>
 
-    <div style="text-align:center; margin-top:20px;">
-        <a href="index.html" style="color:#ffd700;">← Back to Home</a>
-    </div>
-</div>
+    <!-- Section 6: How to Join -->
+    <section>
+      <h2>Ready to Step Into Your Calling?</h2>
+      <p>
+        Joining a YOM Team is simpler than you think. Here’s how to get started:
+      </p>
+      <ul class="step-list">
+        <li>
+          <span class="step-label">Step 1: Pray &amp; Explore</span> – Ask God if He’s calling you to missions.
+          Visit <a href="https://yomteams.com" target="_blank" style="color:#ffb347;">YOMTeams.com</a>
+          to learn about upcoming trips, locations, and program options. Don’t overthink it—just take the first step.
+        </li>
+        <li>
+          <span class="step-label">Step 2: Choose Your Trip</span> – Browse available YOM Teams based on:
+          location, duration (2 weeks, 3 months, 1 year), focus (evangelism, mercy ministry, discipleship,
+          church planting), and timing (summer, gap year, or semester break).
+        </li>
+        <li>
+          <span class="step-label">Step 3: Apply &amp; Prepare</span> – Complete your application, connect with
+          YOM leadership, and begin preparing spiritually and practically. YOM will guide you through
+          fundraising, training, and logistics.
+        </li>
+        <li>
+          <span class="step-label">Step 4: Go &amp; Be Transformed</span> – Step onto the mission field and
+          watch God do more than you ever imagined—in the people you serve and in you.
+        </li>
+      </ul>
 
-<script src="menu.js"></script>
+      <div class="cta-row" style="margin-top:10px;">
+        <a href="https://yomteams.com/trips" target="_blank" class="btn-primary">Explore YOM Teams →</a>
+        <a href="https://yomteams.com/apply" target="_blank" class="btn-secondary">Apply to Join a Team →</a>
+      </div>
+    </section>
+
+    <!-- Section 7: Kingdom Market Connection -->
+    <section>
+      <h2>Why Kingdom Market Champions YOM Teams</h2>
+      <p>
+        At Kingdom Market, we’re all about faith that moves. We believe God is raising up a generation
+        of young believers who won’t wait for permission to change the world.
+      </p>
+      <p>
+        YOM Teams embodies everything we stand for:
+      </p>
+      <ul>
+        <li>Bold, unashamed faith in Jesus Christ</li>
+        <li>Action-oriented Christianity that goes beyond Sunday services</li>
+        <li>Radical obedience to the Great Commission</li>
+        <li>Youth empowerment and leadership development</li>
+        <li>Kingdom impact in every nation and sphere</li>
+      </ul>
+      <p>
+        When you join a YOM Team through Kingdom Market, you’re not just going on a trip—you’re joining
+        a movement of young believers who are advancing God’s Kingdom with courage, passion, and unwavering faith.
+        This is your generation’s moment. Don’t miss it.
+      </p>
+    </section>
+
+    <!-- Final Call-to-Action -->
+    <section>
+      <h2>The Harvest is Ready. Are You?</h2>
+      <p style="font-style:italic; color:#ffcf9b;">
+        “The harvest is plentiful, but the workers are few. Ask the Lord of the harvest, therefore,
+        to send out workers into his harvest field.” – Matthew 9:37–38
+      </p>
+      <p>
+        God isn’t asking you to wait until you feel “ready.” He’s asking you to step out in faith NOW.
+        Your generation has a calling. Your generation has a mission. Your generation has a moment.
+      </p>
+      <p><strong>Will you answer?</strong></p>
+      <div class="cta-row">
+        <a href="https://yomteams.com" target="_blank" class="btn-primary">Explore YOM Teams →</a>
+        <a href="https://yomteams.com/apply" target="_blank" class="btn-secondary">Apply to Join a Team →</a>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+      <h2>Lives Changed. Nations Impacted. Destinies Awakened.</h2>
+      <ul class="testimonial-list">
+        <li>
+          <div class="testimonial-quote">
+            “YOM changed everything for me. I went from being a passive Christian to someone who actually
+            lives out my faith. Now I’m pursuing full-time ministry because of what God did in me on that trip.”
+          </div>
+          <div class="testimonial-name">— Jake, 22, YOM Alumni</div>
+        </li>
+        <li>
+          <div class="testimonial-quote">
+            “I was terrified to share the Gospel before YOM. Now I can’t stop talking about Jesus.
+            YOM gave me the training, confidence, and fire I needed.”
+          </div>
+          <div class="testimonial-name">— Maria, 19, YOM Team Member</div>
+        </li>
+        <li>
+          <div class="testimonial-quote">
+            “Serving on a YOM Team was the best decision I ever made. I found my calling, my community,
+            and a deeper relationship with Jesus than I ever thought possible.”
+          </div>
+          <div class="testimonial-name">— David, 24, YOM Alumni</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2>Common Questions About YOM Teams</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-q">Q: Do I need mission experience to join?</div>
+          <div>A: Nope! YOM provides all the training you need. Just bring a willing heart.</div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q">Q: How much does it cost?</div>
+          <div>
+            A: It varies by trip (typically $2,000–$5,000). YOM provides fundraising resources and coaching
+            to help you get there.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q">Q: What if I’m still in school?</div>
+          <div>
+            A: Perfect! Many YOM trips are designed for summer breaks, gap years, or semester programs.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q">Q: Is it safe?</div>
+          <div>
+            A: YOM prioritizes safety with experienced leaders, risk management protocols, and 24/7 support.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q">Q: What if I don’t feel “called” to missions?</div>
+          <div>
+            A: Every believer is called to the Great Commission. The question is where and when—not if.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer / Quick Links -->
+    <section>
+      <h2>Learn More &amp; Take Action</h2>
+      <div class="footer-links">
+        <p><strong>Quick Links:</strong></p>
+        <p>
+          • Official YOM Teams Website:
+          <a href="https://yomteams.com" target="_blank">https://yomteams.com</a><br />
+          • Upcoming Trips:
+          <a href="https://yomteams.com/trips" target="_blank">https://yomteams.com/trips</a><br />
+          • Apply Now:
+          <a href="https://yomteams.com/apply" target="_blank">https://yomteams.com/apply</a>
+        </p>
+        <p>
+          <strong>Kingdom Market Connection:</strong><br />
+          Kingdom Market is a faith-inspired platform connecting believers to meaningful products,
+          uplifting news, prayer spaces, and global mission opportunities like YOM Teams.
+        </p>
+      </div>
+      <div class="back-home">
+        <a href="index.html">← Back to Kingdom Market Home</a>
+      </div>
+    </section>
+  </div>
+
+  <script src="menu.js"></script>
 </body>
 </html>
