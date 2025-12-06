@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>YOM Teams – Kingdom Market Blog</title>
-
 <style>
 body {
     margin: 0;
@@ -12,8 +11,6 @@ body {
     background: #000;
     color: #fff;
 }
-
-/* BACKGROUND */
 .scripture-background {
     position: fixed;
     inset: 0;
@@ -31,7 +28,6 @@ body {
     );
     pointer-events: none;
 }
-
 .content-wrapper {
     position: relative;
     z-index: 2;
@@ -39,8 +35,6 @@ body {
     margin: 40px auto 70px auto;
     padding: 0 18px 40px;
 }
-
-/* MENU */
 .menu-container {
     position: absolute;
     top: 10px;
@@ -78,8 +72,6 @@ body {
 .menu-container.show .dropdown-content {
     display: block;
 }
-
-/* BLOG STYLING */
 header {
     text-align: center;
     margin-bottom: 25px;
@@ -97,7 +89,6 @@ header p {
     margin-left: auto;
     margin-right: auto;
 }
-
 .blog-hero {
     position: relative;
     border-radius: 18px;
@@ -120,7 +111,6 @@ header p {
     font-size: 12px;
     color: #ffd700;
 }
-
 .inline-image {
     margin: 22px 0;
     border-radius: 16px;
@@ -138,7 +128,6 @@ header p {
     font-size: 12px;
     color: #ccc;
 }
-
 .highlight-box {
     margin: 22px 0;
     padding: 14px 16px;
@@ -148,15 +137,13 @@ header p {
     box-shadow: 0 0 18px rgba(0,0,0,0.8);
 }
 </style>
+<link rel="stylesheet" href="menu.css">
+
 </head>
-
 <body>
-
-<!-- BACKGROUND -->
 <div class="scripture-background"></div>
 <div class="glow-overlay"></div>
 
-<!-- MENU -->
 <div class="menu-container">
     <button class="menu-button">☰ Menu</button>
     <div class="dropdown-content">
@@ -167,11 +154,7 @@ header p {
         <a href="podcast.html">Podcasts</a>
         <a href="partner.html">Get Connected</a>
         <a href="ywam-global-blog.html">YWAM Global</a>
-        <a href="yom-teams-blog.html">YOM Teams</a>
-        <a href="#">Accessories</a>
-        <a href="#">Gifts</a>
-        <a href="#">Featured Collection</a>
-        <a href="#">Shop All</a>
+        <a href="ywam-salem-blog.html">YWAM Salem</a>
     </div>
 </div>
 
@@ -181,7 +164,6 @@ header p {
         <p>Exploring how YOM teams empower young people to take the gospel to the nations.</p>
     </header>
 
-    <!-- HERO -->
     <div class="blog-hero">
         <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80" 
              alt="Youth on Mission team praying">
@@ -194,35 +176,17 @@ header p {
         and share His love boldly—locally and around the world.
     </p>
 
-    <!-- ⭐ NEW PARAGRAPH INSERTED HERE ⭐ -->
-    <p style="margin: 25px 0; line-height: 1.7;">
-        In a world overflowing with screens, gaming, and digital escape, YOM offers something
-        refreshingly real—genuine friendships, shared purpose, and adventurous community.
-        It’s a place where young people step outside their virtual comfort zones and discover just
-        how meaningful life can be when surrounded by people who love Jesus, love others,
-        and want to make a difference. YOM gives teens and young adults the chance to connect,
-        laugh, grow, and serve together in ways no video game ever could.
+    <h2>What Makes YOM Unique?</h2>
+    <p>
+        YOM teams don’t just talk about missions—they live it. Whether through evangelism,
+        mercy ministries, discipleship, or community outreach, young people step into real situations
+        where God moves powerfully.
     </p>
 
-    <!-- IMAGE 2 / GAMING CONTROLLER IMAGE -->
     <figure class="inline-image">
         <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80"
              alt="Mission team serving children internationally">
         <figcaption>Spreading the love of Jesus to the nations.</figcaption>
-    </figure>
-
-    <h2>What Makes YOM Unique?</h2>
-    <p>
-        YOM teams don’t just talk about missions—they live it. Whether through evangelism,
-        mercy ministries, discipleship, or community outreach, young people step into real 
-        situations where God moves powerfully.
-    </p>
-
-    <!-- IMAGE 3 -->
-    <figure class="inline-image">
-        <img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?auto=format&fit=crop&w=1200&q=80"
-             alt="Young missionaries praying together outdoors">
-        <figcaption>Teams strengthened through prayer and unity.</figcaption>
     </figure>
 
     <h2>Training for Real-World Impact</h2>
@@ -232,7 +196,18 @@ header p {
         transformation from the inside out.
     </p>
 
-    <!-- IMAGE 4 -->
+    <figure class="inline-image">
+        <img src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?auto=format&fit=crop&w=1200&q=80"
+             alt="Young missionaries praying together outdoors">
+        <figcaption>Teams strengthened through prayer and unity.</figcaption>
+    </figure>
+
+    <h2>Serving in Communities Worldwide</h2>
+    <p>
+        From urban outreaches to remote villages, YOM teams serve wherever God opens a door.
+        Their approach is simple: listen to God, love people, and share the gospel with boldness.
+    </p>
+
     <figure class="inline-image">
         <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
              alt="Youth mission team traveling together">
@@ -258,6 +233,7 @@ header p {
 
     <div class="highlight-box">
         <strong>Learn more:</strong><br />
+        Visit the official site:<br />
         <a href="https://yomteams.com" target="_blank">https://yomteams.com</a>
     </div>
 
@@ -269,11 +245,11 @@ header p {
 <script>
 const menuButton = document.querySelector('.menu-button');
 const menuContainer = document.querySelector('.menu-container');
-
 menuButton.addEventListener('click', () => {
     menuContainer.classList.toggle('show');
 });
 </script>
 
+<script src="menu.js"></script>
 </body>
 </html>
