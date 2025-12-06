@@ -1,32 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>YWAM Global – Kingdom Market Blog</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#000;color:#fff;}
-.wrap{max-width:950px;margin:40px auto 70px auto;padding:0 18px 40px;}
-header{text-align:center;margin-bottom:24px;}
-header h1{font-size:34px;margin:0;text-shadow:0 0 12px #000,0 0 24px rgba(255,215,0,0.7);}
-header p{margin-top:10px;font-size:15px;color:#f7f0cc;max-width:640px;margin-left:auto;margin-right:auto;}
-.hero{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 0 30px rgba(0,0,0,0.7);margin-bottom:22px;}
-.hero img{width:100%;max-height:420px;object-fit:cover;}
-.hero-tag{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.7);padding:6px 12px;border-radius:999px;font-size:12px;color:#ffd700;}
-h2{font-size:22px;margin-top:26px;margin-bottom:8px;color:#ffd700;}
-p{line-height:1.7;margin:0 0 12px 0;}
-.inline-image{margin:22px 0;border-radius:16px;overflow:hidden;box-shadow:0 0 24px rgba(0,0,0,0.7);}
-.inline-image img{width:100%;max-height:340px;object-fit:cover;}
-.inline-image figcaption{background:rgba(0,0,0,0.6);padding:8px;font-size:12px;color:#ccc;}
-.box{margin:22px 0;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,215,0,0.45);background:rgba(0,0,0,0.6);box-shadow:0 0 18px rgba(0,0,0,0.8);}
-a{color:#ffd700;text-decoration:none;}
-a:hover{text-decoration:underline;}
-.back{text-align:center;margin-top:22px;font-size:13px;}
-</style>
-<link rel="stylesheet" href="menu.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YWAM Global – Kingdom Market</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
 
+    .scripture-background {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #222 0%, #000 60%, #000 100%);
+      z-index: 0;
+    }
+
+    .glow-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 215, 0, 0.22) 0%,
+        rgba(0, 0, 0, 0.95) 70%
+      );
+      pointer-events: none;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 40px auto 80px auto;
+      padding: 0 18px 40px;
+    }
+
+    header.ywam-hero-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header.ywam-hero-header h1 {
+      font-size: 36px;
+      margin: 0 0 10px 0;
+      text-shadow: 0 0 16px black, 0 0 28px rgba(255, 215, 0, 0.9);
+    }
+
+    header.ywam-hero-header p {
+      margin: 0;
+      font-size: 16px;
+      color: #f7f0cc;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    .hero-card {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 32px rgba(0, 0, 0, 0.9);
+      margin-bottom: 24px;
+      background: #050608;
+    }
+
+    .hero-card img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-card-body {
+      padding: 18px 20px 20px;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      color: #f5e6a9;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-main-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #f5f5f5;
+    }
+
+    .cta-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #f5d46b, #f7b733);
+      color: #111;
+      box-shadow: 0 0 18px rgba(247, 183, 51, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(247, 183, 51, 0.8);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #f6e7ad;
+      border: 1px solid rgba(246, 231, 173, 0.7);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(246, 231, 173, 0.1);
+      transform: translateY(-1px);
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.7);
+    }
+
+    section {
+      margin-top: 32px;
+      padding: 20px 18px 24px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px black, 0 0 22px rgba(255, 215, 0, 0.7);
+    }
+
+    section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #f3f3f3;
+    }
+
+    .inline-image {
+      margin: 20px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.85);
+    }
+
+    .inline-image img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .inline-image figcaption {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #ddd;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .benefit-card {
+      background: radial-gradient(circle at top, #1a1f2b 0%, #050608 60%);
+      border-radius: 16px;
+      padding: 16px 14px 14px;
+      border: 1px solid rgba(255, 215, 0, 0.22);
+      box-shadow: 0 0 22px rgba(0, 0, 0, 0.9);
+    }
+
+    .benefit-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 17px;
+      color: #f7d469;
+    }
+
+    .benefit-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #f1f1f1;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: #f2dea0;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .three-focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .focus-card {
+      background: #06070a;
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(255, 215, 0, 0.18);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .focus-card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 17px;
+      color: #f7d469;
+    }
+
+    .focus-card h4 {
+      margin: 4px 0 6px 0;
+      font-size: 14px;
+      color: #f2dea0;
+      font-weight: normal;
+    }
+
+    .focus-card ul {
+      padding-left: 18px;
+      margin: 6px 0 0 0;
+      font-size: 14px;
+      color: #eee;
+    }
+
+    .step-list {
+      margin-top: 10px;
+      list-style: none;
+      padding-left: 0;
+      font-size: 14px;
+    }
+
+    .step-list li {
+      margin-bottom: 8px;
+    }
+
+    .step-label {
+      font-weight: bold;
+      color: #f7d469;
+    }
+
+    .highlight-box {
+      margin-top: 18px;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 215, 0, 0.55);
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .testimonial-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 6px 0;
+      font-size: 14px;
+    }
+
+    .testimonial-list li {
+      margin-bottom: 14px;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: #f1f1f1;
+    }
+
+    .testimonial-name {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #f2dea0;
+    }
+
+    .footer-links {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #eee;
+    }
+
+    .footer-links a {
+      color: #f7d469;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .back-home a {
+      color: #f7d469;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-home a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .benefits-grid,
+      .three-focus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header.ywam-hero-header h1 {
+        font-size: 30px;
+      }
+
+      .hero-card-body {
+        padding: 14px 14px 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-wrapper {
+        margin-top: 70px;
+        padding-bottom: 60px;
+      }
+
+      section {
+        padding: 16px 14px 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="menu.css">
 </head>
 <body>
+  <div class="scripture-background"></div>
+  <div class="glow-overlay"></div>
+
+  <!-- Shared dropdown menu -->
   <div class="menu-container">
     <button class="menu-button">☰ Menu</button>
     <div class="dropdown-content">
@@ -41,67 +381,297 @@ a:hover{text-decoration:underline;}
     </div>
   </div>
 
+  <div class="page-wrapper">
+    <header class="ywam-hero-header">
+      <h1>Answer the Call. Change the World. Join YWAM.</h1>
+      <p>
+        Youth With A Mission is mobilizing ordinary believers to do extraordinary things for God—in every
+        nation, every sphere, every generation.
+      </p>
+    </header>
 
-<div class="wrap">
-<header>
-  <h1>YWAM – A Global Family on Mission</h1>
-  <p>
-    A snapshot of Youth With A Mission around the world: ordinary people saying “yes” to an extraordinary God.
-  </p>
-</header>
+    <!-- Hero section -->
+    <div class="hero-card">
+      <img
+        src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/c01fa9aa-05c7-461d-992a-1e99e90f7a1e/image.png?w=1184&h=864"
+        alt="Diverse missionaries praying together on a hillside at sunset"
+      />
+      <div class="hero-card-body">
+        <div class="hero-tagline">YWAM Global · Missions · Calling</div>
+        <div class="hero-main-text">
+          Youth With A Mission (YWAM) is a global movement of believers who share one passion:
+          <strong>knowing God and making Him known</strong>. From bustling cities to remote villages,
+          YWAMers are stepping out in faith to preach the Gospel, serve the poor, disciple nations,
+          and carry the love of Jesus to the ends of the earth.
+        </div>
+        <div class="cta-row">
+          <a href="https://ywam.org" target="_blank" class="btn-primary">Explore YWAM Opportunities →</a>
+          <a href="https://ywam.org/dts" target="_blank" class="btn-secondary">Find a DTS Program Near You →</a>
+        </div>
+      </div>
+    </div>
 
-<div class="hero">
-  <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1400&q=80"
-       alt="Young people worshipping together" />
-  <div class="hero-tag">Global · Missions · Worship</div>
-</div>
+    <!-- Section 1: What is YWAM? -->
+    <section>
+      <h2>A Global Family on Mission for Jesus</h2>
+      <p>
+        Youth With A Mission (YWAM) isn’t just an organization—it’s a <strong>movement</strong> of believers
+        from every corner of the earth who share one passion: knowing God and making Him known.
+      </p>
+      <p>
+        For over 60 years, YWAM has been equipping and sending out thousands of Christians to:
+      </p>
+      <ul>
+        <li>Preach the Gospel in unreached nations</li>
+        <li>Serve the poor through mercy ministries</li>
+        <li>Train disciples who will transform their communities</li>
+        <li>Impact every sphere of society with Kingdom values</li>
+      </ul>
+      <p>
+        From crowded urban streets to isolated villages, YWAMers are living out the Great Commission—and
+        <strong>you can too</strong>.
+      </p>
 
-<p>
-  Youth With A Mission (YWAM) is a global movement of believers who want to know God and make Him known.
-  From major cities to remote villages, YWAMers are serving, preaching the gospel, and demonstrating the love of Jesus.
-</p>
+      <figure class="inline-image">
+        <img
+          src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/ec4040a4-1ff8-49a2-a5fd-b0ea2fc1c2ca/image.png?w=1184&h=864"
+          alt="Young volunteers joyfully serving their community"
+        />
+        <figcaption>From local neighborhoods to the nations, YWAM serves with the heart of Jesus.</figcaption>
+      </figure>
+    </section>
 
-<h2>A Family from Many Nations</h2>
-<p>
-  One of the most beautiful parts of YWAM is its diversity—people of different ages, cultures, and backgrounds
-  coming together around the Great Commission. It’s less about an organization and more about a family on mission.
-</p>
+    <!-- Section 2: Why YWAM? Benefits & Impact -->
+    <section>
+      <h2>Why Thousands Are Saying “Yes” to YWAM</h2>
+      <p>
+        YWAM is more than a program—it’s an invitation into a lifestyle of radical obedience, adventure with God,
+        and global impact.
+      </p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Radical Discipleship</h3>
+          <p>
+            Go deeper in your faith through intensive biblical teaching, worship, and mentorship.
+            YWAM’s Discipleship Training Schools (DTS) have transformed countless lives by calling
+            believers into wholehearted devotion to Jesus.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <h3>Hands-On Mission</h3>
+          <p>
+            Don’t just learn—<strong>do</strong>. YWAM combines classroom training with real-world outreach.
+            You’ll share the Gospel, serve communities, pray for the sick, and watch God move in power.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <h3>Global Community</h3>
+          <p>
+            Join a diverse family of believers from every nation, age, and background.
+            Experience unity in Christ like never before as you worship, learn, and serve side by side.
+          </p>
+        </div>
+      </div>
 
-<figure class="inline-image">
-  <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80"
-       alt="Global missions training community" />
-  <figcaption>Training, worship, and community at a YWAM campus.</figcaption>
-</figure>
+      <figure class="inline-image" style="margin-top:20px;">
+        <img
+          src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/9e677f2b-4d57-40c6-a777-bdbb00afcdc6/image.png?w=1184&h=864"
+          alt="Large group of believers worshiping together at a training school"
+        />
+        <figcaption>Worship, training, and community—YWAM is a global family on mission.</figcaption>
+      </figure>
+    </section>
 
-<h2>Training, Outreach, and Mercy</h2>
-<p>
-  Across the world, YWAM focuses on three main areas: training, evangelism, and mercy ministries.
-  Discipleship Training Schools (DTS) are one of the primary on-ramps—intensive seasons of learning and then going.
-</p>
+    <!-- Section 3: How YWAM Works -->
+    <section>
+      <h2>Three Ways YWAM is Transforming Nations</h2>
+      <div class="three-focus-grid">
+        <div class="focus-card">
+          <h3>Training &amp; Discipleship</h3>
+          <h4>Equipping believers to live out their calling</h4>
+          <p>
+            YWAM’s Discipleship Training Schools (DTS) are life-changing experiences where you will:
+          </p>
+          <ul>
+            <li>Study God’s Word intensively</li>
+            <li>Discover your identity and calling</li>
+            <li>Learn to hear God’s voice</li>
+            <li>Prepare for cross-cultural ministry</li>
+          </ul>
+          <p style="margin-top:8px;">
+            <strong>Duration:</strong> Typically 5–6 months (lecture phase + outreach phase)
+          </p>
+        </div>
 
-<figure class="inline-image">
-  <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80"
-       alt="YWAM outreach with children" />
-  <figcaption>Sharing Jesus’ love in practical and tangible ways.</figcaption>
-</figure>
+        <div class="focus-card">
+          <h3>Evangelism &amp; Church Planting</h3>
+          <h4>Taking the Gospel to the ends of the earth</h4>
+          <p>YWAM teams are actively:</p>
+          <ul>
+            <li>Sharing Jesus among unreached people groups</li>
+            <li>Planting churches in pioneer areas</li>
+            <li>Leading worship and revival gatherings</li>
+            <li>Discipling new believers</li>
+          </ul>
+          <p style="margin-top:8px;">
+            <strong>Impact:</strong> Millions have encountered Christ through YWAM outreach.
+          </p>
+        </div>
 
-<h2>Why Kingdom Market Highlights YWAM</h2>
-<p>
-  At Kingdom Market, we love YWAM because it reflects so much of our own heart:
-  faith in action, creativity, and a desire to see every sphere of society touched by the gospel.
-</p>
+        <div class="focus-card">
+          <h3>Mercy Ministries</h3>
+          <h4>Demonstrating God’s love through action</h4>
+          <p>YWAM serves the vulnerable through:</p>
+          <ul>
+            <li>Medical missions and healthcare</li>
+            <li>Orphan care and family support</li>
+            <li>Disaster relief and humanitarian aid</li>
+            <li>Education and community development</li>
+          </ul>
+          <p style="margin-top:8px;">
+            <strong>Mission:</strong> Show the world that Jesus cares for the whole person—body, soul, and spirit.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<div class="box">
-  <strong>Learn more:</strong><br />
-  Explore the global movement at<br />
-  <a href="https://ywam.org" target="_blank">https://ywam.org</a>
-</div>
+    <!-- Section 4: Your Next Step -->
+    <section>
+      <h2>Ready to Step Into Your Calling?</h2>
+      <p>
+        God is calling you to be part of this global movement. Whether you’re 18 or 80, whether you go
+        for 3 months or 3 years, YWAM has a place for you.
+      </p>
+      <p>Here’s how to get started:</p>
+      <ul class="step-list">
+        <li>
+          <span class="step-label">Step 1: Pray &amp; Explore</span> – Ask God if He’s calling you to missions.
+          Visit <a href="https://ywam.org" target="_blank" style="color:#f7d469;">YWAM.org</a> to learn about
+          programs, locations, and opportunities worldwide.
+        </li>
+        <li>
+          <span class="step-label">Step 2: Choose Your Program</span> – DTS (Discipleship Training School) for
+          first-timers, short-term outreach (2 weeks to 3 months), long-term missions (1+ years of service),
+          or specialized schools such as worship, media, sports, business, and more.
+        </li>
+        <li>
+          <span class="step-label">Step 3: Apply &amp; Prepare</span> – Connect with a YWAM base, complete your
+          application, and begin fundraising. YWAM staff will walk with you through every step.
+        </li>
+        <li>
+          <span class="step-label">Step 4: Go &amp; Transform</span> – Step into the adventure God has for you and
+          watch Him work through you in ways you never imagined.
+        </li>
+      </ul>
 
-<div class="back">
-  <a href="index.html">← Back to Home</a>
-</div>
-</div>
+      <figure class="inline-image">
+        <img
+          src="https://us.chat-img.sintra.ai/a41b6186-fbd9-4b64-8c1f-a9df9e7faf64/cae10f34-4016-406d-b4d3-f220e79cbeb4/image.png?w=1184&h=864"
+          alt="Mission team walking together toward the horizon at sunset"
+        />
+        <figcaption>The world is waiting. Take the next step into God’s calling.</figcaption>
+      </figure>
 
-<script src="menu.js"></script>
+      <div class="cta-row" style="margin-top:6px;">
+        <a href="https://ywam.org" target="_blank" class="btn-primary">Visit YWAM.org to Learn More →</a>
+        <a href="https://ywam.org/dts" target="_blank" class="btn-secondary">Find a DTS Program Near You →</a>
+      </div>
+    </section>
+
+    <!-- Section 5: Kingdom Market Connection -->
+    <section>
+      <h2>Why Kingdom Market Champions YWAM</h2>
+      <p>
+        At Kingdom Market, we believe in <strong>faith that moves</strong>. We’re not just about products—we’re
+        about purpose.
+      </p>
+      <p>
+        YWAM embodies everything we stand for:
+      </p>
+      <ul>
+        <li>Bold faith that steps out in obedience</li>
+        <li>Kingdom impact in every sphere of society</li>
+        <li>Global unity among believers</li>
+        <li>Creativity and innovation in sharing the Gospel</li>
+        <li>Radical generosity and sacrificial love</li>
+      </ul>
+      <p>
+        That’s why we’re honored to connect you with YWAM’s life-changing opportunities. When you explore YWAM
+        through Kingdom Market, you’re joining a community that believes God is raising up a generation to
+        transform nations and advance His Kingdom on earth.
+      </p>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section>
+      <h2>The World is Waiting. Will You Go?</h2>
+      <p style="font-style:italic; color:#f7e5a2;">
+        “Go into all the world and preach the gospel to all creation.” – Mark 16:15
+      </p>
+      <p>
+        This isn’t just a verse—it’s your invitation. YWAM is ready to equip you, send you, and walk with you as
+        you answer God’s call. Don’t wait for the “perfect time.” <strong>The harvest is ready now.</strong>
+      </p>
+
+      <div class="cta-row">
+        <a href="https://ywam.org" target="_blank" class="btn-primary">Visit YWAM.org to Learn More →</a>
+        <a href="https://ywam.org/dts" target="_blank" class="btn-secondary">Find a DTS Program Near You →</a>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section>
+      <h2>Lives Changed. Nations Impacted.</h2>
+      <ul class="testimonial-list">
+        <li>
+          <div class="testimonial-quote">
+            “YWAM’s DTS changed my life. I went from being a lukewarm Christian to someone on fire for God.
+            Now I’m serving full-time in missions.”
+          </div>
+          <div class="testimonial-name">— Sarah, DTS Graduate</div>
+        </li>
+        <li>
+          <div class="testimonial-quote">
+            “I thought missions was only for ‘super Christians.’ YWAM showed me that God can use anyone willing
+            to say yes.”
+          </div>
+          <div class="testimonial-name">— Marcus, Short-term Outreach Participant</div>
+        </li>
+        <li>
+          <div class="testimonial-quote">
+            “The diversity and unity I experienced in YWAM was a taste of heaven. People from 30+ nations worshiping
+            Jesus together—unforgettable.”
+          </div>
+          <div class="testimonial-name">— Priya, YWAM Staff</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer / Quick Links -->
+    <section>
+      <h2>Learn More &amp; Take Action</h2>
+      <div class="footer-links">
+        <p><strong>Quick Links:</strong></p>
+        <p>
+          • Official YWAM Website:
+          <a href="https://ywam.org" target="_blank">https://ywam.org</a><br />
+          • Find a DTS:
+          <a href="https://ywam.org/dts" target="_blank">https://ywam.org/dts</a><br />
+          • YWAM Locations Worldwide:
+          <a href="https://ywam.org/locations" target="_blank">https://ywam.org/locations</a>
+        </p>
+        <p>
+          <strong>Kingdom Market Connection:</strong><br />
+          Kingdom Market is a faith-inspired platform connecting believers to meaningful products, uplifting news,
+          prayer spaces, and global mission opportunities like YWAM.
+        </p>
+      </div>
+      <div class="back-home">
+        <a href="index.html">← Back to Kingdom Market Home</a>
+      </div>
+    </section>
+  </div>
+
+  <script src="menu.js"></script>
 </body>
 </html>
