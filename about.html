@@ -1,166 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Kingdom Market</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us - Kingdom Market</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  height: 100vh;
+  overflow-y: auto;
+}
+.background {
+  position: fixed;
+  inset: 0;
+  background: url('cherryblossom.jpeg') no-repeat center center/cover;
+  filter: brightness(0.6) saturate(1.2);
+  z-index: 0;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+.petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+.petal {
+  position: absolute;
+  width: 18px;
+  height: 28px;
+  background: radial-gradient(circle at 30% 30%, #ffe6f2 0%, #ffb6d9 40%, #ff6fa8 100%);
+  border-radius: 60% 40% 60% 40%;
+  opacity: 0.8;
+  filter: blur(0.3px);
+  animation: floatPetal 16s linear infinite;
+}
+.petal.p1 { top: -10%; left: 5%;  width: 20px; height: 32px; animation-duration: 18s; }
+.petal.p2 { top: -15%; left: 90%; width: 16px; height: 26px; animation-duration: 19s; }
+.petal.p3 { top: -20%; left: 15%; width: 14px; height: 24px; animation-duration: 17s; }
+.petal.p4 { top: -18%; left: 75%; width: 22px; height: 34px; animation-duration: 21s; }
+.petal.p5 { top: -12%; left: 40%; width: 18px; height: 28px; animation-duration: 20s; }
+.petal.p6 { top: -25%; left: 0%;  width: 16px; height: 26px; animation-duration: 22s; }
+.petal.p7 { top: -22%; left: 60%; width: 20px; height: 30px; animation-duration: 19s; }
+.petal.p8 { top: -18%; left: 30%; width: 14px; height: 22px; animation-duration: 23s; }
+.petal.p9 { top: -16%; left: 82%; width: 18px; height: 28px; animation-duration: 24s; }
+.petal.p10{ top: -24%; left: 50%; width: 20px; height: 32px; animation-duration: 26s; }
+@keyframes floatPetal {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  10%{ opacity: 0.9; }
+  50%{ transform: translate3d(-20px, 55vh, 0) rotate(140deg); }
+  100%{ transform: translate3d(20px, 110vh, 0) rotate(260deg); opacity: 0; }
+}
+.content {
+  position: relative;
+  z-index: 3;
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 12px rgba(0,0,0,0.7);
+}
+.textbox {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+  font-size: 20px;
+  line-height: 1.65;
+  backdrop-filter: blur(4px);
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+a {
+  color: #ffd700;
+  text-decoration: none;
+  font-size: 18px;
+}
+a:hover { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="menu.css">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            height: 100vh;
-            overflow-y: auto;
-        }
-
-        /* FULLSCREEN BLOSSOM BACKGROUND */
-        .background {
-            position: fixed;
-            inset: 0;
-            background: url('cherryblossom.jpeg') no-repeat center center/cover;
-            filter: brightness(0.6) saturate(1.2);
-            z-index: 0;
-        }
-
-        /* DARK OVERLAY TO MAKE TEXT POP */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(2px);
-            z-index: 1;
-        }
-
-        /* FLOATING PETALS LAYER */
-        .petals {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .petal {
-            position: absolute;
-            width: 18px;
-            height: 28px;
-            background: radial-gradient(circle at 30% 30%, #ffe6f2 0%, #ffb6d9 40%, #ff6fa8 100%);
-            border-radius: 60% 40% 60% 40%;
-            opacity: 0.8;
-            filter: blur(0.3px);
-            animation: floatPetal 16s linear infinite;
-        }
-
-        /* Different sizes / speeds */
-        .petal.p1 { top: -10%; left: 5%; animation-duration: 18s; }
-        .petal.p2 { top: -15%; left: 90%; animation-duration: 19s; }
-        .petal.p3 { top: -20%; left: 15%; animation-duration: 17s; }
-        .petal.p4 { top: -18%; left: 75%; animation-duration: 21s; }
-        .petal.p5 { top: -12%; left: 40%; animation-duration: 20s; }
-        .petal.p6 { top: -25%; left: 0%;  animation-duration: 22s; }
-        .petal.p7 { top: -22%; left: 60%; animation-duration: 19s; }
-        .petal.p8 { top: -18%; left: 30%; animation-duration: 23s; }
-        .petal.p9 { top: -16%; left: 82%; animation-duration: 24s; }
-        .petal.p10{ top: -24%; left: 50%; animation-duration: 26s; }
-
-        @keyframes floatPetal {
-            0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.9; }
-            50% { transform: translate3d(-20px, 55vh, 0) rotate(140deg); }
-            100% { transform: translate3d(20px, 110vh, 0) rotate(260deg); opacity: 0; }
-        }
-
-        /* MAIN CONTENT */
-        .content {
-            position: relative;
-            z-index: 3;
-            padding: 50px 20px;
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 48px;
-            margin-bottom: 30px;
-            text-shadow: 0 0 12px rgba(0,0,0,0.7);
-        }
-
-        /* TEXT BOX */
-        .textbox {
-            background: rgba(0, 0, 0, 0.55);
-            border: 1px solid rgba(255, 215, 0, 0.5);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
-            font-size: 20px;
-            line-height: 1.65;
-            backdrop-filter: blur(4px);
-            text-shadow: 0 0 8px rgba(0,0,0,0.6);
-        }
-
-        a {
-            color: #ffd700;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
-
 <body>
-
-    <div class="background"></div>
-    <div class="overlay"></div>
-
-    <!-- FLOATING PETALS -->
-    <div class="petals">
-        <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
-        <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
-        <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
-        <div class="petal p10"></div>
+  <div class="menu-container">
+    <button class="menu-button">☰ Menu</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="revival.html">Revival</a>
+      <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+      <a href="podcast.html">Podcasts</a>
+      <a href="partner.html">Get Connected</a>
+      <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
+      <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
     </div>
+  </div>
 
-    <div class="content">
-        <h1>About Kingdom Market</h1>
 
-        <div class="textbox">
-            <p>
-                Welcome to <strong>Kingdom Market</strong> — a faith-driven brand born from vision, purpose, 
-                and a desire to bring God’s light into modern culture.
-            </p>
+<div class="background"></div>
+<div class="overlay"></div>
 
-            <p>
-                We bring together brands, creators, and believers from all around the world to form a shared
-                community of faith and creativity. Beyond apparel, we aim to provide uplifting information,
-                good news, and meaningful community connections that strengthen and encourage believers.
-            </p>
+<div class="petals">
+  <div class="petal p1"></div>
+  <div class="petal p2"></div>
+  <div class="petal p3"></div>
+  <div class="petal p4"></div>
+  <div class="petal p5"></div>
+  <div class="petal p6"></div>
+  <div class="petal p7"></div>
+  <div class="petal p8"></div>
+  <div class="petal p9"></div>
+  <div class="petal p10"></div>
+</div>
 
-            <p>
-                Our mission is to merge contemporary street fashion with biblical truth — creating apparel 
-                and products that inspire, empower, and remind you of who you are in Christ.
-            </p>
+<div class="content">
+  <h1>About Kingdom Market</h1>
+  <div class="textbox">
+    <p>
+      Welcome to <strong>Kingdom Market</strong> — a faith-driven brand born from vision, purpose,
+      and a desire to bring God's light into modern culture.
+    </p>
+    <p>
+      We exist to bring together brands from all around the world, creating a shared community of
+      faith, creativity, <strong>good news</strong>, and meaningful <strong>connection</strong>.
+      Kingdom Market is a place where believers can discover testimonies, resources, and stories
+      that point back to Jesus.
+    </p>
+    <p>
+      Our mission is to merge contemporary street fashion with biblical truth, creating apparel and
+      products that inspire, empower, and remind you of who you are in Christ. Beyond clothing,
+      we aim to curate information, testimonies, and opportunities that connect you with what God
+      is doing across the globe.
+    </p>
+    <p>
+      Every item and story we share carries meaning and intention — crafted and chosen with
+      excellence, integrity, and the belief that faith should be boldly represented in today's world.
+      Whether you're here to shop, be encouraged, or find your next step in community and calling,
+      we're honored to walk with you.
+    </p>
+    <p>
+      Thank you for supporting this Kingdom movement.
+      <br /><br />
+      <strong>Stay blessed. Stay bold. Stay Kingdom.</strong>
+    </p>
+    <p style="margin-top:25px;">
+      <a href="index.html">← Back to Home</a>
+    </p>
+  </div>
+</div>
 
-            <p>
-                Every piece we design carries meaning and intention — crafted with excellence, integrity, 
-                and the belief that faith should be boldly represented in today’s world.
-            </p>
-
-            <p>
-                Thank you for supporting this Kingdom movement.
-                <br><br>
-                <strong>Stay blessed. Stay bold. Stay Kingdom.</strong>
-            </p>
-
-            <p style="margin-top:25px;">
-                <a href="index.html">← Back to Home</a>
-            </p>
-        </div>
-    </div>
-
+<script src="menu.js"></script>
 </body>
 </html>
