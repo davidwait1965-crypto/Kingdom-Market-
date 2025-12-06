@@ -35,43 +35,9 @@ body {
     margin: 40px auto 70px auto;
     padding: 0 18px 40px;
 }
-.menu-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 9999;
-}
-.menu-button {
-    background: #222;
-    color: white;
-    padding: 10px 14px;
-    font-size: 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: #fff;
-    min-width: 190px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    padding: 8px 0;
-    margin-top: 6px;
-}
-.dropdown-content a {
-    display: block;
-    padding: 10px 15px;
-    color: #222;
-    text-decoration: none;
-}
-.dropdown-content a:hover {
-    background: #eee;
-}
-.menu-container.show .dropdown-content {
-    display: block;
-}
+
+/* (menu styles come from menu.css now) */
+
 header {
     text-align: center;
     margin-bottom: 25px;
@@ -138,7 +104,6 @@ header p {
 }
 </style>
 <link rel="stylesheet" href="menu.css">
-
 </head>
 <body>
 <div class="scripture-background"></div>
@@ -150,11 +115,11 @@ header p {
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="revival.html">Revival</a>
-        <a href="prophetic.html">Prophetic Words</a>
+        <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
         <a href="podcast.html">Podcasts</a>
         <a href="partner.html">Get Connected</a>
-        <a href="ywam-global-blog.html">YWAM Global</a>
-        <a href="ywam-salem-blog.html">YWAM Salem</a>
+        <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
+        <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
     </div>
 </div>
 
@@ -241,14 +206,6 @@ header p {
         <a href="index.html" style="color:#ffd700;">← Back to Home</a>
     </div>
 </div>
-
-<script>
-const menuButton = document.querySelector('.menu-button');
-const menuContainer = document.querySelector('.menu-container');
-menuButton.addEventListener('click', () => {
-    menuContainer.classList.toggle('show');
-});
-</script>
 
 <script src="menu.js"></script>
 </body>
