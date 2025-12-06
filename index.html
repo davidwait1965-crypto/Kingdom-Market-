@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kingdom Market</title>
 <meta name="theme-color" content="#000000" />
-
 <style>
 body {
   margin: 0;
@@ -13,13 +12,6 @@ body {
   background: #000;
   color: #000;
 }
-
-/* HIDE CERTAIN MENU LINKS */
-.hidden-link {
-  display: none !important;
-}
-
-/* FULLSCREEN SCRIPTURE BACKGROUND */
 .scripture-background {
   position: fixed;
   inset: 0;
@@ -29,7 +21,6 @@ body {
   justify-content: center;
   z-index: 0;
 }
-
 .scripture-text {
   max-width: 80%;
   text-align: center;
@@ -43,8 +34,6 @@ body {
     0 0 22px rgba(255, 215, 0, 0.35),
     0 0 38px rgba(255, 215, 0, 0.2);
 }
-
-/* GLOW OVERLAY */
 .glow-overlay {
   position: fixed;
   inset: 0;
@@ -58,50 +47,10 @@ body {
   backdrop-filter: blur(2px);
   pointer-events: none;
 }
-
 .content-wrapper {
   position: relative;
   z-index: 2;
 }
-
-/* RIGHT-SIDE STOREFRONT PROMPT */
-.storefront-prompt {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 215, 0, 0.8);
-  border-radius: 14px;
-  padding: 12px 18px;
-  color: #ffd700;
-  font-size: 16px;
-  font-weight: 600;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
-  z-index: 5;
-  backdrop-filter: blur(4px);
-  animation: floatPrompt 3.5s ease-in-out infinite alternate;
-}
-
-.storefront-prompt span {
-  display: block;
-  font-size: 13px;
-  color: #ffeeb2;
-  margin-top: 4px;
-}
-
-@keyframes floatPrompt {
-  from {
-    transform: translateY(-50%) translateX(0);
-    opacity: 0.85;
-  }
-  to {
-    transform: translateY(-52%) translateX(-4px);
-    opacity: 1;
-  }
-}
-
-/* HEADER + LOGO */
 header {
   background: rgba(34, 34, 34, 0.9);
   color: #fff;
@@ -110,71 +59,21 @@ header {
   font-size: 26px;
   font-weight: bold;
 }
-
 .logo-container {
   text-align: center;
   margin-top: 25px;
   margin-bottom: 35px;
 }
-
 .logo-container img {
   width: 280px;
   height: auto;
 }
-
-/* MAIN CONTENT WRAPPER */
 .container {
   padding: 20px;
   max-width: 1000px;
   margin: 0 auto 40px auto;
 }
-
-/* MENU */
-.menu-container {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 9999;
-}
-
-.menu-button {
-  background: #222;
-  color: #fff;
-  padding: 10px 14px;
-  font-size: 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #fff;
-  min-width: 180px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 8px 0;
-  margin-top: 6px;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px 15px;
-  color: #222;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.dropdown-content a:hover {
-  background: #f0f0f0;
-}
-
-.menu-container.show .dropdown-content {
-  display: block;
-}
-
-/* CAPTION SECTION */
+/* CAPTION */
 .caption-section {
   max-width: 900px;
   margin: 25px auto 30px auto;
@@ -189,7 +88,6 @@ header {
   box-shadow: 0 0 22px rgba(0, 0, 0, 0.7);
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
 }
-
 /* VIDEO */
 .video-wrapper {
   position: relative;
@@ -203,13 +101,11 @@ header {
     0 0 20px rgba(255, 215, 0, 0.4),
     0 0 40px rgba(255, 215, 0, 0.25);
 }
-
 .video-wrapper::before {
   content: "";
   display: block;
-  padding-top: 56.25%; /* 16:9 ratio */
+  padding-top: 56.25%;
 }
-
 .video-wrapper iframe {
   position: absolute;
   inset: 0;
@@ -218,7 +114,6 @@ header {
   border: none;
   border-radius: 16px;
 }
-
 @keyframes goldGlow {
   from {
     box-shadow:
@@ -231,7 +126,6 @@ header {
       0 0 60px rgba(255, 215, 0, 1);
   }
 }
-
 /* CONNECT SECTION */
 .connect-section {
   margin-top: 35px;
@@ -245,14 +139,12 @@ header {
   box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
   backdrop-filter: blur(3px);
 }
-
 .connect-section h2 {
   font-size: 26px;
   color: #ffd700;
   text-shadow: 0 0 12px #000;
   margin-bottom: 10px;
 }
-
 .connect-section p {
   font-size: 17px;
   line-height: 1.6;
@@ -261,7 +153,6 @@ header {
   color: #f2f2f2;
   text-shadow: 0 0 8px #000;
 }
-
 .connect-button {
   display: inline-block;
   padding: 12px 22px;
@@ -275,21 +166,14 @@ header {
   transition: 0.3s ease;
   animation: glowPulse 2s infinite alternate;
 }
-
 .connect-button:hover {
   background: #fff0a8;
   transform: scale(1.06);
 }
-
 @keyframes glowPulse {
-  from {
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-  }
-  to {
-    box-shadow: 0 0 22px rgba(255, 215, 0, 1);
-  }
+  from { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+  to   { box-shadow: 0 0 22px rgba(255, 215, 0, 1); }
 }
-
 /* FOOTER */
 .footer-section {
   background: rgba(0, 0, 0, 0.65);
@@ -300,19 +184,16 @@ header {
   color: #fff;
   backdrop-filter: blur(3px);
 }
-
 .footer-section h2 {
   font-size: 28px;
   margin-bottom: 12px;
   text-shadow: 0 0 12px #000, 0 0 22px rgba(255, 215, 0, 0.3);
 }
-
 .footer-section h3 {
   margin-top: 22px;
   font-size: 22px;
   text-shadow: 0 0 10px #000;
 }
-
 .footer-section p {
   font-size: 17px;
   line-height: 1.6;
@@ -320,8 +201,6 @@ header {
   margin: 12px auto;
   text-shadow: 0 0 6px #000;
 }
-
-/* MOBILE REFINEMENTS */
 @media (max-width: 600px) {
   header {
     font-size: 22px;
@@ -367,27 +246,15 @@ header {
   .glow-overlay {
     backdrop-filter: none;
   }
-  /* Hide side prompt on small screens */
-  .storefront-prompt {
-    display: none;
-  }
 }
-
-/* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
-  .video-wrapper {
-    animation: none;
-  }
-  .connect-button {
-    animation: none;
-  }
-  .storefront-prompt {
-    animation: none;
-  }
+  .video-wrapper { animation: none; }
+  .connect-button { animation: none; }
 }
 </style>
-</head>
+<link rel="stylesheet" href="menu.css">
 
+</head>
 <body>
 <div class="scripture-background">
   <div class="scripture-text" id="scriptureText"></div>
@@ -395,11 +262,10 @@ header {
 <div class="glow-overlay"></div>
 
 <div class="content-wrapper">
-
-  <!-- MENU -->
   <div class="menu-container">
     <button class="menu-button">☰ Menu</button>
     <div class="dropdown-content">
+      <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="revival.html">Revival</a>
       <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
@@ -407,70 +273,43 @@ header {
       <a href="partner.html">Get Connected</a>
       <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
       <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
-      <a href="#" class="hidden-link">Accessories</a>
-      <a href="#" class="hidden-link">Gifts</a>
-      <a href="#" class="hidden-link">Featured Collection</a>
-      <a href="#" class="hidden-link">Shop All</a>
     </div>
-  </div>
-
-  <!-- RIGHT-SIDE STOREFRONT PROMPT -->
-  <div class="storefront-prompt">
-    Storefront coming soon!
-    <span>Faith-filled products are on the way.</span>
   </div>
 
   <header>Kingdom Market</header>
 
-  <!-- LOGO -->
   <div class="logo-container">
     <img src="angel.png" alt="Kingdom Market Logo" />
   </div>
 
   <div class="container">
-
-    <!-- CAPTION ABOVE VIDEO -->
     <div class="caption-section">
       <p>
-        In a world shaped by endless scrolling and constant instant gratification, I found myself overwhelmed by the noise of social media. But as I became more intentional about what I allowed into my feeds, I began to witness something extraordinary—revivals rising across the nation, young adults pursuing the heart of God, and a renewed hunger for truth. That movement sparked a passion within me to build a space where believers can gather, grow, and stay connected. Kingdom Market was created to be that community—offering uplifting news, upcoming events, faith-centered stores, and a place for powerful prayer. Here, God remains the focus in everything we do.
-        Welcome to Kingdom Market.
+        In a world shaped by endless scrolling and constant instant gratification, I found myself overwhelmed by the noise of social media. But as I became more intentional about what I allowed into my feeds, I began to witness something extraordinary—revivals rising across the nation, young adults pursuing the heart of God, and a renewed hunger for truth. That movement sparked a passion within me to build a space where believers can gather, grow, and stay connected.
+      </p>
+      <p>
+        Kingdom Market was created to be that community—offering uplifting news, upcoming events, faith-centered stores, and a place for powerful prayer. Here, God remains the focus in everything we do. Welcome to Kingdom Market.
       </p>
     </div>
 
-   <!-- FEATURED VIDEO -->
-<div style="text-align:center; margin-bottom:25px;">
-  <h2 style="color:white; text-shadow:0 0 12px black; margin-bottom:15px;">
-    Featured Kingdom Message
-  </h2>
+    <div style="text-align:center; margin-bottom:25px;">
+      <h2 style="color:white; text-shadow:0 0 12px black; margin-bottom:15px;">
+        Featured Kingdom Message
+      </h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/G870nirtS-I?autoplay=1&mute=1&loop=1&playlist=G870nirtS-I"
+          title="Teen Dead for 1 Hour, but Mom's Prayer Brings Him Back to Life"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p style="color:#f5f5f5; margin-top:12px; max-width:720px; margin-left:auto; margin-right:auto; text-shadow:0 0 8px #000;">
+        A powerful modern testimony of resurrection life and a praying mother who refused to give up—reminding us that Jesus is still moving, healing, and doing miracles today.
+      </p>
+    </div>
 
-  <div class="video-wrapper">
-    <iframe
-      src="https://www.youtube.com/embed/G870nirtS-I?autoplay=1&mute=1&loop=1&playlist=G870nirtS-I"
-      title="Teen Dead for 1 Hour, but Mom's Prayer Brings Him Back to Life"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- CAPTION UNDER VIDEO -->
-  <p style="
-      max-width: 850px;
-      margin: 14px auto 0;
-      color: #f7f7f7;
-      font-size: 15px;
-      line-height: 1.6;
-      text-shadow: 0 0 8px rgba(0,0,0,0.9);
-    ">
-    A powerful testimony of God’s miracle-working power — a young teen declared dead for an hour,
-    brought back to life through the unwavering prayer of his mother. A reminder that with God,
-    nothing is impossible and hope is never lost.
-  </p>
-</div>
-
-
-    <!-- CONNECT WITH OUR TEAM -->
     <div class="connect-section">
       <h2>Partner With Kingdom Market</h2>
       <p>
@@ -482,19 +321,15 @@ header {
       </a>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer-section">
       <h2>Our Mission</h2>
       <p>
-        Kingdom Market is a faith-inspired platform created to uplift and empower believers
-        through apparel, accessories, and meaningful products that reflect God's Word.
+        Kingdom Market is a faith-driven hub created to uplift and empower believers through meaningful products, testimonies, and Christ-centered resources that reflect God's heart.
       </p>
-
       <h3>Affiliate Partnership Disclosure</h3>
       <p>
         Some products featured on this website are offered through trusted affiliate partners.
-        This means Kingdom Market may earn a commission when purchases are made through our links —
-        at no additional cost to you.
+        This means Kingdom Market may earn a commission when purchases are made through our links — at no additional cost to you.
       </p>
       <p>
         Every product recommended aligns with our mission:
@@ -504,44 +339,27 @@ header {
         Thank you for supporting this Kingdom-driven movement.
       </p>
     </div>
-
   </div>
 </div>
 
+<script src="menu.js"></script>
 <script>
-// MENU TOGGLE (with outside click close)
-const menuButton = document.querySelector('.menu-button');
-const menuContainer = document.querySelector('.menu-container');
-menuButton.addEventListener('click', (e) => {
-  e.stopPropagation();
-  menuContainer.classList.toggle('show');
-});
-document.addEventListener('click', (e) => {
-  if (!menuContainer.contains(e.target)) {
-    menuContainer.classList.remove('show');
-  }
-});
-
-// ROTATING BIBLE VERSES
 const verses = [
-  "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” – Matthew 6:33",
+  "“But seek ye first the kingdom of God, and his righteousness;... and all these things shall be added unto you.” – Matthew 6:33",
   "“I can do all things through Christ which strengtheneth me.” – Philippians 4:13",
   "“For with God nothing shall be impossible.” – Luke 1:37",
   "“For we walk by faith, not by sight.” – 2 Corinthians 5:7",
   "“The LORD is my shepherd; I shall not want.” – Psalm 23:1"
 ];
-
 const scriptureElement = document.getElementById('scriptureText');
 let verseIndex = 0;
-
 function showNextVerse() {
+  if (!scriptureElement) return;
   scriptureElement.textContent = verses[verseIndex];
   verseIndex = (verseIndex + 1) % verses.length;
 }
-
 showNextVerse();
 setInterval(showNextVerse, 10000);
 </script>
-
 </body>
 </html>
