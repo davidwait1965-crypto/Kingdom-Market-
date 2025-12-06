@@ -1,390 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YWAM – Global Heartbeat | Kingdom Market Blog</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YWAM Global – Kingdom Market Blog</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#000;color:#fff;}
+.wrap{max-width:950px;margin:40px auto 70px auto;padding:0 18px 40px;}
+header{text-align:center;margin-bottom:24px;}
+header h1{font-size:34px;margin:0;text-shadow:0 0 12px #000,0 0 24px rgba(255,215,0,0.7);}
+header p{margin-top:10px;font-size:15px;color:#f7f0cc;max-width:640px;margin-left:auto;margin-right:auto;}
+.hero{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 0 30px rgba(0,0,0,0.7);margin-bottom:22px;}
+.hero img{width:100%;max-height:420px;object-fit:cover;}
+.hero-tag{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.7);padding:6px 12px;border-radius:999px;font-size:12px;color:#ffd700;}
+h2{font-size:22px;margin-top:26px;margin-bottom:8px;color:#ffd700;}
+p{line-height:1.7;margin:0 0 12px 0;}
+.inline-image{margin:22px 0;border-radius:16px;overflow:hidden;box-shadow:0 0 24px rgba(0,0,0,0.7);}
+.inline-image img{width:100%;max-height:340px;object-fit:cover;}
+.inline-image figcaption{background:rgba(0,0,0,0.6);padding:8px;font-size:12px;color:#ccc;}
+.box{margin:22px 0;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,215,0,0.45);background:rgba(0,0,0,0.6);box-shadow:0 0 18px rgba(0,0,0,0.8);}
+a{color:#ffd700;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.back{text-align:center;margin-top:22px;font-size:13px;}
+</style>
+<link rel="stylesheet" href="menu.css">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-        }
-
-        /* BACKGROUND + GLOW */
-        .scripture-background {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top, #333 0%, #000 60%, #000 100%);
-            z-index: 0;
-        }
-        .glow-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background: radial-gradient(
-                circle at center,
-                rgba(255, 215, 0, 0.22) 0%,
-                rgba(0, 0, 0, 0.9) 70%
-            );
-            pointer-events: none;
-        }
-
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
-            max-width: 960px;
-            margin: 40px auto 70px auto;
-            padding: 0 18px 40px;
-        }
-
-        /* MENU (same style as other pages) */
-        .menu-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 9999;
-        }
-        .menu-button {
-            background: #222;
-            color: white;
-            padding: 10px 14px;
-            font-size: 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: #fff;
-            min-width: 190px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            border-radius: 8px;
-            padding: 8px 0;
-            margin-top: 6px;
-        }
-        .dropdown-content a {
-            display: block;
-            padding: 10px 15px;
-            color: #222;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .dropdown-content a:hover { background: #f0f0f0; }
-        .menu-container.show .dropdown-content { display: block; }
-
-        /* BLOG LAYOUT */
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        header h1 {
-            font-size: 34px;
-            margin: 0;
-            text-shadow: 0 0 12px black, 0 0 24px rgba(255,215,0,0.7);
-        }
-        header p {
-            margin-top: 10px;
-            font-size: 15px;
-            color: #f7f0cc;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 0 6px black;
-        }
-
-        .blog-hero {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.7);
-            margin-bottom: 22px;
-        }
-        .blog-hero img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            display: block;
-        }
-        .blog-hero-tag {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            background: rgba(0,0,0,0.7);
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: #ffd700;
-        }
-
-        .meta {
-            font-size: 12px;
-            color: #c7c7c7;
-            margin-bottom: 18px;
-        }
-
-        h2 {
-            font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 8px;
-            color: #ffd700;
-        }
-        h3 {
-            font-size: 18px;
-            margin-top: 20px;
-            margin-bottom: 6px;
-            color: #ffeeb2;
-        }
-        p {
-            margin: 0 0 12px 0;
-            line-height: 1.7;
-        }
-        a {
-            color: #ffd700;
-            text-decoration: none;
-        }
-        a:hover { text-decoration: underline; }
-
-        .inline-image {
-            margin: 22px 0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 0 24px rgba(0,0,0,0.7);
-        }
-        .inline-image img {
-            width: 100%;
-            max-height: 360px;
-            object-fit: cover;
-            display: block;
-        }
-        .inline-image figcaption {
-            font-size: 12px;
-            color: #c7c7c7;
-            padding: 8px 10px 10px;
-            background: rgba(0,0,0,0.6);
-        }
-
-        .image-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 14px;
-            margin: 22px 0 10px 0;
-        }
-        .image-row figure {
-            margin: 0;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.7);
-        }
-        .image-row img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-        .image-row figcaption {
-            font-size: 11px;
-            padding: 7px 9px 9px;
-            background: rgba(0,0,0,0.65);
-            color: #c7c7c7;
-        }
-
-        .highlight-box {
-            margin: 22px 0;
-            padding: 14px 16px;
-            border-radius: 14px;
-            border: 1px solid rgba(255,215,0,0.45);
-            background: rgba(0,0,0,0.6);
-            box-shadow: 0 0 18px rgba(0,0,0,0.8);
-            font-size: 14px;
-        }
-        ul {
-            margin: 0 0 14px 1.1rem;
-            padding: 0;
-        }
-        li { margin-bottom: 6px; }
-
-        .cta {
-            margin-top: 26px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.12);
-            font-size: 13px;
-            color: #c7c7c7;
-        }
-        .cta a.button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 9px 18px;
-            border-radius: 999px;
-            background: #ffd700;
-            color: #000;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 0 18px rgba(255,215,0,0.8);
-        }
-        .cta a.button:hover {
-            filter: brightness(1.05);
-        }
-
-        .back-links {
-            margin-top: 24px;
-            text-align: center;
-            font-size: 13px;
-        }
-        .back-links a {
-            color: #ffd700;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .back-links a:hover { text-decoration: underline; }
-
-        @media (max-width:600px){
-            header h1{font-size:26px;}
-            h2{font-size:20px;}
-        }
-    </style>
 </head>
-
 <body>
-
-    <!-- BACKGROUND -->
-    <div class="scripture-background"></div>
-    <div class="glow-overlay"></div>
-
-    <!-- MENU -->
-    <div class="menu-container">
-        <button class="menu-button">☰ Menu</button>
-        <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="revival.html">Revival</a>
-            <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
-            <a href="podcast.html">Podcast</a>
-            <a href="#">Accessories</a>
-            <a href="#">Gifts</a>
-            <a href="#">Featured Collection</a>
-            <a href="#">Shop All</a>
-        </div>
+  <div class="menu-container">
+    <button class="menu-button">☰ Menu</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="revival.html">Revival</a>
+      <a href="prophetic.html">Prophetic Words &amp; Teachings</a>
+      <a href="podcast.html">Podcasts</a>
+      <a href="partner.html">Get Connected</a>
+      <a href="ywam-global-blog.html">Get Connected Globally – YWAM</a>
+      <a href="yom-teams-blog.html">Get Connected Globally – YOM Teams</a>
     </div>
+  </div>
 
-    <div class="content-wrapper">
-        <header>
-            <h1>YWAM: A Global Family on Mission</h1>
-            <p>
-                A relaxed, story-style look at Youth With A Mission — the worldwide movement
-                that’s helping ordinary people say a bold “yes” to God.
-            </p>
-        </header>
 
-        <!-- HERO IMAGE -->
-        <div class="blog-hero">
-            <img src="ywam-worship.jpg" alt="Young people worshipping together at a YWAM gathering" />
-            <div class="blog-hero-tag">Worship · Missions · Community</div>
-        </div>
+<div class="wrap">
+<header>
+  <h1>YWAM – A Global Family on Mission</h1>
+  <p>
+    A snapshot of Youth With A Mission around the world: ordinary people saying “yes” to an extraordinary God.
+  </p>
+</header>
 
-        <div class="meta">
-            By Kingdom Market · Celebrating ministries that carry the heartbeat of Jesus into the nations.
-        </div>
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1400&q=80"
+       alt="Young people worshipping together" />
+  <div class="hero-tag">Global · Missions · Worship</div>
+</div>
 
-        <p>
-            If you scroll through <strong>YWAM.org</strong>, you quickly realize this isn’t just
-            an organization — it’s a giant, global family. Flags from every continent, stories
-            from every corner of the world, and one simple focus:
-            <strong>to know God and make Him known</strong>.
-        </p>
-        <p>
-            YWAM (Youth With A Mission) is a missions movement where teachers, baristas,
-            artists, students, parents, and “ordinary” people step into the wild adventure
-            of following Jesus wherever He leads.
-        </p>
+<p>
+  Youth With A Mission (YWAM) is a global movement of believers who want to know God and make Him known.
+  From major cities to remote villages, YWAMers are serving, preaching the gospel, and demonstrating the love of Jesus.
+</p>
 
-        <!-- INLINE IMAGE 1 -->
-        <figure class="inline-image">
-            <img src="ywam-campfire.jpg" alt="YWAM friends worshipping and sharing stories by the water" />
-            <figcaption>Worship, stories, and strong coffee — community life with a purpose.</figcaption>
-        </figure>
+<h2>A Family from Many Nations</h2>
+<p>
+  One of the most beautiful parts of YWAM is its diversity—people of different ages, cultures, and backgrounds
+  coming together around the Great Commission. It’s less about an organization and more about a family on mission.
+</p>
 
-        <h2>What Makes YWAM Different?</h2>
-        <p>
-            YWAM is <strong>interdenominational</strong> and <strong>international</strong>.
-            You’ll find people from many church backgrounds and nations all pulling
-            in the same direction: spreading the love of Jesus through both words and action.
-        </p>
+<figure class="inline-image">
+  <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80"
+       alt="Global missions training community" />
+  <figcaption>Training, worship, and community at a YWAM campus.</figcaption>
+</figure>
 
-        <div class="highlight-box">
-            <strong>Big picture of the YWAM story:</strong>
-            <ul>
-                <li>Started in 1960 with a teenager’s vision of waves of young people sharing Jesus.</li>
-                <li>Now in thousands of locations worldwide, from mega-cities to tiny villages.</li>
-                <li>All ages welcome — the “youth” in YWAM is really about a youthful heart.</li>
-            </ul>
-        </div>
+<h2>Training, Outreach, and Mercy</h2>
+<p>
+  Across the world, YWAM focuses on three main areas: training, evangelism, and mercy ministries.
+  Discipleship Training Schools (DTS) are one of the primary on-ramps—intensive seasons of learning and then going.
+</p>
 
-        <h2>Life in a YWAM Community</h2>
-        <p>
-            A typical YWAM campus might look like this: morning worship with flags overhead,
-            classes on God’s character, practical training, outreach prep, and late-night
-            conversations that go way deeper than small talk.
-        </p>
+<figure class="inline-image">
+  <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=1200&q=80"
+       alt="YWAM outreach with children" />
+  <figcaption>Sharing Jesus’ love in practical and tangible ways.</figcaption>
+</figure>
 
-        <div class="image-row">
-            <figure>
-                <img src="ywam-river-team.jpg" alt="YWAM outreach team gathered joyfully by a river" />
-                <figcaption>Teams are sent to serve, encourage, and share the gospel in real communities.</figcaption>
-            </figure>
-            <figure>
-                <img src="ywam-hill-crosses.jpg" alt="YWAM group on a hilltop with crosses, praying over a city" />
-                <figcaption>Praying over cities and nations — asking God for transformation and hope.</figcaption>
-            </figure>
-        </div>
+<h2>Why Kingdom Market Highlights YWAM</h2>
+<p>
+  At Kingdom Market, we love YWAM because it reflects so much of our own heart:
+  faith in action, creativity, and a desire to see every sphere of society touched by the gospel.
+</p>
 
-        <h3>Training + Going</h3>
-        <p>
-            Most people connect with YWAM through a <strong>Discipleship Training School (DTS)</strong>:
-            part Bible school, part missions training, part heart-deep reset.
-            After several months of teaching, students head out on outreach to serve, pray,
-            share Jesus, and love people in practical ways.
-        </p>
+<div class="box">
+  <strong>Learn more:</strong><br />
+  Explore the global movement at<br />
+  <a href="https://ywam.org" target="_blank">https://ywam.org</a>
+</div>
 
-        <h2>Why We Love Sharing YWAM on Kingdom Market</h2>
-        <p>
-            Kingdom Market exists to highlight what God is doing around the world and to point
-            people toward communities that live with a Kingdom mindset. YWAM is exactly that:
-            creative, brave, global, and centered on Jesus.
-        </p>
-        <p>
-            Whether you’re curious about missions or simply hungry for more of God, taking time
-            to explore YWAM’s story might be a beautiful next step.
-        </p>
+<div class="back">
+  <a href="index.html">← Back to Home</a>
+</div>
+</div>
 
-        <div class="cta">
-            Want to see more stories, photos, and ways to get involved?
-            <br />
-            <a class="button" href="https://www.ywam.org" target="_blank" rel="noopener noreferrer">
-                Explore YWAM’s Global Movement
-            </a>
-        </div>
-
-        <div class="back-links">
-            <a href="index.html">← Back to Home</a>
-            <span>|</span>
-            <a href="revival.html">Revival Stories</a>
-        </div>
-    </div>
-
-    <script>
-        // MENU TOGGLE
-        const menuButton = document.querySelector('.menu-button');
-        const menuContainer = document.querySelector('.menu-container');
-        menuButton.addEventListener('click', () => {
-            menuContainer.classList.toggle('show');
-        });
-    </script>
-
+<script src="menu.js"></script>
 </body>
 </html>
